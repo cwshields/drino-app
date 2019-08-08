@@ -23,7 +23,7 @@ export default class Login extends Component {
               <input placeholder="Username" type="text" name="username" />
               <input placeholder="Password" type="password" name="password" />
             </div>
-            <Link to="/dashboard">
+            <Link to="/dashboard/home">
               <button className="signin-btn">Login</button>
             </Link>
             <div className="reg-query">Don't have an account?&nbsp;
