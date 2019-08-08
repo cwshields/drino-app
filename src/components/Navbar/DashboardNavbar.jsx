@@ -1,10 +1,12 @@
 import React from 'react';
-import '../../App.css';
+import '../../assets/scss/App.scss';
 
-export default function ProfileNavbar() {
+export default function DashboardNavbar() {
   return (
-    <nav className=''>
-      
-    </nav>
+    <div className='dash-nanbar'>
+      <div>
+        <div></div>
+      </div>
+    </div>
   );
 }
