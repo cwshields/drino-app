@@ -1,3 +1,21 @@
 .dashboard {
+  position: relative;
   background-color: #F1F1F1;
+}
+
+.dash-body {
+  text-align: justify;
+  position: absolute;
+  overflow: auto scroll;
+  top: 90px;
+  left: 264px;
+  width: calc(100vw - 264px);
+  max-height: calc(100vh - 90px);
+}
+
+.dash-section {
+  overflow: overlay;
+  font-size: 20px;
+  width: 1585px;
+  margin: 5px 35px
 }

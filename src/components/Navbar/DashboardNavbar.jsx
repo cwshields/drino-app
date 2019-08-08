@@ -6,20 +6,45 @@ export default function DashboardNavbar() {
   return (
     <nav>
       <div className='nav-group'>
-        <NavLink to='/dashboard' className='nav-link' activeClassName='selected'>
-          <div><i class="fas fa-tachometer-alt"></i> Dashboard</div>
+        <NavLink exact to='/dashboard/home' className='nav-link' activeClassName='selected'>
+          <div className="nav-link-wrap">
+            <div className="nav-icon">
+              <i class="fas fa-tachometer-alt"></i>
+            </div> 
+            Dashboard
+          </div>
         </NavLink>
-        <NavLink to='/clients' className='nav-link' activeClassName='selected'>
-          <div><i class="fas fa-users"></i> Clients</div>
+        <NavLink to='/dashboard/users' className='nav-link' activeClassName='selected'>
+          <div className="nav-link-wrap">
+            <div className="nav-icon">
+              <i class="fas fa-users"></i>
+            </div> 
+            Users
+          </div>
         </NavLink>
-        <NavLink to='/employees' className='nav-link' activeClassName='selected'>
-          <div><i class="fas fa-address-card"></i> Employees</div>
+        <NavLink to='/dashboard/messages' className='nav-link' activeClassName='selected'>
+          <div className="nav-link-wrap">
+            <div className="nav-icon">
+              <i class="fas fa-comment-alt"></i>
+            </div> 
+            Messages
+          </div>
         </NavLink>
-        <NavLink to='/messages' className='nav-link' activeClassName='selected'>
-          <div><i class="fas fa-comment-alt"></i> Messages</div>
+        <NavLink to='/dashboard/maps' className='nav-link' activeClassName='selected'>
+          <div className="nav-link-wrap">
+            <div className="nav-icon">
+              <i class="fas fa-map-marked-alt"></i>
+            </div> 
+            Maps
+          </div>
         </NavLink>
-        <NavLink to='/contact' className='nav-link' activeClassName='selected'>
-          <div><i class="fas fa-envelope"></i> Contact</div>
+        <NavLink to='/dashboard/pages' className='nav-link' activeClassName='selected'>
+          <div className="nav-link-wrap">
+            <div className="nav-icon">
+              <i class="fas fa-file-alt"></i>
+            </div> 
+            Pages
+          </div>
         </NavLink>
       </div>
     </nav>
