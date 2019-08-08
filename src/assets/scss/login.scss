@@ -1,0 +1,138 @@
+@import './variables.scss';
+
+.login-body {
+  background-color: #373A44;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-body-wrap {
+  height: 290px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 16px;
+}
+
+.modal {
+  font-family: 'roboto';
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: 475px;
+  background-color: #f3f3f3;
+  border-radius: 12px;
+}
+
+.circle {
+  border-radius: 500px;
+}
+
+.login-circle {
+  width: 160px;
+  height: 160px;
+  background-color: $green;
+  margin-bottom: -90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  border: 8px solid #373A44;
+}
+
+.custom-vec {
+  font-size: 84px; 
+  color: #f3f3f3;
+  margin-bottom: 6px;
+}
+
+.modal-name {
+  font-size: 30px;
+  color: #757575;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90px;
+  input {
+    color: #535353;
+    border-radius: 4px;
+    border: 1px solid #c4c4c4;
+    font-family: 'roboto';
+    font-size:17px;
+    width: 268px;
+  }
+  select, textarea, input:-webkit-autofill, input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #535353;
+  }
+  input::placeholder {
+    color: #bebebe;
+  }
+}
+
+.signin-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  color: $off-white;
+  width: 268px;
+  height: 42px;
+  background-color: $green;
+  border-radius: 4px;
+  padding-bottom: 0px;
+  cursor: pointer;
+}
+
+.signin-btn:hover {
+  transition: 100ms;
+  background-color: $dark-green
+}
+
+.reg-query {
+  font-size: 16px;
+  color: #757575;
+}
+
+.blue-link:hover {
+  text-decoration: underline;
+}
+
+.blue-link {
+  color: #4874B6;
+}
+
+
+.login-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 70px;
+  background-color: #cecece;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.footer-link {
+  font-size: 16px;
+  color: #8d8d8d;
+  padding: 4px 6px;
+  margin-bottom: 4px;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
