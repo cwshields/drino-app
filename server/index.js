@@ -3,17 +3,18 @@ const express = require ('express');
 const massive = require('massive');
 const session = require('express-session');
 
+const { register, login, getSales, addSale, getUsers, addUser } = require('./controller')
+
 const app = express();
 const { SESSION_SECRET, CONNECTION_STRING, SERVER_PORT } = process.env
 
-app.use(express.json());
 
 app.use(session({
   resave: false,
   saveUninitialized: true,
   secret: SESSION_SECRET,
   cookie: {
-      maxAge: 1000 * 60 * 20 // * 24
+    maxAge: 1000 * 60 * 30 // * 24
   }
 }))
 
@@ -21,5 +22,31 @@ massive(CONNECTION_STRING).then(db => {
   app.set('db', db);
   console.log('Database Connected');
 })
+
+app.use(express.json());
+
+app.post('/auth/register', register)
+app.post('/auth/login', login);
+
+app.get('/api/user', function(req, res) {
+  if(req.session.user) {
+    res.status(200).json(req.session.user);
+  } else {
+    res.status(404).json({
+      error: "USER_NOT_FOUND"
+    })
+  }
+})
+
+// app.post('/api/sales', addSale)
+// app.post('/api/users', addUser)
+
+// app.get('/api/sales', getSales)
+// app.get('/api/users', getUsers)
+
+// app.delete("/api/user/:id", deleteUser)
+
+// app.put("/api/users/:id", editUser)
+// app.put("/api/sales/:id", editSale)
 
 app.listen(SERVER_PORT, () => console.log(`Listening on Port ${SERVER_PORT}`));
