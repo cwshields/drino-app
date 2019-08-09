@@ -3,7 +3,6 @@ import DrinoNavbar from '../Navbar/DrinoNavbar'
 import '../../assets/scss/App.scss'
 import '../../assets/scss/drinolander.scss'
 import logo from '../../assets/images/Drino-Logo.png'
-import background from '../../assets/images/background.png';
 
 export default function Drino() {
   return (

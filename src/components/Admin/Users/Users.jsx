@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../assets/scss/App.scss';
 
-export default function DrinoNavbar() {
+export default function Users() {
   return (
     <div className=''>
       
