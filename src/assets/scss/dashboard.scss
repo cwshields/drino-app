@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 .dashboard {
   position: relative;
   background-color: #F1F1F1;
@@ -14,8 +16,77 @@
 }
 
 .dash-section {
-  overflow: overlay;
   font-size: 20px;
-  width: 1585px;
-  margin: 5px 35px
+  width: 1540px;
+  margin: 50px 50px
+}
+
+.status-card-wrap {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  .status-card {
+    position: relative;
+    font-family: 'Questrial';
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #F5F5F5;
+    padding: 20px 30px;
+    height: 160px;
+    width: 350px;
+    border-radius: 3px;
+    .number {
+      font-size: 44px;
+    }
+    .label {
+      font-size: 16px;
+      font-weight: 200;
+    }
+    .fas {
+      color: #0000001f;
+      position: absolute;
+      top: 30px;
+      right: 20px;
+      font-size: 70px;
+    }
+    hr {
+      margin: 5px 0;
+      border-bottom: 1px;
+      width: 100%;
+    }
+    .date {
+      font-size: 14px;
+      color: rgba(245, 245, 245, 0.61);
+    }
+  }  
+  .red {
+    background-color: #D83737;
+    border: 1px solid #B52424;
+  }
+  .blue {
+    background-color: #3794D8;
+    border: 1px solid #3A66D4;
+  }
+  .green {
+    background-color: #6AD837;
+    border: 1px solid #4CAA50;
+  }
+  .yellow {
+    background-color: #E5BE31;
+    border: 1px solid #CD9E26;
+  }
+}
+
+
+.charts-wrap {
+
+  .line-chart {
+    background-color: #FFF;
+    padding: 20px 40px 25px;
+    width: $line-chart-size;
+    height: calc($line-chart-size * .33);
+    border: 1px solid #D6D6D6;
+    border-radius: 3px;
+  }
 }

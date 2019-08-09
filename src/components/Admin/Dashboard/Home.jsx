@@ -1,43 +1,55 @@
 import React, { Component } from 'react'
 import '../../../assets/scss/App.scss'
 // import { Link } from "react-router-dom";
-import Bar from '../Charts/Bar';
+import Charts from '../Charts/Charts';
 
 export default class Home extends Component {
   constructor() {
     super()
     this.state = {
-      chartData:{}
+      chartData: {}
     }
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.getChartData();
   }
 
-  getChartData(){
+  getChartData() {
     this.setState({
-      chartData:{
-        labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
-        datasets:[
+      chartData: {
+        labels: [
+          'January',
+          'Febuary',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December'],
+        datasets: [
           {
-            label:'Population',
-            data:[
-              617594,
-              181045,
-              153060,
-              106519,
-              105162,
-              95072
+            label: 'Revenue',
+            data: [
+              57594,
+              61045,
+              53060,
+              52519,
+              62162,
+              65472,
+              55068,
+              56233,
+              74162,
+              64072,
+              77162,
+              68072
             ],
-            backgroundColor:[
-              'rgba(255, 99, 132, 0.6)',
-              'rgba(54, 162, 235, 0.6)',
-              'rgba(255, 206, 86, 0.6)',
+            backgroundColor: [
               'rgba(75, 192, 192, 0.6)',
-              'rgba(153, 102, 255, 0.6)',
-              'rgba(255, 159, 64, 0.6)',
-              'rgba(255, 99, 132, 0.6)'
             ]
           }
         ]
@@ -48,22 +60,40 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <div className="">
-          <div className="">
-
+        <div className="status-card-wrap">
+          <div className="status-card red">
+            <div className="number">478</div>
+            <div className="label">New Users</div>
+            <i class="fas fa-user-plus"></i>
+            <hr className="red" />
+            <div className="date">Updated: 8/4/19 - 7:48pm</div>
           </div>
-          <div className="">
-
+          <div className="status-card blue">
+            <div className="number">1,272</div>
+            <div className="label">Sales</div>
+            <i class="fas fa-shopping-cart"></i>
+            <hr className="blue" />
+            <div className="date">Updated: 8/4/19 - 7:48pm</div>
           </div>
-          <div className="">
-
+          <div className="status-card green">
+            <div className="number">$68,072</div>
+            <div className="label">Revenue</div>
+            <i class="fas fa-dollar-sign"></i>
+            <hr className="green" />
+            <div className="date">Updated: 8/4/19 - 7:48pm</div>
           </div>
-          <div className="">
-
+          <div className="status-card yellow">
+            <div className="number">48.3%</div>
+            <div className="label">Bounce Rate</div>
+            <i class="fas fa-chart-line"></i>
+            <hr className="yellow" />
+            <div className="date">Updated: 8/4/19 - 7:48pm</div>
           </div>
         </div>
-        <div className="">
-          <Bar chartData={this.state.chartData} location="Massachusetts" legendPosition="bottom"/>
+        <div className="charts-wrap">
+          <div className="line-chart">
+            <Charts chartData={this.state.chartData} location="Drino" legendPosition="bottom" />
+          </div>
         </div>
       </div>
     );
