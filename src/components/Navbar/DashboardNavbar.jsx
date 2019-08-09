@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 import '../../assets/scss/sidenavbar.scss';
+import { Dropdown } from 'react-bootstrap';
 
 export default function DashboardNavbar() {
   return (
@@ -10,7 +11,7 @@ export default function DashboardNavbar() {
           <div className="nav-link-wrap">
             <div className="nav-icon">
               <i class="fas fa-tachometer-alt"></i>
-            </div> 
+            </div>
             Dashboard
           </div>
         </NavLink>
@@ -18,7 +19,7 @@ export default function DashboardNavbar() {
           <div className="nav-link-wrap">
             <div className="nav-icon">
               <i class="fas fa-users"></i>
-            </div> 
+            </div>
             Users
           </div>
         </NavLink>
@@ -26,7 +27,7 @@ export default function DashboardNavbar() {
           <div className="nav-link-wrap">
             <div className="nav-icon">
               <i class="fas fa-comment-alt"></i>
-            </div> 
+            </div>
             Messages
           </div>
         </NavLink>
@@ -34,18 +35,26 @@ export default function DashboardNavbar() {
           <div className="nav-link-wrap">
             <div className="nav-icon">
               <i class="fas fa-map-marked-alt"></i>
-            </div> 
+            </div>
             Maps
           </div>
         </NavLink>
-        <NavLink to='/dashboard/pages' className='nav-link' activeClassName='selected'>
-          <div className="nav-link-wrap">
-            <div className="nav-icon">
-              <i class="fas fa-file-alt"></i>
-            </div> 
-            Pages
-          </div>
-        </NavLink>
+        <Dropdown>
+          <Dropdown.Toggle className="nav-link" variant="" id="dropdown-basic">
+            <div className="nav-link-wrap">
+              <div className="nav-icon">
+                <i class="fas fa-file-alt"></i>
+              </div> Pages
+            </div>
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item href="/action-1"><i class="far red fa-circle"></i> 404 Error</Dropdown.Item>
+            <Dropdown.Item href="/action-2"><i class="far yellow fa-circle"></i> 500 Error</Dropdown.Item>
+            <Dropdown.Item href="/action-3"><i class="far blue fa-circle"></i> Profile</Dropdown.Item>
+            <Dropdown.Item href="/action-4"><i class="far green fa-circle"></i> Register</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
     </nav>
   );

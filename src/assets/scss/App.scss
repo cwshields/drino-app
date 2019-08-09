@@ -77,9 +77,6 @@ a, a::after {
   text-decoration: none;
 }
 
-.drino {
-}
-
 .box {
   height: 5311px;
 }
@@ -89,36 +86,15 @@ a, a::after {
   flex: 1;
 }
 
+.nav-link:focus {
+  outline: none !important;
+  outline-offset: none !important;
+}
+
 body {
   font-size: 17px;
   background-color: #f1f1f1;
-  main {
-    overflow: overlay;
-    justify-content: center;
-    color: $off-white;
-    height: calc(100vh - 90px);
-    .container { 
-      background: #373A44 url("../images/background.png");
-      background-size: cover;
-      position: relative;
-      width: 100%;
-      // Tried putting background in container but bottom is cut off.
-    }
-    footer {
-      position: absolute;
-      background-color: #29313C;
-      height: 600px;
-      width: 100%;
-    }
-  }
-  input {
-    padding: 8px;
-  }
-  button {
-    border: none;
-  }
 }
-
 
 
 // @keyframes App-logo-spin {

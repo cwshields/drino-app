@@ -12,7 +12,7 @@ export default function Drino() {
 
       </header>
       <main>
-        <div className="container">
+        <div className="drino-container">
           <div className="box">
             <div className="sect1-wrap">
               <div className="sect1-logo-wrap">
