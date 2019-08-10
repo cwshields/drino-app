@@ -1,13 +1,26 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import '../../assets/scss/login.scss'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 export default class Login extends Component {
   constructor() {
     super()
     this.state = {
-
+      username: '',
+      password: '',
     }
+  }
+  
+  componentDidMount() {
+    axios.get('/api/user').then(response => {
+      if (!response.data.error) {
+        this.props.updateBalance(response.data.balance);
+        this.props.updateName(response.data.name);
+        this.props.updateUsername(response.data.username);
+        this.setState({ redirect: true })
+      }
+    })
   }
 
   render() {

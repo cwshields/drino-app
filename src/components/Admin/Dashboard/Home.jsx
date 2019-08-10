@@ -2,100 +2,82 @@ import React, { Component } from 'react'
 import '../../../assets/scss/App.scss'
 // import { Link } from "react-router-dom";
 import Charts from '../Charts/Charts';
+import Welcome from '../../BootstrapComps/WelcomeAlert';
+import { connect } from 'react-redux';
 
-export default class Home extends Component {
-  constructor() {
-    super()
+class Home extends Component {
+  constructor(props) {
+    super(props)
     this.state = {
-      chartData: {}
+      show: true,
+      userCount: props.userCount,
+      sales: props.sales,
+      revenue: props.revenue,
+      bounceRate: props.bounceRate,
+      timeUpdated: props.timeUpdated,
     }
+    this.toggleShow = this.toggleShow.bind(this);
   }
 
-  componentWillMount() {
-    this.getChartData();
-  }
-
-  getChartData() {
-    this.setState({
-      chartData: {
-        labels: [
-          'January',
-          'Febuary',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July',
-          'August',
-          'September',
-          'October',
-          'November',
-          'December'],
-        datasets: [
-          {
-            label: 'Revenue',
-            data: [
-              57594,
-              61045,
-              53060,
-              52519,
-              62162,
-              65472,
-              55068,
-              56233,
-              74162,
-              64072,
-              77162,
-              68072
-            ],
-            backgroundColor: [
-              'rgba(75, 192, 192, 0.6)',
-            ]
-          }
-        ]
-      }
-    });
+  toggleShow = () => {
+    this.setState({ show: false })
   }
 
   render() {
+    const { toggleShow } = this
+    const { show } = this.state
+    const { userCount, timeUpdated, sales, revenue, bounceRate } = this.props
     return (
-      <div>
-        <div className="status-card-wrap">
-          <div className="status-card red">
-            <div className="number">478</div>
-            <div className="label">New Users</div>
-            <i class="fas fa-user-plus"></i>
-            <hr className="red" />
-            <div className="date">Updated: 8/4/19 - 7:48pm</div>
+      <div className='dash-body'>
+        <div className="dash-section">
+          {show === true ? <Welcome show={show} toggleShow={toggleShow} /> : null}
+          <div className="status-card-wrap">
+            <div className="status-card red">
+              <div className="number">{userCount}</div>
+              <div className="label">Users</div>
+              <i className="fas fa-user-plus"></i>
+              <hr className="red" />
+              <div className="date">Updated: {timeUpdated}</div>
+            </div>
+            <div className="status-card blue">
+              <div className="number">{sales}</div>
+              <div className="label">Sales</div>
+              <i className="fas fa-shopping-cart"></i>
+              <hr className="blue" />
+              <div className="date">Updated: {timeUpdated}</div>
+            </div>
+            <div className="status-card green">
+              <div className="number">{revenue}</div>
+              <div className="label">Revenue</div>
+              <i className="fas fa-dollar-sign"></i>
+              <hr className="green" />
+              <div className="date">Updated: {timeUpdated}</div>
+            </div>
+            <div className="status-card yellow">
+              <div className="number">{bounceRate}</div>
+              <div className="label">Bounce Rate</div>
+              <i className="fas fa-chart-line"></i>
+              <hr className="yellow" />
+              <div className="date">Updated: {timeUpdated}</div>
+            </div>
           </div>
-          <div className="status-card blue">
-            <div className="number">1,272</div>
-            <div className="label">Sales</div>
-            <i class="fas fa-shopping-cart"></i>
-            <hr className="blue" />
-            <div className="date">Updated: 8/4/19 - 7:48pm</div>
-          </div>
-          <div className="status-card green">
-            <div className="number">$68,072</div>
-            <div className="label">Revenue</div>
-            <i class="fas fa-dollar-sign"></i>
-            <hr className="green" />
-            <div className="date">Updated: 8/4/19 - 7:48pm</div>
-          </div>
-          <div className="status-card yellow">
-            <div className="number">48.3%</div>
-            <div className="label">Bounce Rate</div>
-            <i class="fas fa-chart-line"></i>
-            <hr className="yellow" />
-            <div className="date">Updated: 8/4/19 - 7:48pm</div>
-          </div>
-        </div>
-        <div className="charts-wrap">
-          <div className="line-chart">
-            <Charts chartData={this.state.chartData} location="Drino" legendPosition="bottom" />
+          <div className="">
+            <Charts />
           </div>
         </div>
       </div>
     );
   }
 }
+
+function mapStateToProps(reduxState) {
+  return {
+    userCount: reduxState.userCount,
+    sales: reduxState.sales,
+    revenue: reduxState.revenue,
+    bounceRate: reduxState.bounceRate,
+    timeUpdated: reduxState.timeUpdated
+  }
+}
+
+export default connect(mapStateToProps)(Home);

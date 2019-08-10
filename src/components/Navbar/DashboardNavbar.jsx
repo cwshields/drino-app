@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import '../../assets/scss/sidenavbar.scss';
 import { Dropdown } from 'react-bootstrap';
 
@@ -10,7 +10,7 @@ export default function DashboardNavbar() {
         <NavLink exact to='/dashboard/home' className='nav-link' activeClassName='selected'>
           <div className="nav-link-wrap">
             <div className="nav-icon">
-              <i class="fas fa-tachometer-alt"></i>
+              <i className="fas fa-tachometer-alt"></i>
             </div>
             Dashboard
           </div>
@@ -18,7 +18,7 @@ export default function DashboardNavbar() {
         <NavLink to='/dashboard/users' className='nav-link' activeClassName='selected'>
           <div className="nav-link-wrap">
             <div className="nav-icon">
-              <i class="fas fa-users"></i>
+              <i className="fas fa-users"></i>
             </div>
             Users
           </div>
@@ -26,7 +26,7 @@ export default function DashboardNavbar() {
         <NavLink to='/dashboard/messages' className='nav-link' activeClassName='selected'>
           <div className="nav-link-wrap">
             <div className="nav-icon">
-              <i class="fas fa-comment-alt"></i>
+              <i className="fas fa-comment-alt"></i>
             </div>
             Messages
           </div>
@@ -34,7 +34,7 @@ export default function DashboardNavbar() {
         <NavLink to='/dashboard/maps' className='nav-link' activeClassName='selected'>
           <div className="nav-link-wrap">
             <div className="nav-icon">
-              <i class="fas fa-map-marked-alt"></i>
+              <i className="fas fa-map-marked-alt"></i>
             </div>
             Maps
           </div>
@@ -43,16 +43,52 @@ export default function DashboardNavbar() {
           <Dropdown.Toggle className="nav-link" variant="" id="dropdown-basic">
             <div className="nav-link-wrap">
               <div className="nav-icon">
-                <i class="fas fa-file-alt"></i>
-              </div> Pages
+                <i className="fas fa-file-alt"></i>
+              </div>
+              Pages
             </div>
           </Dropdown.Toggle>
-
           <Dropdown.Menu>
-            <Dropdown.Item href="/action-1"><i class="far red fa-circle"></i> 404 Error</Dropdown.Item>
-            <Dropdown.Item href="/action-2"><i class="far yellow fa-circle"></i> 500 Error</Dropdown.Item>
-            <Dropdown.Item href="/action-3"><i class="far blue fa-circle"></i> Profile</Dropdown.Item>
-            <Dropdown.Item href="/action-4"><i class="far green fa-circle"></i> Register</Dropdown.Item>
+            <Link to="/404">
+              <Dropdown.Item>
+                <div className="nav-link-wrap">
+                  <div className="nav-icon">
+                    <i className="far red fa-circle"></i>
+                  </div>
+                  404 Error
+                </div>
+              </Dropdown.Item>
+            </Link>
+            <Link to="/dashboard/500">
+              <Dropdown.Item>
+                <div className="nav-link-wrap">
+                  <div className="nav-icon">
+                    <i className="far yellow fa-circle"></i>
+                  </div>
+                  500 Error
+                </div>
+              </Dropdown.Item>
+            </Link>
+            <Link to="/dashboard/profile">
+              <Dropdown.Item>
+                <div className="nav-link-wrap">
+                  <div className="nav-icon">
+                    <i className="fas fa-user-circle"></i>
+                  </div>
+                  Profile
+                </div>
+              </Dropdown.Item>
+            </Link>
+            <Link to="/dashboard/register">
+              <Dropdown.Item>
+                <div className="nav-link-wrap">
+                  <div className="nav-icon">
+                    <i className="fas fa-edit"></i>
+                  </div>
+                  Register
+                </div>
+              </Dropdown.Item>
+            </Link>
           </Dropdown.Menu>
         </Dropdown>
       </div>

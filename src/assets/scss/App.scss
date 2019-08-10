@@ -28,6 +28,14 @@
           box-sizing: border-box;
 }
 
+html {
+  min-height: 100%;
+}
+
+a, a:hover, a::after {
+  text-decoration: none;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -35,6 +43,10 @@ body {
 
 button:focus, input:focus {
   outline:0;
+}
+
+.btn:focus {
+  box-shadow: none;
 }
 
 ::-webkit-scrollbar {
@@ -69,14 +81,6 @@ button:focus, input:focus {
   display: none;
 }
 
-html {
-  min-height: 100%;
-}
-
-a, a::after {
-  text-decoration: none;
-}
-
 .box {
   height: 5311px;
 }
@@ -96,6 +100,30 @@ body {
   background-color: #f1f1f1;
 }
 
+.blue {
+  color: #3794D8;
+}
+.dark-blue {
+  color: #3A66D4;
+}
+.green {
+  color: #6AD837;
+}
+.dark-green {
+  color: #4CAA50;
+}
+.yellow {
+  color: #E5BE31;
+}
+.dark-yellow {
+  color: #CD9E26;
+}
+.red {
+  color: #D83737;
+}
+.dark-red {
+  color: #B52424;
+}
 
 // @keyframes App-logo-spin {
 //   from {

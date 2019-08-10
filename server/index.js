@@ -3,7 +3,7 @@ const express = require ('express');
 const massive = require('massive');
 const session = require('express-session');
 
-const { register, login, getSales, addSale, getUsers, addUser } = require('./controller')
+const { register, login, getSales, addSale, getUsers, addUser, getUsersCount } = require('./controller')
 
 const app = express();
 const { SESSION_SECRET, CONNECTION_STRING, SERVER_PORT } = process.env
@@ -22,6 +22,10 @@ massive(CONNECTION_STRING).then(db => {
   app.set('db', db);
   console.log('Database Connected');
 })
+
+app.get('/api/sales')
+// app.get('/api/users', getUsers)
+app.get('/api/users', getUsersCount)
 
 app.use(express.json());
 

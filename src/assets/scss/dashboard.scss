@@ -5,6 +5,11 @@
   background-color: #F1F1F1;
 }
 
+.maps {
+  width: calc(100vw - 264px);
+  height: calc(100vh - 90px)
+}
+
 .dash-body {
   text-align: justify;
   position: absolute;
@@ -15,15 +20,36 @@
   max-height: calc(100vh - 90px);
 }
 
+.dash-wrap {
+  text-align: justify;
+  position: absolute;
+  overflow: hidden;
+  top: 90px;
+  left: 264px;
+  width: calc(100vw - 264px);
+  max-height: calc(100vh - 90px);
+}
+
 .dash-section {
   font-size: 20px;
-  margin: 50px 50px
+  margin: 34px;
+  margin-right: 28px;
+}
+.alert {
+  margin-bottom: 26px;
+  padding: 1.3rem 1.6rem;
+  .h4 {
+    font-size: 35px;
+  }
+  .welcome-text {
+    font-size: 16px;
+  }
 }
 
 .status-card-wrap {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 26px;
   .status-card {
     position: relative;
     font-family: 'Questrial';
@@ -33,7 +59,7 @@
     color: #F5F5F5;
     padding: 20px 30px;
     height: 160px;
-    width: 350px;
+    width: 370px;
     border-radius: 3px;
     .number {
       font-size: 44px;
@@ -60,7 +86,6 @@
     }
   }  
   .red {
-    color: #D83737;
     background-color: #D83737;
     border: 1px solid #B52424;
   }
@@ -80,13 +105,21 @@
 
 
 .charts-wrap {
-
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 26px; 
   .line-chart {
-    background-color: #FFF;
-    padding: 20px 40px 25px;
-    width: $line-chart-size;
-    height: calc($line-chart-size * .33);
+    width: calc(67vw - 264px);
+    padding: 20px 30px 24px;
     border: 1px solid #D6D6D6;
     border-radius: 3px;
+    background-color: #FFF;
+  }
+  .doughnut-chart {
+    width: calc(41vw - 264px);
+    padding: 20px 26px 22px;
+    border: 1px solid #D6D6D6;
+    border-radius: 3px;
+    background-color: #FFF;
   }
 }
