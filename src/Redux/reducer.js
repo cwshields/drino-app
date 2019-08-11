@@ -4,10 +4,10 @@ import Axios from "axios";
 const initialState = {
     firstName: 'Chase',
     lastName: 'Shields',
-    userCount: '346',
-    sales: '1,345',
-    revenue: '$73,631',
-    bounceRate: '58.3%',
+    userCount: null,
+    sales: 1345,
+    revenue: 73631,
+    bounceRate: 58.3,
     timeUpdated: '8/1/19 - 12:01am',
     notifications: '16',
     statusUpdates: '8',
@@ -52,21 +52,21 @@ const initialState = {
     },
     pieData: {
       labels: [
-        'Model X', 'Sensation L3', 'Jerico DON', 'GV Mavid', 'Legacy Pro7', 'VIN Mono 6', 
+        'Google Chrome', 'Microsoft Edge', 'Opera', 'Internet Explorer', 'Firefox', 'Safari', 
       ],
       datasets: [
         {
           label: 'Sales Breakdown',
           data: [
-            294, 145, 60, 119, 82, 172
+            294, 82, 60, 119, 185, 132
           ],
           backgroundColor: [
+            '#4C7FE2',
             '#75AD2C',
-            '#00A0A8',
+            '#E93838',
             '#5C5C5B',
             '#E95A0C',
-            '#4C7FE2',
-            '#E93838',
+            '#00A0A8',
           ]
         }
       ]
@@ -111,18 +111,24 @@ export function updatelastName(lastname) {
     payload: Axios.put('/auth/user', {})
   }
 }
+export function countUsers(lastname) {
+  return {
+    type: UPDATE_LASTNAME,
+    payload: Axios.put('/api/users', {})
+  }
+}
 //reducer
 export default function reducer(state=initialState, action) {
   switch(action.type) {
     case UPDATE_FIRSTNAME:
       return {
         ...state,
-        username: action.payload
+        firstName: action.payload
       }
     case UPDATE_LASTNAME:
       return {
         ...state,
-        username: action.payload
+        lastName: action.payload
       }
     default: return state;
   }

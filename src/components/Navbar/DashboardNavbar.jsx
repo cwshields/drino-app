@@ -49,21 +49,21 @@ export default function DashboardNavbar() {
             </div>
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Link to="/404">
-              <Dropdown.Item>
+            <Dropdown.Item>
+              <Link to="/dashboard/404">
                 <div className="nav-link-wrap">
                   <div className="nav-icon">
-                    <i className="far red fa-circle"></i>
+                    <i className="far yellow fa-circle"></i>
                   </div>
                   404 Error
                 </div>
-              </Dropdown.Item>
-            </Link>
+              </Link>
+            </Dropdown.Item>
             <Link to="/dashboard/500">
               <Dropdown.Item>
                 <div className="nav-link-wrap">
                   <div className="nav-icon">
-                    <i className="far yellow fa-circle"></i>
+                    <i className="far red fa-circle"></i>
                   </div>
                   500 Error
                 </div>

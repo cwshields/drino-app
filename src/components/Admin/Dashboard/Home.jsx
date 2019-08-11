@@ -4,6 +4,7 @@ import '../../../assets/scss/App.scss'
 import Charts from '../Charts/Charts';
 import Welcome from '../../BootstrapComps/WelcomeAlert';
 import { connect } from 'react-redux';
+import CountUp from 'react-countup';
 
 class Home extends Component {
   constructor(props) {
@@ -30,31 +31,39 @@ class Home extends Component {
     return (
       <div className='dash-body'>
         <div className="dash-section">
-          {show === true ? <Welcome show={show} toggleShow={toggleShow} /> : null}
+          { show === true 
+            ? <Welcome show={show} toggleShow={toggleShow} duration={1.8} separator="," /> 
+            : null }
           <div className="status-card-wrap">
             <div className="status-card red">
-              <div className="number">{userCount}</div>
+              <div className="number"><CountUp start={0} end={userCount} /></div>
               <div className="label">Users</div>
               <i className="fas fa-user-plus"></i>
               <hr className="red" />
               <div className="date">Updated: {timeUpdated}</div>
             </div>
             <div className="status-card blue">
-              <div className="number">{sales}</div>
+              <div className="number" id="root">
+                <CountUp start={0} end={sales} duration={1.8} separator="," />
+              </div>
               <div className="label">Sales</div>
               <i className="fas fa-shopping-cart"></i>
               <hr className="blue" />
               <div className="date">Updated: {timeUpdated}</div>
             </div>
             <div className="status-card green">
-              <div className="number">{revenue}</div>
+              <div className="number">
+                <CountUp start={0} end={revenue} duration={1.8} separator="," prefix="$" />
+              </div>
               <div className="label">Revenue</div>
               <i className="fas fa-dollar-sign"></i>
               <hr className="green" />
               <div className="date">Updated: {timeUpdated}</div>
             </div>
             <div className="status-card yellow">
-              <div className="number">{bounceRate}</div>
+              <div className="number">
+                <CountUp start={0} end={bounceRate} duration={1.8} separator="," decimal="." decimals={1} suffix="%" />
+              </div>
               <div className="label">Bounce Rate</div>
               <i className="fas fa-chart-line"></i>
               <hr className="yellow" />
@@ -63,6 +72,9 @@ class Home extends Component {
           </div>
           <div className="">
             <Charts />
+          </div>
+          <div className="news-wrap">
+          <iframe src="https://feed.mikle.com/widget/v2/114407/" height="447px" width="100%" class="fw-iframe" scrolling="no" frameborder="0"></iframe>
           </div>
         </div>
       </div>

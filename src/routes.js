@@ -13,6 +13,6 @@ export default (
     <Route path='/profile' component={EmployeeProfile} />
     <Route path='/dashboard' component={Dashboard} />
     <Route path='/' render={Error404} />
-    <Route path='/404' render={Error404} />
+    <Route path='/dashboard/404' render={Error404} />
   </Switch>
 )

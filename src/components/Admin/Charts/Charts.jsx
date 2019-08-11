@@ -83,11 +83,11 @@ class Charts extends Component {
         <div className="charts-wrap">
           <div className="doughnut-chart">
             <Pie height={200} width={200}
-              data={this.state.doughnutData}
+              data={this.state.pieData}
               options={{
                 title: {
                   display: this.props.displayTitle,
-                  text: 'Sales Breakdown',
+                  text: 'Browser Usage',
                   fontSize: 24
                 },
                 legend: {
@@ -105,7 +105,7 @@ class Charts extends Component {
               options={{
                 title: {
                   display: this.props.displayTitle,
-                  text: 'Monthly revenue (Year)'/* + this.props.location*/,
+                  text: 'Sales Breakdown'/* + this.props.location*/,
                   fontSize: 25
                 },
                 legend: {

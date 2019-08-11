@@ -1,14 +1,14 @@
 @import './variables.scss';
 
 .nav-img {
-  height: 63px;
-  width: 63px;
+  height: 52px;
+  width: 52px;
 }
 
 .navbar {
   font-family: 'robotoLte';
   display: flex;
-  height: 90px;
+  height: 80px;
   color: $off-white;
   background-color: #29313C;
   .nav-container {
@@ -23,7 +23,7 @@
       align-items: center;
       .logo-name {
         color: $off-white;
-        font-size: 33px;
+        font-size: 32px;
         font-family: 'Rosario';
         font-style: italic;
         margin-left: 16px;

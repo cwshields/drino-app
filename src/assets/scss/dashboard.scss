@@ -6,28 +6,22 @@
 }
 
 .maps {
-  width: calc(100vw - 264px);
-  height: calc(100vh - 90px)
+  width: calc(100vw - 265px);
+  height: calc(100vh - 80px)
 }
 
-.dash-body {
+.dash-body, .dash-wrap {
   text-align: justify;
   position: absolute;
   overflow: auto scroll;
-  top: 90px;
-  left: 264px;
-  width: calc(100vw - 264px);
-  max-height: calc(100vh - 90px);
+  top: 80px;
+  left: 265px;
+  width: calc(100vw - 265px);
+  height: calc(100vh - 80px);
 }
 
 .dash-wrap {
-  text-align: justify;
-  position: absolute;
   overflow: hidden;
-  top: 90px;
-  left: 264px;
-  width: calc(100vw - 264px);
-  max-height: calc(100vh - 90px);
 }
 
 .dash-section {
