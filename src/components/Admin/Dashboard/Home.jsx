@@ -74,7 +74,7 @@ class Home extends Component {
             <Charts />
           </div>
           <div className="news-wrap">
-          <iframe src="https://feed.mikle.com/widget/v2/114407/" height="447px" width="100%" class="fw-iframe" scrolling="no" frameborder="0"></iframe>
+          <iframe title="rss" src="https://feed.mikle.com/widget/v2/114407/" height="447px" width="100%" className="fw-iframe" scrolling="no" frameBorder="0"></iframe>
           </div>
         </div>
       </div>

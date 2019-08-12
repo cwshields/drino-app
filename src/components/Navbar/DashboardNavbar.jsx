@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavLink, Link } from "react-router-dom";
-import '../../assets/scss/sidenavbar.scss';
+import { NavLink } from "react-router-dom";
+import '../../assets/scss/dashNavbar.scss';
 import { Dropdown } from 'react-bootstrap';
 
 export default function DashboardNavbar() {
@@ -49,46 +49,38 @@ export default function DashboardNavbar() {
             </div>
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item>
-              <Link to="/dashboard/404">
-                <div className="nav-link-wrap">
-                  <div className="nav-icon">
-                    <i className="far yellow fa-circle"></i>
-                  </div>
-                  404 Error
+            <Dropdown.Item href="#/404">
+              <div className="nav-link-wrap">
+                <div className="nav-icon">
+                  <i className="far yellow fa-circle"></i>
                 </div>
-              </Link>
+                404 Error
+              </div>
             </Dropdown.Item>
-            <Link to="/dashboard/500">
-              <Dropdown.Item>
-                <div className="nav-link-wrap">
-                  <div className="nav-icon">
-                    <i className="far red fa-circle"></i>
-                  </div>
-                  500 Error
+            <Dropdown.Item href="#/500">
+              <div className="nav-link-wrap">
+                <div className="nav-icon">
+                  <i className="far red fa-circle"></i>
                 </div>
-              </Dropdown.Item>
-            </Link>
-            <Link to="/dashboard/profile">
-              <Dropdown.Item>
-                <div className="nav-link-wrap">
-                  <div className="nav-icon">
-                    <i className="fas fa-user-circle"></i>
-                  </div>
-                  Profile
+                500 Error
+              </div>
+            </Dropdown.Item>
+            <Dropdown.Item to="#/dashboard/profile">
+              <div className="nav-link-wrap">
+                <div className="nav-icon">
+                  <i className="fas fa-user-circle"></i>
                 </div>
-              </Dropdown.Item>
-            </Link>
-            <Link to="/dashboard/register">
-              <Dropdown.Item>
-                <div className="nav-link-wrap">
-                  <div className="nav-icon">
-                    <i className="fas fa-edit"></i>
-                  </div>
-                  Register
+                Profile
+              </div>
+            </Dropdown.Item>
+            <Dropdown.Item href="#/dashboard/register">
+              <div className="nav-link-wrap">
+                <div className="nav-icon">
+                  <i className="fas fa-edit"></i>
                 </div>
-              </Dropdown.Item>
-            </Link>
+                Register
+              </div>
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </div>

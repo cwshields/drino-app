@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../../assets/images/Drino-Logo.png'
-import '../../assets/scss/navbar.scss'
+import '../../assets/scss/drinoNavbar.scss'
 import { Link } from 'react-router-dom'
 
 export default function DrinoNavbar() {

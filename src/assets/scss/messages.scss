@@ -1,0 +1,52 @@
+@import './variables.scss';
+
+.messages-wrap {
+  font-family: 'Rosario';
+  overflow: auto;
+  width: 950px;
+  height: 600px;
+  background-color: white;
+  border-radius: 4px;
+  .card-header {
+    .name-date {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .message-time {
+      color: #999999;
+      font-size: 15px;
+      margin-left: 16px;
+    }
+  }
+  .accordion .btn {
+    font-size: 18px;
+    background-color: $green;
+    display: block;
+    margin-top: 12px;
+    padding: 6px 40px;
+  }
+}
+.messages-component-wrap {
+  display: flex;
+  justify-content: space-between;
+  width: 1280px;
+  .editor-messages {
+    display: flex;
+    flex-direction: column;
+    .text-editor {
+      width: 950px;
+      min-height: 265px;
+      margin-bottom: 30px;
+      background-color: #fff;
+      border-radius: 3px;
+      .toolbar {
+        height: 80px;
+      }
+      .editor {
+        padding: 0 30px 10px;
+      }
+    }
+  }
+}

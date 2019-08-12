@@ -1,7 +1,7 @@
 import React from 'react'
 import DrinoNavbar from '../Navbar/DrinoNavbar'
 import '../../assets/scss/App.scss'
-import '../../assets/scss/drinolander.scss'
+import '../../assets/scss/drino.scss'
 import logo from '../../assets/images/Drino-Logo.png'
 
 export default function Drino() {

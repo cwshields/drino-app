@@ -8,6 +8,7 @@ import Messages from "../Messages/Messages"
 import Maps from "../Maps/Maps"
 import Home from "../Dashboard/Home"
 import Error404 from '../Pages/Error404'
+import Error500 from '../Pages/Error500'
 
 export default class Dashboard extends Component {
   constructor() {
@@ -28,7 +29,8 @@ export default class Dashboard extends Component {
           <Route path='/dashboard/messages' component={Messages} />
           <Route path='/dashboard/maps' component={Maps} />
           {/* <Route path='/pages' Component={Pages} /> */}
-          <Route path='/404' render={Error404} />
+          <Route path='#/404' render={Error404} />
+          <Route path='#/500' render={Error500} />
         </Switch>
       </div>
     );

@@ -4,12 +4,12 @@ import '../../../assets/scss/error404.scss';
 export default function Error404() {
   return (
     <div id="notfound">
-      <div class="notfound">
-        <div class="notfound-404">
+      <div className="notfound">
+        <div className="notfound-404">
           <h1>4<span>0</span>4</h1>
         </div>
         <h2>the page you requested could not found</h2>
-        <form class="notfound-search">
+        <form className="notfound-search">
           <input type="text" placeholder="Search..." />
           <button type="button"><span></span></button>
         </form>
