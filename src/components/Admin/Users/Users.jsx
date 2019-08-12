@@ -17,7 +17,7 @@ export default class Messages extends Component {
         <div className="dash-section">
           <div className="messages-component-wrap">
             <ProfileCard />
-            <div className='col-12'>
+            <div className='col-11 table'>
               <div className='panel panel-default'>
                 <SelectAllWithFilterTable />
               </div>
