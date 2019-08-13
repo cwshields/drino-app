@@ -144,10 +144,10 @@ class Charts extends Component {
 
 function mapStateToProps(reduxState) {
   return {
-    lineData: reduxState.lineData,
-    doughnutData: reduxState.doughnutData,
-    pieData: reduxState.pieData,
-    barData: reduxState.barData
+    lineData: reduxState.reducer.lineData,
+    doughnutData: reduxState.reducer.doughnutData,
+    pieData: reduxState.reducer.pieData,
+    barData: reduxState.reducer.barData
   }
 }
 

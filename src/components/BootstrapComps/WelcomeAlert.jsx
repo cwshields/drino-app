@@ -18,10 +18,10 @@ function Welcome(props) {
 
 function mapStateToProps(reduxState) {
   return {
-    firstName: reduxState.firstName,
-    lastName: reduxState.lastName,
-    notifications: reduxState.notifications,
-    statusUpdates: reduxState.statusUpdates
+    firstName: reduxState.reducer.firstName,
+    lastName: reduxState.reducer.lastName,
+    notifications: reduxState.reducer.notifications,
+    statusUpdates: reduxState.reducer.statusUpdates
   }
 }
 

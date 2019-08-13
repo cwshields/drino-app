@@ -1,10 +1,11 @@
-import Axios from "axios";
+import axios from "axios";
 
 //initialState
 const initialState = {
     firstName: 'Chase',
     lastName: 'Shields',
-    userCount: null,
+    userCount: 0,
+    messageCount: 0,
     sales: 1345,
     revenue: 73631,
     bounceRate: 58.3,
@@ -97,24 +98,34 @@ const initialState = {
 //actions
 const UPDATE_FIRSTNAME = 'UPDATE_FIRSTNAME';
 const UPDATE_LASTNAME = 'UPDATE_LASTNAME';
+const UPDATE_USERS_COUNT = 'UPDATE_USERS_COUNT'
+const UPDATE_MESSAGES_COUNT = 'UPDATE_MESSAGES_COUNT'
 
 //action creators
 export function updateFirstName(firstname) {
   return {
     type: UPDATE_FIRSTNAME,
-    payload: Axios.put('/auth/user', {})
+    payload: axios.put('/auth/user', {})
   }
 }
 export function updatelastName(lastname) {
   return {
     type: UPDATE_LASTNAME,
-    payload: Axios.put('/auth/user', {})
+    payload: axios.put('/auth/user', {})
   }
 }
-export function countUsers(lastname) {
+export function countUsers() {
   return {
-    type: UPDATE_LASTNAME,
-    payload: Axios.put('/api/users', {})
+    type: UPDATE_USERS_COUNT,
+    payload: axios.get('/api/users')
+      .then(res => res.data)
+  }
+}
+export function countMessages() {
+  return {
+    type: UPDATE_MESSAGES_COUNT,
+    payload: axios.get('/api/messages')
+      .then(res => res.data)
   }
 }
 //reducer
@@ -129,6 +140,16 @@ export default function reducer(state=initialState, action) {
       return {
         ...state,
         lastName: action.payload
+      }
+    case `${UPDATE_USERS_COUNT}_FULFILLED`:
+      return {
+        ...state,
+        userCount: action.payload
+      }
+    case `${UPDATE_MESSAGES_COUNT}_FULFILLED`:
+      return {
+        ...state,
+        userCount: action.payload
       }
     default: return state;
   }

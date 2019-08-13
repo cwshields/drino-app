@@ -5,19 +5,24 @@ import Charts from '../Charts/Charts';
 import Welcome from '../../BootstrapComps/WelcomeAlert';
 import { connect } from 'react-redux';
 import CountUp from 'react-countup';
+import { countUsers } from '../../../Redux/reducer';
 
 class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
       show: true,
-      userCount: props.userCount,
+      userCount: 0,
       sales: props.sales,
       revenue: props.revenue,
       bounceRate: props.bounceRate,
       timeUpdated: props.timeUpdated,
     }
     this.toggleShow = this.toggleShow.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.countUsers()
   }
 
   toggleShow = () => {
@@ -84,12 +89,12 @@ class Home extends Component {
 
 function mapStateToProps(reduxState) {
   return {
-    userCount: reduxState.userCount,
-    sales: reduxState.sales,
-    revenue: reduxState.revenue,
-    bounceRate: reduxState.bounceRate,
-    timeUpdated: reduxState.timeUpdated
+    userCount: reduxState.reducer.userCount,
+    sales: reduxState.reducer.sales,
+    revenue: reduxState.reducer.revenue,
+    bounceRate: reduxState.reducer.bounceRate,
+    timeUpdated: reduxState.reducer.timeUpdated
   }
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, { countUsers })(Home);

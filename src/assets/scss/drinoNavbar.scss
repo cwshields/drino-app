@@ -11,16 +11,19 @@
   height: 80px;
   color: $off-white;
   background-color: #29313C;
+
   .nav-container {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 14px;
+
     .logo-wrap {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       .logo-name {
         color: $off-white;
         font-size: 32px;
@@ -29,10 +32,12 @@
         margin-left: 16px;
       }
     }
+
     .nav-link-wrap {
       display: flex;
       justify-content: space-between;
       width: 520px;
+
       .nav-link {
         color: $off-white;
         text-decoration: none;
@@ -40,6 +45,16 @@
         height: 22px;
         padding: 0 10px;
         margin: 2px 0 6px;
+      }
+    }
+  }
+}
+
+@media (max-width: 412px) {
+  .navbar {
+    .nav-container {
+      .nav-link-wrap {
+        display: none;
       }
     }
   }

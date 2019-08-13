@@ -9,21 +9,21 @@ export default function Error500() {
       <div className="Card">
         <Card>
           <Card.Header className="card-header">
-            Joseph Smith
+            Chase Shields
             <div className="card-header-subtext">Founder & CEO</div>
             <div className="img-wrap">
-              <img className="profile-img" src={profileImg} alt="Profile Image"/>
+              <img className="profile-img" src={profileImg} alt="ProfileImage"/>
             </div>
           </Card.Header>
           <Card.Body className="card-body">
             <Card.Title>
-              jsmith1@drino.com
+              cshields@drino.com
             </Card.Title>
             <Card.Text>
               "Lorem ipsum dolor sit amet et consectetur adipisicing elit. Quo, debitis iste tenetur sunt velit corrupti."
             </Card.Text>
             <Card.Text className="links">
-            <i class="mr-10 fab fa-facebook-square"></i><i class="fab mr-10 fa-github"></i><i class="fab fa-twitter"></i>
+            <i className="mr-10 fab fa-facebook-square"></i><i className="fab mr-10 fa-github"></i><i className="fab fa-twitter"></i>
             </Card.Text>
           </Card.Body>
         </Card>

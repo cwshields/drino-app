@@ -1,4 +1,13 @@
-import {createStore} from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import promise from 'redux-promise-middleware'
 import reducer from './reducer';
+import chartReducer from './chartReducer';
 
-export default createStore(reducer);
+const root = combineReducers(
+  {
+    reducer,
+    chartReducer
+  }
+) 
+
+export default createStore(root, applyMiddleware(promise));

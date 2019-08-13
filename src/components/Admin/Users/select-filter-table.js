@@ -28,9 +28,12 @@ export default class SelectAllWithFilterTable extends React.Component {
   render() {
     return (
       <BootstrapTable data={products} selectRow={selectRowProp} search>
-        <TableHeaderColumn dataField='id' isKey={true}>Product ID</TableHeaderColumn>
-        <TableHeaderColumn dataField='name'>Product Name</TableHeaderColumn>
-        <TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>
+        <TableHeaderColumn dataField='id' isKey={true}>User ID</TableHeaderColumn>
+        <TableHeaderColumn dataField='name'>First Name</TableHeaderColumn>
+        <TableHeaderColumn dataField='price'>Last Name</TableHeaderColumn>
+        <TableHeaderColumn dataField='price'>Username</TableHeaderColumn>
+        <TableHeaderColumn dataField='price'>isAdmin</TableHeaderColumn>
+        <TableHeaderColumn dataField='price'>isEmployee</TableHeaderColumn>
       </BootstrapTable>
     );
   }

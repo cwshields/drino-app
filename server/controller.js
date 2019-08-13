@@ -14,6 +14,7 @@ module.exports = {
     //send back a response
     if (isCorrect === true) {
       req.session.user = {
+        id: info[0].id,
         username,
         name: info[0].first_name + ' ' + info[0].last_name
       }
@@ -40,8 +41,9 @@ module.exports = {
       })
     } else {
       const hash = await bcrypt.hash(password, 10)
-      await db.addUser([firstName, lastName, username, hash, email])
+      let newUser = await db.addUser([firstName, lastName, username, hash, email])
       req.session.user = {
+        id: newUser[0].id,
         name: firstName + ' ' + lastName,
         username,
       }
@@ -51,6 +53,18 @@ module.exports = {
   getUsersCount: async function(req, res) {
     const db = req.app.get('db')
     let count = await db.totalUsers()
-    res.json(count)
+    res.json(Number(count[0].count))
+  },
+  postMessage: async function(req, res) {
+    const db = req.app.get('db')
+    const { message } = req.body
+    const { id } = req.session.user
+    await db.postMessage([message, id])
+    res.sendStatus(200)
+  },
+  getMessages: async function(req, res) {
+    const db = req.app.get('db')
+    const messages = await db.getMessages()
+    res.status(200).json(messages)
   }
 }

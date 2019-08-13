@@ -26,8 +26,7 @@
 
 .dash-section {
   font-size: 20px;
-  margin: 34px;
-  margin-right: 28px;
+  margin: 34px 28px 48px;
 }
 .alert {
   margin-bottom: 26px;
@@ -115,5 +114,47 @@
     border: 1px solid #D6D6D6;
     border-radius: 3px;
     background-color: #FFF;
+  }
+}
+
+@media (max-width: 412px) {
+  .dash-body, .dash-wrap {
+    font-size: 1em;
+    text-align: justify;
+    position: absolute;
+    overflow: auto scroll;
+    top: 80px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+  }
+  .dash-section {
+    font-size: 1.5em;
+    margin: 16px;
+  }
+  .h4 {
+    font-size: 18px;
+  }
+  .status-card-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .status-card {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+  .alert {
+    margin-bottom: 1rem;
+    padding: 1.1rem 1.3rem;
+    .close {
+      display: none;
+    }
+    .h4 {
+      font-size: 24px;
+    }
+    .welcome-text {
+      font-size: 13px;
+    }
   }
 }

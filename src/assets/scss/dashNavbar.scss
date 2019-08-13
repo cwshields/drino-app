@@ -96,3 +96,10 @@ nav {
     color: #E5BE31;
   }
 }
+
+@media (max-width: 412px) {
+  nav {
+    display: none;
+    position: absolute;
+  }
+}

@@ -1,0 +1,1 @@
+INSERT INTO drino_messages (message, user_id) VALUES ($1, $2)
