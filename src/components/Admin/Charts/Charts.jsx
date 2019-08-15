@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Line, Doughnut, Pie, Bar } from 'react-chartjs-2';
 import { connect } from 'react-redux';
+import { Line, Doughnut, Pie, Bar } from 'react-chartjs-2';
+import { Card } from 'react-bootstrap';
 
 class Charts extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Charts extends Component {
   }
 
   static defaultProps = {
-    displayTitle: true,
+    displayTitle: false,
     displayLegend: false,
     legendPosition: 'right',
     location: 'City'
@@ -22,132 +23,152 @@ class Charts extends Component {
 
   render() {
     return (
-      <div>
+      <div className="charts-wrap-group">
         <div className="charts-wrap">
-          <div className="line-chart">
-            <Line
-              data={this.state.lineData}
-              options={{
-                title: {
-                  display: this.props.displayTitle,
-                  text: 'Monthly revenue (Year)'/* + this.props.location*/,
-                  fontSize: 25
-                },
-                legend: {
-                  display: this.props.displayLegend,
-                  position: this.props.legendPosition
-                },
-                options: {
-                  hover: {
-                    mode: 'nearest',
-                    intersect: true
+          <Card className="chart1">
+            <Card.Header>
+              Monthly Revenue
+              </Card.Header>
+            <div className="line-chart">
+              <Line
+                data={this.state.lineData}
+                options={{
+                  title: {
+                    display: this.props.displayTitle,
+                    text: 'Monthly revenue (Year)'/* + this.props.location*/,
+                    fontSize: 25
                   },
-                  scales: {
-                    xAxes: [{
-                      display: true,
-                      scaleLabel: {
+                  legend: {
+                    display: this.props.displayLegend,
+                    position: this.props.legendPosition
+                  },
+                  options: {
+                    hover: {
+                      mode: 'nearest',
+                      intersect: true
+                    },
+                    scales: {
+                      xAxes: [{
                         display: true,
-                        labelString: 'Month'
-                      }
-                    }],
-                    yAxes: [{
-                      display: true,
-                      scaleLabel: {
+                        scaleLabel: {
+                          display: true,
+                          labelString: 'Month'
+                        }
+                      }],
+                      yAxes: [{
                         display: true,
-                      },
-                    }]
+                        scaleLabel: {
+                          display: true,
+                        },
+                      }]
+                    }
                   }
-                }
-              }}
-            />
-          </div>
-          <div className="doughnut-chart">
-            <Doughnut height={200} width={200}
-              data={this.state.pieData}
-              options={{
-                title: {
-                  display: this.props.displayTitle,
-                  text: 'Sales Breakdown',
-                  fontSize: 24
-                },
-                legend: {
-                  display: true,
-                  position: 'top'
-                },
-                height: 400,
-                width: 400
-              }}
-            />
-          </div>
+                }}
+              />
+            </div>
+          </Card>
+          <Card>
+            <Card.Header>
+              Sales Breakdown
+            </Card.Header>
+            <div className="doughnut-chart">
+              <Doughnut height={200} width={200}
+                data={this.state.doughnutData}
+                options={{
+                  title: {
+                    display: this.props.displayTitle,
+                    text: 'Sales Breakdown',
+                    fontSize: 24
+                  },
+                  legend: {
+                    display: true,
+                    position: 'top'
+                  },
+                  height: 400,
+                  width: 400
+                }}
+              />
+            </div>
+          </Card>
         </div>
         <div className="charts-wrap">
-          <div className="doughnut-chart">
-            <Pie height={200} width={200}
-              data={this.state.pieData}
-              options={{
-                title: {
-                  display: this.props.displayTitle,
-                  text: 'Browser Usage',
-                  fontSize: 24
-                },
-                legend: {
-                  display: true,
-                  position: 'top'
-                },
-                height: 400,
-                width: 400
-              }}
-            />
-          </div>
-          <div className="line-chart">
-            <Bar
-              data={this.state.barData}
-              options={{
-                title: {
-                  display: this.props.displayTitle,
-                  text: 'Sales Breakdown'/* + this.props.location*/,
-                  fontSize: 25
-                },
-                legend: {
-                  display: this.props.displayLegend,
-                  position: this.props.legendPosition
-                },
-                options: {
-                  hover: {
-                    mode: 'nearest',
-                    intersect: true
+          <Card>
+            <Card.Header>
+              Browser Usage
+            </Card.Header>
+            <div className="doughnut-chart">
+              <Pie height={200} width={200}
+                data={this.state.pieData}
+                options={{
+                  title: {
+                    display: this.props.displayTitle,
+                    text: 'Browser Usage',
+                    fontSize: 24
                   },
-                  scales: {
-                    xAxes: [{
-                      display: true,
-                      scaleLabel: {
+                  legend: {
+                    display: true,
+                    position: 'top'
+                  },
+                  height: 400,
+                  width: 400
+                }}
+              />
+            </div>
+          </Card>
+          <Card className="chart1">
+            <Card.Header>
+              Bounce Rate
+            </Card.Header>
+            <div className="line-chart">
+              <Bar
+                data={this.state.barData}
+                options={{
+                  title: {
+                    display: this.props.displayTitle,
+                    text: 'Sales Breakdown'/* + this.props.location*/,
+                    fontSize: 25
+                  },
+                  legend: {
+                    display: this.props.displayLegend,
+                    position: this.props.legendPosition
+                  },
+                  options: {
+                    hover: {
+                      mode: 'nearest',
+                      intersect: true
+                    },
+                    scales: {
+                      xAxes: [{
                         display: true,
-                        labelString: 'Month'
-                      }
-                    }],
-                    yAxes: [{
-                      display: true,
-                      scaleLabel: {
+                        scaleLabel: {
+                          display: true,
+                          labelString: 'Month'
+                        }
+                      }],
+                      yAxes: [{
                         display: true,
-                      },
-                    }]
+                        scaleLabel: {
+                          display: true,
+                        },
+                      }]
+                    }
                   }
-                }
-              }}
-            />
-          </div>
+                }}
+              />
+            </div>
+          </Card>
         </div>
-      </div>
+      </div >
     )
   }
 }
 
 function mapStateToProps(reduxState) {
   return {
-    lineData: reduxState.reducer.lineData,
-    doughnutData: reduxState.reducer.doughnutData,
-    pieData: reduxState.reducer.pieData,
-    barData: reduxState.reducer.barData
+    lineData: reduxState.chartReducer.lineData,
+    doughnutData: reduxState.chartReducer.doughnutData,
+    pieData: reduxState.chartReducer.pieData,
+    barData: reduxState.chartReducer.barData
   }
 }
 

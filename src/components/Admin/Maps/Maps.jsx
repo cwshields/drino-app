@@ -19,7 +19,7 @@ class Maps extends Component {
       <div className="dash-wrap">
         <div className="maps">
           <GoogleMapReact
-            bootstrapURLKeys={{ key: 'AIzaSyB8kY3BSx_PLxU4hxTP1PjhKtcnJJphGm4' }}
+            bootstrapURLKeys={{ key: 'AIzaSyB-Wa4BvnrygzZtEUYLoaTU3VIM8RodIgg' }}
             defaultCenter={this.props.center}
             defaultZoom={this.props.zoom}
           >

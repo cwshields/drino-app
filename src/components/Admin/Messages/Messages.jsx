@@ -11,7 +11,9 @@ export default class Messages extends Component {
   constructor() {
     super()
     this.state = {
-      messages: []
+      messages: [],
+      firstName: '',
+      message: ''
     }
   }
 
@@ -38,14 +40,15 @@ export default class Messages extends Component {
                   // onEditorStateChange={this.onEditorStateChange}
                 />
                 <Button className="send-btn" variant="success">Send</Button>
+                <Button className="cancel-btn" variant="danger">Cancel</Button>
               </div>
               <div className="messages-wrap">
                 <div className="accordion-wrap">
                   <Accordion defaultActiveKey="0">
                   {this.state.messages.length === 0 
                     ? <h3 className='no-messages'>No messages to display...</h3> 
-                    : this.state.messages.map( (i) => (
-                      <MessageCard key={i} index={i} />
+                    : this.state.messages.map( (message) => (
+                      <MessageCard key={message.id} message={message} />
                   ))}
                   </Accordion>
                 </div>

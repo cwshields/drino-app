@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import '../../assets/scss/login.scss'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 export default class Login extends Component {
   constructor() {
@@ -9,36 +9,46 @@ export default class Login extends Component {
     this.state = {
       username: '',
       password: '',
+      login: false,
+      isAdmin: false,
+      isEmployee: false
     }
   }
-  
-  componentDidMount() {
-    axios.get('/api/user').then(response => {
-      if (!response.data.error) {
-        this.props.updateBalance(response.data.balance);
-        this.props.updateName(response.data.name);
-        this.props.updateUsername(response.data.username);
-        this.setState({ redirect: true })
-      }
-    })
+
+  login = () => {
+    const { username, password } = this.state
+    axios
+      .post('/auth/login', { username, password })
+      .then((res) => {
+        this.setState({ login: true, isAdmin: res.data.is_admin, isEmployee: res.data.is_employee })
+      })
+      .catch(err => console.log(err))
+  }
+
+  handleChange = (e) => {
+    const { name, value } = e.target
+    this.setState({ [name]: value })
   }
 
   render() {
     return (
       <div className="login-body">
         <div className="circle login-circle">
-          <i class="custom-vec fas fa-user-alt"></i>
+          <i className="custom-vec fas fa-user-alt"></i>
         </div>
         <div className="modal">
+          { this.state.isAdmin 
+            ? <Redirect to="/dashboard/home" /> 
+            : this.state.isEmployee 
+            ? <Redirect to="/profile" /> 
+            : null}
           <div className="login-body-wrap">
             <div className="modal-name">User Login</div>
             <div className="input-group">
-              <input placeholder="Username" type="text" name="username" />
-              <input placeholder="Password" type="password" name="password" />
+              <input placeholder="Username" type="text" name="username" onChange={this.handleChange} />
+              <input placeholder="Password" type="password" name="password" onChange={this.handleChange} />
             </div>
-            <Link to="/dashboard/home">
-              <button className="signin-btn">Login</button>
-            </Link>
+            <button className="signin-btn" onClick={this.login}>Login</button>
             <div className="reg-query">Don't have an account?&nbsp;
               <Link className="blue-link" to='/profile'>
                 Register here

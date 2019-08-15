@@ -37,17 +37,17 @@ class Home extends Component {
       <div className='dash-body'>
         <div className="dash-section">
           { show === true 
-            ? <Welcome show={show} toggleShow={toggleShow} duration={1.8} separator="," /> 
+            ? <Welcome show={show} toggleShow={toggleShow} /> 
             : null }
           <div className="status-card-wrap">
-            <div className="status-card red">
+            <div className="status-card red rm">
               <div className="number"><CountUp start={0} end={userCount} /></div>
               <div className="label">Users</div>
               <i className="fas fa-user-plus"></i>
               <hr className="red" />
               <div className="date">Updated: {timeUpdated}</div>
             </div>
-            <div className="status-card blue">
+            <div className="status-card blue rm">
               <div className="number" id="root">
                 <CountUp start={0} end={sales} duration={1.8} separator="," />
               </div>
@@ -56,7 +56,7 @@ class Home extends Component {
               <hr className="blue" />
               <div className="date">Updated: {timeUpdated}</div>
             </div>
-            <div className="status-card green">
+            <div className="status-card green rm">
               <div className="number">
                 <CountUp start={0} end={revenue} duration={1.8} separator="," prefix="$" />
               </div>
@@ -75,12 +75,21 @@ class Home extends Component {
               <div className="date">Updated: {timeUpdated}</div>
             </div>
           </div>
-          <div className="">
+          <div className="charts-component">
             <Charts />
           </div>
           <div className="news-wrap">
-          <iframe title="rss" src="https://feed.mikle.com/widget/v2/114407/" height="447px" width="100%" className="fw-iframe" scrolling="no" frameBorder="0"></iframe>
+            <iframe 
+              src="https://feed.mikle.com/widget/v2/114407/"
+              title="rss"
+              height="400px" 
+              width="100%" 
+              className="fw-iframe" 
+              scrolling="no" 
+              frameBorder="0" 
+            />
           </div>
+          <div className="mobile-test-box"></div>
         </div>
       </div>
     );

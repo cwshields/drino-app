@@ -8,9 +8,9 @@ function Welcome(props) {
     <Alert variant="info" onClick={toggleShow} dismissible>
       <Alert.Heading>Welcome back, {firstName} {lastName}</Alert.Heading>
       <div className="welcome-text">
-        You have&nbsp;
-        <span className="dark-green"> <i className="fas fa-bell"></i> {notifications} notifications</span> and&nbsp;
-        <span className="dark-yellow"><i className="fas fa-exclamation-circle"></i> {statusUpdates} status updates</span>
+        You have
+        <span className="dark-green"> <i className="fas fa-bell"></i> {notifications} notifications</span> and
+        <span className="dark-yellow"> <i className="fas fa-exclamation-circle"></i> {statusUpdates} status updates</span>
       </div>
     </Alert>
   )

@@ -4,7 +4,7 @@
   font-family: 'Rosario';
   overflow: auto;
   width: 1000px;
-  height: 700px;
+  height: 771px;
   background-color: white;
   border-radius: 4px;
   resize: vertical;
@@ -12,18 +12,30 @@
     text-align: center;
     margin-top: 30px;
   }
-  .card-header {
-    .name-date {
+  .message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .name-email {
       display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
+      .name {
+        font-size: 20px;
+        width: 320px;
+      }
+      .email {
+        font-size: 18px;
+        text-align: center;
+      }
     }
-    .message-time {
+    .time {
       color: #999999;
       font-size: 15px;
       margin-left: 16px;
     }
+  }
+  .card-body {
+    padding: 24px;
+    font-size: 18px;
   }
   .btn-wrap {
     margin-top: 20px;
@@ -35,10 +47,6 @@
     display: inline;
     padding: 6px 40px;
   }
-  .card-body {
-    padding: 24px;
-    font-size: 18px;
-  }
 }
 .messages-component-wrap {
   display: flex;
@@ -49,11 +57,13 @@
     display: flex;
     flex-direction: column;
     .text-editor {
+      display: none;
       position: relative;
-      font-size: 16px;
+      font-size: 18px;
+      line-height: 20px;
       width: 1000px;
       min-height: 265px;
-      margin-bottom: 30px;
+      margin-bottom: 64px;
       background-color: #fff;
       border-radius: 4px;
       .toolbar {
@@ -64,15 +74,26 @@
       .editor {
         padding: 0 25px 10px;
         resize: vertical;
-        overflow: scroll;
+        overflow: auto;
         overflow-x: hidden;
-        line-height: 16px;
         min-height: 265px;
       }
-      .send-btn {
+      .send-btn, .cancel-btn {
         position: absolute;
-        bottom: 14px;
-        right: 32px
+        padding: 6px 30px;
+        bottom: -48px;
+      }
+      .send-btn {
+        left: 8px;
+      }
+      .cancel-btn {
+        right: 8px;
+      }
+      .DraftEditor-root {
+        height: 230px;
+        .public-DraftStyleDefault-ltr {
+          line-height: 24px;
+        }
       }
     }
   }

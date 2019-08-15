@@ -19,12 +19,12 @@ const initialState = {
   },
   doughnutData: {
     labels: [
-      'Model X', 'Sensation L3', 'Jerico DON', 'GV Mavid', 'Legacy Pro7', 'VIN Mono 6',
+      'Model X', 'Sensation L3', 'Jerico N', 'GV Mavid', 'Legacy Pro7', 'VIN Mono 6',
     ],
     datasets: [{
       label: 'Sales Breakdown',
       data: [
-        294, 145, 67, 119, 82, 172
+        294, 165, 67, 112, 82, 127
       ],
       backgroundColor: [
         '#75AD2C',

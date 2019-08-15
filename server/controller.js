@@ -16,7 +16,10 @@ module.exports = {
       req.session.user = {
         id: info[0].id,
         username,
-        name: info[0].first_name + ' ' + info[0].last_name
+        firstName: info[0].first_name,
+        lastName: info[0].last_name,
+        is_admin: info[0].is_admin,
+        is_employee: info[0].is_employee,
       }
       res.status(200).json(req.session.user)
     } else {
