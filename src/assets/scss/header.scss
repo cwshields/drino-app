@@ -4,14 +4,16 @@
   font-family: 'robotoLte';
   display: flex;
 }
-.navbar{
-  border-bottom: 1px solid #d6d6d6;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
-  height: 70px;
-  color: #454545;
-  background-color: #fff;
-  width: 100%;
-  padding: 0px 14px;
+.dashboard {
+  .navbar {
+    border-bottom: 1px solid #d6d6d6;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    height: 70px;
+    color: #454545;
+    background-color: #fff;
+    width: 100%;
+    padding: 0px 14px;
+  }
 }
 // .nav-container {
 //   display: flex;
