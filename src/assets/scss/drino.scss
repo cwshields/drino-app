@@ -13,7 +13,8 @@
     overflow: overlay;
     justify-content: center;
     color: $off-white;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 80px);
+    font-family: 'Poppins';
     footer {
       position: absolute;
       background-color: #29313C;
@@ -30,53 +31,56 @@
 }
 
 .sect1-wrap {
-  
+  padding: 100px 100px 200px;
+  .sect1-logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 410px;
+    .sect1-logo {
+      width: 180px;
+      height: 180px;
+      border-radius: 500px;
+      box-shadow: 8px 6px 14px rgba(0, 0, 0, 0.2);
+    }
+    .sect1-logo-name {
+      font-family: 'Rosario';
+      font-style: italic;
+      font-weight: 600;
+      font-size: 80px;
+      text-shadow: 8px 6px 14px rgba(0, 0, 0, 0.2);
+    }
+  }
+  .sect1-subtext {
+    font-size: 43px;
+    font-weight: 400;
+    width: 650px;
+    margin: 120px 50px 0; 
+  }
+  .sect1-text {
+    font-size: 33px;
+    font-weight: 300;
+    width: 700px;
+    margin: 60px 80px 0;
+  }
+  .sect1-name {
+    font-size: 33px;
+    font-weight: 300;
+    width: 260px;
+    margin: 16px 620px 0;
+  }
 }
-
-.sect1-logo-wrap {
-  top: 80px;
-  left: 80px;
+.sect2 {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 410px;
-}
-
-.sect1-logo {
-  width: 180px;
-  height: 180px;
-  border-radius: 500px;
-  box-shadow: 8px 6px 14px rgba(0, 0, 0, 0.2);
-}
-
-.sect1-logo-name {
-  font-family: 'Rosario';
-  font-style: italic;
-  font-weight: 600;
-  font-size: 80px;
-  text-shadow: 8px 6px 14px rgba(0, 0, 0, 0.2);
-}
-
-.sect1-subtext {
-  font-size: 2.3vw;
-  font-weight: 400;
-  top: 350px;
-  left: 180px;
-  width: 650px;
-}
-
-.sect1-text {
-  font-size: 2vw;
-  font-weight: 300;
-  top: 410px;
-  left: 80px;
-  width: 700px;
-}
-
-.sect1-name {
-  font-size: 2vw;
-  font-weight: 300;
-  top: 570px;
-  left: 650px;
-  width: 300px;
+  flex-direction: column;
+  width: 100%;
+  padding: 200px;
+  .sect2-img {
+    width: 1100px;
+  }
+  .sect2-text {
+    padding-top: 30px;
+    font-size: 35px;
+  }
 }

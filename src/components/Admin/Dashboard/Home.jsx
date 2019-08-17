@@ -25,7 +25,6 @@ class Home extends Component {
     this.props.countUsers()
     this.props.currentRevenue()
     this.props.countSales()
-    this.props.updateSession(res.data)
   }
 
   toggleShow = () => {

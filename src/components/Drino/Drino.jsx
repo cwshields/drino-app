@@ -3,6 +3,7 @@ import DrinoNavbar from '../Navbar/DrinoNavbar'
 import '../../assets/scss/App.scss'
 import '../../assets/scss/drino.scss'
 import logo from '../../assets/images/Drino-Logo.png'
+import mobile1 from '../../assets/images/mobile1.png';
 
 export default function Drino() {
   return (
@@ -29,7 +30,10 @@ export default function Drino() {
                 - Jessica Herrin
               </div>
             </div>
-            <div className="flex-box"></div>
+            <div className="sect2">
+              <img className="sect2-img" src={mobile1} alt="mobile1"/>
+              <div className="sect2-text">The greatest humanity has to offer, in the palm of your hand.</div>
+            </div>
           </div>
           <footer>
 

@@ -22,6 +22,11 @@
   src: url(../fonts/Questrial/Questrial-Regular.ttf)
 }
 
+@font-face {
+  font-family: 'Poppins';
+  src: url(../fonts/Poppins//Poppins-Light.ttf)
+}
+
 // DON'T FORGET ABOUT THIS!!!
 // * {
 //   -webkit-box-sizing: border-box;
@@ -49,10 +54,10 @@ button:focus, input:focus {
   box-shadow: none;
 }
 
-// ::-webkit-scrollbar {
-//   width: 18px;
-//   height: 18px;
-// }
+::-webkit-scrollbar {
+  width: 18px;
+  height: 18px;
+}
 
 ::-webkit-scrollbar-thumb {
   height: 6px;
@@ -65,22 +70,22 @@ button:focus, input:focus {
     inset 1px 1px 0px rgba(0, 0, 0, 0.05);
 }
 
-// ::-webkit-scrollbar-track {
-//   display: none;
-// }
+::-webkit-scrollbar-track {
+  display: none;
+}
 
-// ::-webkit-scrollbar-thumb:hover {
-//   background-color: rgba(0, 0, 0, 0.45);
-// }
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.45);
+}
 
-// ::-webkit-scrollbar-button {
-//   width: 0;
-//   height: 0;
-//   display: none;
-// }
-// ::-webkit-scrollbar-corner {
-//   display: none;
-// }
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none;
+}
+::-webkit-scrollbar-corner {
+  display: none;
+}
 
 .box {
   height: 5311px;

@@ -11,26 +11,22 @@ export default class Messages extends Component {
   constructor() {
     super()
     this.state = {
-      messages: [],
-      firstName: '',
-      message: ''
+      messages: []
     }
   }
 
   componentDidMount() {
     Axios
-    .get('/api/messages')
-    .then(res => { this.setState({ messages: res.data }) })
-    .catch(err => console.log(err))
+      .get('/api/messages')
+      .then(res => { this.setState({ messages: res.data }) })
+      .catch(err => console.log(err))
   }
 
   deleteMessage = (id) => {
     Axios
       .delete(`/api/messages/${id}`)
-      .then(response => {
-        this.setState({ messages: response.data });
-      })
-      .catch(error => console.log(error));
+      .then(res => { this.setState({ messages: res.data }) })
+      .catch(err => console.log(err));
   }
   
   render() {
