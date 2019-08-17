@@ -14,6 +14,14 @@ class Login extends Component {
     }
   }
 
+  componentDidMount() {
+    axios.get('/api/user')
+    .then(res => {
+      this.props.updateSession(res.data)
+    })
+    .catch(err => console.log(err))
+  }
+
   login = () => {
     const { username, password } = this.state
     axios

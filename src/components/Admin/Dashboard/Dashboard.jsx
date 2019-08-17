@@ -9,13 +9,24 @@ import Maps from "../Maps/Maps"
 import Home from "../Dashboard/Home"
 import Error404 from '../Pages/Error404'
 import Error500 from '../Pages/Error500'
+import axios from 'axios'
+import { connect } from 'react-redux';
+import { updateSession } from '../../../Redux/reducer';
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
   constructor() {
     super()
     this.state = {
 
     }
+  }
+
+  componentDidMount() {
+    axios.get('/api/user')
+    .then(res => {
+      this.props.updateSession(res.data)
+    })
+    .catch(err => console.log(err))
   }
 
   render() {
@@ -36,3 +47,18 @@ export default class Dashboard extends Component {
     );
   }
 }
+
+function mapStateToProps(reduxState) {
+  return {
+    firstName: reduxState.reducer.firstName,
+    lastName: reduxState.reducer.lastName,
+    username: reduxState.reducer.username,
+    email: reduxState.reducer.email,
+    isAdmin: reduxState.reducer.isAdmin,
+    isEmployee: reduxState.reducer.isEmployee,
+    img: reduxState.reducer.img,
+    login: reduxState.reducer.login
+  }
+}
+
+export default connect(mapStateToProps, { updateSession })(Dashboard);

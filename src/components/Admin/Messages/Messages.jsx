@@ -16,6 +16,10 @@ export default class Messages extends Component {
   }
 
   componentDidMount() {
+    this.getMessages()
+  }
+
+  getMessages = () => {
     Axios
       .get('/api/messages')
       .then(res => { this.setState({ messages: res.data }) })
@@ -25,10 +29,12 @@ export default class Messages extends Component {
   deleteMessage = (id) => {
     Axios
       .delete(`/api/messages/${id}`)
-      .then(res => { this.setState({ messages: res.data }) })
+      .then(res => {
+        this.getMessages()
+      })
       .catch(err => console.log(err));
   }
-  
+
   render() {
     return (
       <div className="dash-body">
@@ -42,7 +48,7 @@ export default class Messages extends Component {
                   toolbarClassName="toolbar"
                   wrapperClassName="wrapper"
                   editorClassName="editor"
-                  // onEditorStateChange={this.onEditorStateChange}
+                // onEditorStateChange={this.onEditorStateChange}
                 />
                 <Button className="send-btn" variant="success">Send</Button>
                 <Button className="cancel-btn" variant="danger">Cancel</Button>
@@ -50,11 +56,11 @@ export default class Messages extends Component {
               <div className="messages-wrap">
                 <div className="accordion-wrap">
                   <Accordion defaultActiveKey="0">
-                  {this.state.messages.length === 0 
-                    ? <h3 className='no-messages'>No messages to display...</h3> 
-                    : this.state.messages.map( (message, id) => (
-                      <MessageCard key={id} message={message} deleteMessage={this.deleteMessage} />
-                  ))}
+                    {this.state.messages.length === 0
+                      ? <h3 className='no-messages'>No messages to display...</h3>
+                      : this.state.messages.map((message, id) => (
+                        <MessageCard key={id} message={message} deleteMessage={this.deleteMessage} />
+                      ))}
                   </Accordion>
                 </div>
               </div>
