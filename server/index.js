@@ -6,14 +6,18 @@ const session = require('express-session');
 const { 
   register, 
   login, 
-  getSales, 
+  getSales,
+  sumSales,
   addSale, 
   getUsers, 
   addUser, 
   getUsersCount, 
   getMessagesCount, 
   postMessage, 
-  getMessages
+  getMessages,
+  deleteMessage,
+  getRevenue,
+  logout
 } = require('./controller')
 
 const app = express();
@@ -25,7 +29,7 @@ app.use(session({
   saveUninitialized: true,
   secret: SESSION_SECRET,
   cookie: {
-    maxAge: 1000 * 60 * 30 // * 24
+    maxAge: 1000 * 60 * 20 // * 24
   }
 }))
 
@@ -34,16 +38,20 @@ massive(CONNECTION_STRING).then(db => {
   console.log('Database Connected');
 })
 
-app.get('/api/sales')
+// app.get('/api/sales', getSales)
+app.get('/api/sales', sumSales)
 app.get('/api/users', getUsersCount)
+app.get('/api/revenue', getRevenue)
 // app.get('/api/users', getUsers)
 app.get('/api/messages', getMessages)
+app.get('/auth/logout', logout)
 // app.get('/api/messages', getMessagesCount)
+app.delete('/api/messages/:id', deleteMessage)
 
 app.use(express.json());
 
 app.post('/auth/register', register)
-app.post('/auth/login', login);
+app.post('/auth/login', login)
 app.post('/api/messages', postMessage)
 
 app.get('/api/user', function(req, res) {

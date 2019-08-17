@@ -9,8 +9,8 @@ const initialState = {
     datasets: [{
       label: 'Revenue',
       data: [
-        57594, 61045, 53060, 52519, 62162, 65472,
-        55068, 56233, 74162, 64072, 77162, 73631
+        157594, 161045, 173060, 182519, 162162, 155472,
+        165068, 156233, 144162, 154072, 157162, 0
       ],
       backgroundColor: [
         'rgba(15, 92, 142, 0.6)'
@@ -62,7 +62,7 @@ const initialState = {
     datasets: [{
       label: 'Sales Breakdown',
       data: [
-        294, 145, 60, 119, 82, 172
+        37, 45, 34, 41, 53, 48
       ],
       backgroundColor: [
         '#75AD2C',
@@ -81,8 +81,8 @@ const UPDATE_LINE_CHART = 'UPDATE_LINE_CHART';
 export function countMessages() {
   return {
     type: UPDATE_LINE_CHART,
-    payload: axios.get('/api/line-chart')
-      // .then(res => res.data)
+    payload: axios.get('/api/revenue')
+      .then(res => res.data)
   }
 }
 
@@ -90,9 +90,11 @@ export function countMessages() {
 export default function chartReducer(state = initialState, action) {
   switch (action.type) {
     case `${UPDATE_LINE_CHART}_FULFILLED`:
+    let newData = state
+    newData.lineData.datasets[0].data[11] = +action.payload[0].sum
       return {
         ...state,
-        lineData: action.payload
+        lineData: newData.lineData
       }
       default:
         return state;

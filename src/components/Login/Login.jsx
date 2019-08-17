@@ -2,16 +2,15 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import '../../assets/scss/login.scss'
 import { Link, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { updateSession } from '../../Redux/reducer';
 
-export default class Login extends Component {
+class Login extends Component {
   constructor() {
     super()
     this.state = {
       username: '',
-      password: '',
-      login: false,
-      isAdmin: false,
-      isEmployee: false
+      password: ''
     }
   }
 
@@ -20,7 +19,7 @@ export default class Login extends Component {
     axios
       .post('/auth/login', { username, password })
       .then((res) => {
-        this.setState({ login: true, isAdmin: res.data.is_admin, isEmployee: res.data.is_employee })
+        this.props.updateSession(res.data)
       })
       .catch(err => console.log(err))
   }
@@ -31,17 +30,21 @@ export default class Login extends Component {
   }
 
   render() {
+    console.log(this.props)
+    if (this.props.login === true && this.props.isAdmin === true) {
+      return <Redirect to='/dashboard/home' />
+    }
     return (
       <div className="login-body">
         <div className="circle login-circle">
           <i className="custom-vec fas fa-user-alt"></i>
         </div>
         <div className="modal">
-          { this.state.isAdmin 
+          {/* { this.state.isAdmin 
             ? <Redirect to="/dashboard/home" /> 
             : this.state.isEmployee 
             ? <Redirect to="/profile" /> 
-            : null}
+            : null} */}
           <div className="login-body-wrap">
             <div className="modal-name">User Login</div>
             <div className="input-group">
@@ -65,3 +68,18 @@ export default class Login extends Component {
     );
   }
 }
+
+function mapStateToProps(reduxState) {
+  return {
+    firstName: reduxState.reducer.firstName,
+    lastName: reduxState.reducer.lastName,
+    username: reduxState.reducer.username,
+    email: reduxState.reducer.email,
+    isAdmin: reduxState.reducer.isAdmin,
+    isEmployee: reduxState.reducer.isEmployee,
+    img: reduxState.reducer.img,
+    login: reduxState.reducer.login
+  }
+}
+
+export default connect(mapStateToProps, { updateSession })(Login);

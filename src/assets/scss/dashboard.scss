@@ -17,7 +17,7 @@
   top: 70px;
   left: 265px;
   width: calc(100vw - 265px);
-  height: calc(100vh - 70px);
+  height: calc(100vh - 69px);
 }
 
 .dash-wrap {
@@ -26,7 +26,7 @@
 
 .dash-section {
   font-size: 20px;
-  margin: 30px 28px 68px;
+  margin: 26px 28px 68px;
 }
 .alert {
   margin-bottom: 26px;
@@ -55,7 +55,7 @@
     color: #F5F5F5;
     padding: 20px 30px;
     height: 160px;
-    width: 372px;
+    width: 335px;
     border-radius: 3px;
     .number {
       font-size: 44px;
@@ -104,11 +104,11 @@
   justify-content: space-between;
   margin-bottom: 26px; 
   .line-chart {
-    width: calc(67.1vw - 264px);
+    width: calc(67.8vw - 264px);
     padding: 20px 20px 24px;
   }
   .doughnut-chart {
-    width: calc(41.1vw - 264px);
+    width: calc(41.8vw - 264px);
     padding: 14px 12px 22px;
   }
 }

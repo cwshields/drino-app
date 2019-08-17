@@ -5,7 +5,7 @@ import Charts from '../Charts/Charts';
 import Welcome from '../../BootstrapComps/WelcomeAlert';
 import { connect } from 'react-redux';
 import CountUp from 'react-countup';
-import { countUsers } from '../../../Redux/reducer';
+import { countUsers, currentRevenue, countSales } from '../../../Redux/reducer';
 
 class Home extends Component {
   constructor(props) {
@@ -18,11 +18,13 @@ class Home extends Component {
       bounceRate: props.bounceRate,
       timeUpdated: props.timeUpdated,
     }
-    this.toggleShow = this.toggleShow.bind(this);
   }
 
+  
   componentDidMount() {
     this.props.countUsers()
+    this.props.currentRevenue()
+    this.props.countSales()
   }
 
   toggleShow = () => {
@@ -41,7 +43,7 @@ class Home extends Component {
             : null }
           <div className="status-card-wrap">
             <div className="status-card red rm">
-              <div className="number"><CountUp start={0} end={userCount} /></div>
+              <div className="number"><CountUp start={0} end={userCount} duration={1.6} separator="," /></div>
               <div className="label">Users</div>
               <i className="fas fa-user-plus"></i>
               <hr className="red" />
@@ -49,7 +51,7 @@ class Home extends Component {
             </div>
             <div className="status-card blue rm">
               <div className="number" id="root">
-                <CountUp start={0} end={sales} duration={1.8} separator="," />
+                <CountUp start={0} end={sales} duration={1.6} separator="," />
               </div>
               <div className="label">Sales</div>
               <i className="fas fa-shopping-cart"></i>
@@ -58,7 +60,7 @@ class Home extends Component {
             </div>
             <div className="status-card green rm">
               <div className="number">
-                <CountUp start={0} end={revenue} duration={1.8} separator="," prefix="$" />
+                <CountUp start={0} end={revenue} duration={1.6} separator="," prefix="$" />
               </div>
               <div className="label">Revenue</div>
               <i className="fas fa-dollar-sign"></i>
@@ -67,7 +69,7 @@ class Home extends Component {
             </div>
             <div className="status-card yellow">
               <div className="number">
-                <CountUp start={0} end={bounceRate} duration={1.8} separator="," decimal="." decimals={1} suffix="%" />
+                <CountUp start={0} end={bounceRate} duration={1.6} separator="," decimal="." decimals={1} suffix="%" />
               </div>
               <div className="label">Bounce Rate</div>
               <i className="fas fa-chart-line"></i>
@@ -98,6 +100,7 @@ class Home extends Component {
 
 function mapStateToProps(reduxState) {
   return {
+    firstName: reduxState.reducer.firstName,
     userCount: reduxState.reducer.userCount,
     sales: reduxState.reducer.sales,
     revenue: reduxState.reducer.revenue,
@@ -106,4 +109,4 @@ function mapStateToProps(reduxState) {
   }
 }
 
-export default connect(mapStateToProps, { countUsers })(Home);
+export default connect(mapStateToProps, { countUsers, currentRevenue, countSales })(Home);

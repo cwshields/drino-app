@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Line, Doughnut, Pie, Bar } from 'react-chartjs-2';
 import { Card } from 'react-bootstrap';
+import { countMessages } from '../../../Redux/chartReducer';
 
 class Charts extends Component {
   constructor(props) {
@@ -21,6 +22,14 @@ class Charts extends Component {
     location: 'City'
   }
 
+  componentDidMount() {
+    this.props.countMessages()
+  }
+  
+  componentDidUpdate() {
+    this.props.countMessages()
+  }
+
   render() {
     return (
       <div className="charts-wrap-group">
@@ -31,11 +40,12 @@ class Charts extends Component {
               </Card.Header>
             <div className="line-chart">
               <Line
-                data={this.state.lineData}
+                data={this.props.lineData}
                 options={{
+                  responsive: true,
                   title: {
                     display: this.props.displayTitle,
-                    text: 'Monthly revenue (Year)'/* + this.props.location*/,
+                    text: 'Monthly revenue (Year)',
                     fontSize: 25
                   },
                   legend: {
@@ -148,8 +158,11 @@ class Charts extends Component {
                       yAxes: [{
                         display: true,
                         scaleLabel: {
-                          display: true,
+                          display: false,
                         },
+                        ticks: {
+                          scaleBeginAtZero: false,
+                        }
                       }]
                     }
                   }
@@ -172,4 +185,4 @@ function mapStateToProps(reduxState) {
   }
 }
 
-export default connect(mapStateToProps)(Charts);
+export default connect(mapStateToProps, { countMessages })(Charts);

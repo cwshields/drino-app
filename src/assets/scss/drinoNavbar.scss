@@ -8,7 +8,7 @@
 .navbar {
   font-family: 'robotoLte';
   display: flex;
-  height: 80px;
+  height: 70px;
   color: $off-white;
   background-color: #29313C;
 
@@ -17,19 +17,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 14px;
+    padding: 0 4px;
 
     .logo-wrap {
       display: flex;
       justify-content: space-between;
       align-items: center;
-
+      width: 142px;
       .logo-name {
         color: $off-white;
         font-size: 32px;
         font-family: 'Rosario';
         font-style: italic;
-        margin-left: 16px;
+        margin-left: 4px;
       }
     }
 
@@ -44,7 +44,7 @@
         font-size: 19px;
         height: 22px;
         padding: 0 10px;
-        margin: 2px 0 6px;
+        margin: 2px 0 8px;
       }
     }
   }

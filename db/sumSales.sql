@@ -1,2 +1,2 @@
-SELECT sum(price)
+SELECT COUNT(*)
 FROM drino_sales
