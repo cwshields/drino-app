@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
+import Axios from 'axios';
 import logo from '../../assets/images/Drino-Logo.png'
 import img from '../../assets/images/profile-img.png'
 import '../../assets/scss/header.scss'
 import { Link } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
+import { connect } from 'react-redux';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { resetState } from '../../Redux/reducer';
 
-export default class Header extends Component {
+class Header extends Component {
   constructor() {
     super()
     this.state = {
@@ -17,6 +20,13 @@ export default class Header extends Component {
   collapseNavbar = () => {
     const currentState = this.state.collapsed;
     this.setState({ collapsed: !currentState })
+  }
+
+  logout = () => {
+    this.props.resetState()
+    Axios
+      .get('/auth/logout')
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -67,9 +77,9 @@ export default class Header extends Component {
             </div>
           </Nav>
           <div className="header-right-wrap">
-            <LinkContainer to="/login">
+            <LinkContainer onClick={this.logout} to="/login">
               <Nav.Link>
-                <i class="fas fa-sign-out-alt"></i>
+                <i className="fas fa-sign-out-alt"></i>
                 <div className="link-text">Logout</div>
               </Nav.Link>
             </LinkContainer>
@@ -77,23 +87,14 @@ export default class Header extends Component {
           </div>
         </Navbar.Collapse>
       </Navbar>
-      // <div className="header-navbar">
-      //   <div className="nav-container">
-      //     <Link to='/'>
-      //       <div className="logo-wrap">
-      //         <img className="nav-img" src={logo} alt="Logo" />
-      //         <div className="logo-name-header">Drino</div>
-      //       </div>
-      //     </Link>
-      //     <div className="mobile-menu"><i class="fas fa-bars"></i></div>
-      //     <div className="header-right-wrap">
-      //       <Link to="/login">
-      //         <div className="nav-link">Logout</div>
-      //       </Link>
-      //       <img className="nav-img" src={img} alt="" />
-      //     </div>
-      //   </div>
-      // </div>
     );
   }
 }
+
+function mapStateToProps(reduxState) {
+  return {
+    img: reduxState.reducer.img
+  }
+}
+
+export default connect(mapStateToProps, { resetState })(Header);

@@ -5,6 +5,8 @@ import { Accordion, Card, Button } from 'react-bootstrap';
 const Messages = (props) => {
   const { message } = props
   const { first_name, last_name, email, message: userMessage } = props.message
+  console.log(message);
+  
   return (
     <Card>
       <Accordion.Toggle as={Card.Header} eventKey={message}>
@@ -20,7 +22,7 @@ const Messages = (props) => {
         <Card.Body>{userMessage}
           <div className="btn-wrap">
             <Button variant="success">Reply</Button>
-            <Button variant="danger">Delete</Button>
+            <Button variant="danger" onClick={ () => props.deleteMessage(message.id)}>Delete</Button>
           </div>
         </Card.Body>
       </Accordion.Collapse>

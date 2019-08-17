@@ -9,17 +9,19 @@ module.exports = {
     } = req.body
     console.log(req.body)
     const info = await db.getUserInfo(username)
-    console.log(info)
     const isCorrect = await bcrypt.compare(password, info[0].password)
+    console.log(info, isCorrect)
     //send back a response
     if (isCorrect === true) {
       req.session.user = {
         id: info[0].id,
-        username,
         firstName: info[0].first_name,
         lastName: info[0].last_name,
-        is_admin: info[0].is_admin,
-        is_employee: info[0].is_employee,
+        username,
+        email: info[0].email,
+        isAdmin: info[0].is_admin,
+        isEmployee: info[0].is_employee,
+        img: info[0].profile_img
       }
       res.status(200).json(req.session.user)
     } else {
@@ -53,6 +55,10 @@ module.exports = {
       res.status(200).json(req.session.user);
     }
   },
+  logout: (req, res) => {
+    req.session.destroy();
+    res.sendStatus(200)
+  },
   getUsersCount: async function(req, res) {
     const db = req.app.get('db')
     let count = await db.totalUsers()
@@ -69,5 +75,21 @@ module.exports = {
     const db = req.app.get('db')
     const messages = await db.getMessages()
     res.status(200).json(messages)
+  },
+  sumSales: async function(req, res) {
+    const db = req.app.get('db')
+    const sales = await db.sumSales()
+    res.status(200).json(sales)
+  },
+  getRevenue: async function(req, res) {
+    const db = req.app.get('db')
+    const revenue = await db.sumRevenue()
+    res.status(200).json(revenue)
+  },
+  deleteMessage: async function(req, res) {
+    const { id } = req.params
+    const db = req.app.get('db')
+    const deleteMessage = await db.deleteMessage(id)
+    res.status(200).json(deleteMessage)
   }
 }

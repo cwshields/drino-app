@@ -23,6 +23,15 @@ export default class Messages extends Component {
     .then(res => { this.setState({ messages: res.data }) })
     .catch(err => console.log(err))
   }
+
+  deleteMessage = (id) => {
+    Axios
+      .delete(`/api/messages/${id}`)
+      .then(response => {
+        this.setState({ messages: response.data });
+      })
+      .catch(error => console.log(error));
+  }
   
   render() {
     return (
@@ -47,8 +56,8 @@ export default class Messages extends Component {
                   <Accordion defaultActiveKey="0">
                   {this.state.messages.length === 0 
                     ? <h3 className='no-messages'>No messages to display...</h3> 
-                    : this.state.messages.map( (message) => (
-                      <MessageCard key={message.id} message={message} />
+                    : this.state.messages.map( (message, id) => (
+                      <MessageCard key={id} message={message} deleteMessage={this.deleteMessage} />
                   ))}
                   </Accordion>
                 </div>
