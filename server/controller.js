@@ -21,7 +21,9 @@ module.exports = {
         email: info[0].email,
         isAdmin: info[0].is_admin,
         isEmployee: info[0].is_employee,
-        img: info[0].profile_img
+        img: info[0].profile_img,
+        description: info[0].description,
+        jobTitle: info[0].job_title
       }
       res.status(200).json(req.session.user)
     } else {
@@ -59,6 +61,12 @@ module.exports = {
     req.session.destroy();
     res.sendStatus(200)
   },
+  // editUser: (req, res) => {
+  //   const { id } = req.params
+  //   const db = req.app.get('db')
+  //   const description = await db.editDescription(id)
+  //   res.status(200).json(description)
+  // },
   getUsersCount: async function(req, res) {
     const db = req.app.get('db')
     let count = await db.totalUsers()

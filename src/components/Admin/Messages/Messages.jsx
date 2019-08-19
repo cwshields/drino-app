@@ -29,7 +29,7 @@ export default class Messages extends Component {
   deleteMessage = (id) => {
     Axios
       .delete(`/api/messages/${id}`)
-      .then(res => {
+      .then( () => {
         this.getMessages()
       })
       .catch(err => console.log(err));

@@ -55,7 +55,7 @@
     color: #F5F5F5;
     padding: 20px 30px;
     height: 160px;
-    width: 335px;
+    width: 365px;
     border-radius: 3px;
     .number {
       font-size: 44px;
@@ -104,11 +104,11 @@
   justify-content: space-between;
   margin-bottom: 26px; 
   .line-chart {
-    width: calc(67.8vw - 264px);
+    width: calc(67vw - 264px);
     padding: 20px 20px 24px;
   }
   .doughnut-chart {
-    width: calc(41.8vw - 264px);
+    width: calc(41vw - 264px);
     padding: 14px 12px 22px;
   }
 }

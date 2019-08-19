@@ -1,7 +1,7 @@
 @import './variables.scss';
 
 .drino-container { 
-  background: #373A44 url("../images/background.png");
+  background-image: url("../images/background.png");
   background-size: cover;
   position: relative;
   width: 100%;
@@ -30,40 +30,41 @@
   }
 }
 
-.sect1-wrap {
+.sect1 {
   padding: 100px 100px 200px;
-  .sect1-logo-wrap {
+  .logo-wrap {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 410px;
-    .sect1-logo {
+    .logo {
       width: 180px;
       height: 180px;
       border-radius: 500px;
       box-shadow: 8px 6px 14px rgba(0, 0, 0, 0.2);
     }
-    .sect1-logo-name {
+    .logo-name {
       font-family: 'Rosario';
       font-style: italic;
       font-weight: 600;
       font-size: 80px;
-      text-shadow: 8px 6px 14px rgba(0, 0, 0, 0.2);
+      color: $off-white;
+      text-shadow: 8px 6px 14px rgba(0, 0, 0, 0.25);
     }
   }
-  .sect1-subtext {
+  .subtext {
     font-size: 43px;
     font-weight: 400;
     width: 650px;
     margin: 120px 50px 0; 
   }
-  .sect1-text {
+  .text {
     font-size: 33px;
     font-weight: 300;
     width: 700px;
     margin: 60px 80px 0;
   }
-  .sect1-name {
+  .name {
     font-size: 33px;
     font-weight: 300;
     width: 260px;
@@ -73,14 +74,155 @@
 .sect2 {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   width: 100%;
-  padding: 200px;
+  height: 1000px;
   .sect2-img {
-    width: 1100px;
+    width: 1000px;
+    -webkit-filter: drop-shadow(5px 5px 10px #222);
+    filter: drop-shadow(5px 5px 10px #222);
   }
   .sect2-text {
-    padding-top: 30px;
-    font-size: 35px;
+    padding-top: 50px;
+    font-size: 32px;
+  }
+}
+.sect3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1000px;
+  .group {
+    margin: 0 50px;
+  }
+  .item-feature__icon {
+    display: flex;
+    justify-content: center; 
+    font-size: 75px;
+    color: $green;
+  }
+  .header {
+    display: flex;
+    justify-content: center; 
+    font-size: 34px;
+    font-weight: 600;
+    margin: 14px;
+  }
+  .text {
+    font-size: 25px;
+    width: 350px;
+    text-align: center;
+  }
+}
+.sect4{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1000px;
+  .group {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    .wrap1, .wrap2 {
+      width: 350px;
+      padding: 35px;
+      margin: 0 30px;
+      ul {
+        list-style: none;
+      }
+      ul li::before {
+        content: "\2022";
+        color: $green;
+        font-weight: 900;
+        font-size: 32px;
+        display: inline-block; 
+        width: 0.8em;
+        line-height: 1.3em;
+        margin-left: -1.1em;
+      }
+      .price {
+        font-size: 58px;
+        font-family: 'PoppinsBOLD';
+        margin: 20px 0;
+        .per {
+          font-size: 20px;
+          font-family: 'PoppinsLTE'
+        }
+      }
+      .btn {
+        font-size: 24px;
+        text-transform: uppercase;
+        padding: 12px;
+        margin-top: 20px;
+        width: 100%;
+      }
+    }
+    .wrap1 {
+      .btn {
+        background-color: $green;
+      }
+      .btn:hover {
+        background-color: $dark-green;
+      }
+    }
+    .wrap2 {
+      border-radius: 8px;
+      background-color: $green;
+      box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.25);
+      .btn {
+        background-color: #373a44;
+      }
+      .btn:hover {
+        background-color: #30323b;
+      }
+      ul li::before {
+        content: "\2022";
+        color: $off-white;
+      }
+    }
+  }
+}
+.sect5 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 1380px;
+  .group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      -webkit-filter: drop-shadow(5px 5px 14px #222);
+      filter: drop-shadow(5px 5px 14px #222);
+      height: 650px;
+    }
+    .text {
+      margin-left: 40px; 
+      .brand {
+        font-size: 42px;
+      }
+      .model {
+        font-size: 75px;
+        font-family: 'PoppinsBOLD';
+      }
+      .specs {
+        font-size: 28px;
+        font-family: 'PoppinsLTE'
+      }
+    }
+  }
+  .btn {
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    padding: 12px 44px;
+    background-color: $green;
+    border-radius: 50px;
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  .btn:hover {
+    background-color: $dark-green;
   }
 }

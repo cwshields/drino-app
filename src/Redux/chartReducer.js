@@ -10,7 +10,7 @@ const initialState = {
       label: 'Revenue',
       data: [
         157594, 161045, 173060, 182519, 162162, 155472,
-        165068, 156233, 144162, 154072, 157162, 0
+        165068, 156233, 144162, 154072, 157162, 162356
       ],
       backgroundColor: [
         'rgba(15, 92, 142, 0.6)'
@@ -43,7 +43,7 @@ const initialState = {
     datasets: [{
       label: 'Sales Breakdown',
       data: [
-        294, 82, 60, 119, 185, 132
+        35, 11, 8, 13, 19, 14
       ],
       backgroundColor: [
         '#4C7FE2',
@@ -57,10 +57,10 @@ const initialState = {
   },
   barData: {
     labels: [
-      'Model X', 'Sensation L3', 'Jerico DON', 'GV Mavid', 'Legacy Pro7', 'VIN Mono 6',
+      'March', 'April', 'May', 'June', 'July', 'August'
     ],
     datasets: [{
-      label: 'Sales Breakdown',
+      label: 'Bounce Rate',
       data: [
         37, 45, 34, 41, 53, 48
       ],

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
 import logo from '../../assets/images/Drino-Logo.png'
-import img from '../../assets/images/profile-img.png'
 import '../../assets/scss/header.scss'
 import { Link } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
@@ -83,7 +82,7 @@ class Header extends Component {
                 <div className="link-text">Logout</div>
               </Nav.Link>
             </LinkContainer>
-            <img className="nav-img" src={img} alt="" />
+            <img className="nav-img" src={this.props.img} alt="" />
           </div>
         </Navbar.Collapse>
       </Navbar>

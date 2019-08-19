@@ -10,6 +10,8 @@ const initialState = {
     login: false,
     isAdmin: false,
     isEmployee: false,
+    jobTitle: '',
+    description: '',
     userCount: 0,
     messageCount: 0,
     sales: 0,
@@ -127,7 +129,9 @@ export default function reducer(state=initialState, action) {
         isAdmin: action.payload.isAdmin,
         isEmployee: action.payload.isEmployee,
         img: action.payload.img,
-        login: true
+        jobTitle: action.payload.jobTitle,
+        description: action.payload.description,
+        login: true,
       }
     case RESET_STATE: 
       return {

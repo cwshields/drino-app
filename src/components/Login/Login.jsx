@@ -42,6 +42,9 @@ class Login extends Component {
     if (this.props.login === true && this.props.isAdmin === true) {
       return <Redirect to='/dashboard/home' />
     }
+    else if (this.props.login === true && this.props.isEmployee === true) {
+      return <Redirect to="/profile" /> 
+    }
     return (
       <div className="login-body">
         <div className="circle login-circle">
