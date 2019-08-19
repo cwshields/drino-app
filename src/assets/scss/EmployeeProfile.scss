@@ -1,5 +1,33 @@
+@import './variables.scss';
+
 .employee-profile {
+  .caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid \9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+  }
+  
+  .dropup .caret, .navbar-fixed-bottom .dropdown .caret {
+    border-top: 0;
+    border-bottom: 4px dashed;
+    border-bottom: 4px solid \9;
+    content: "";
+  }
+  .dropdown-menu {
+    bottom: 100%;
+    top: unset;
+  }
+  .dropdown-toggle::after {
+    display: none;
+  }
   .profile-wrap {
+    margin-bottom: 30px;
     display: flex;
     justify-content: center;
     margin-top: 30px;
@@ -13,6 +41,7 @@
         margin-top: 22px;
         font-size: 21px;
         width: 100%;
+        background-color: $green;
         .fa-plus {
           font-size: 18px;
         }
@@ -79,6 +108,9 @@
       overflow: scroll auto;
       margin: 0px;
       width: 100%;
+    }
+    .table td, .table th {
+      padding: .5rem;
     }
   }
 }

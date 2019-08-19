@@ -16,7 +16,10 @@ export default class Login extends Component {
   }
 
   render() {
-    const { timeUpdated, sales, revenue } = this.props
+    const { timeUpdated, repSales, repRevenue } = this.props
+    const cellEditProp = {
+      mode: 'dbclick'
+    };
     const products = [
       {
         id: 1,
@@ -210,10 +213,10 @@ export default class Login extends Component {
                 <div className="date">Updated: 8/18/19 - 12:01AM{timeUpdated}</div>
               </div>
             </div>
-            <BootstrapTable data={products} pagination>
-              <TableHeaderColumn dataField='id' isKey={true}>ID</TableHeaderColumn>
-              <TableHeaderColumn dataField='name'>Name</TableHeaderColumn>
-              <TableHeaderColumn dataField='price'>Price</TableHeaderColumn>
+            <BootstrapTable ref='table' data={products} cellEdit={ cellEditProp } pagination search>
+              <TableHeaderColumn width="100"  dataField='id' isKey={true} dataSort={true}>ID</TableHeaderColumn>
+              <TableHeaderColumn dataField='name' dataSort={true}>Name</TableHeaderColumn>
+              <TableHeaderColumn dataField='price' dataSort={true}>Price</TableHeaderColumn>
             </BootstrapTable>
           </div>
         </div>
