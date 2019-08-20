@@ -40,8 +40,8 @@ class Dashboard extends Component {
           <Route path='/dashboard/messages' component={Messages} />
           <Route path='/dashboard/maps' component={Maps} />
           {/* <Route path='/pages' Component={Pages} /> */}
-          <Route path='#/404' render={Error404} />
-          <Route path='#/500' render={Error500} />
+          <Route path='/404' render={Error404} />
+          <Route path='/500' render={Error500} />
         </Switch>
       </div>
     );
@@ -50,6 +50,7 @@ class Dashboard extends Component {
 
 function mapStateToProps(reduxState) {
   return {
+    id: reduxState.reducer.id,
     firstName: reduxState.reducer.firstName,
     lastName: reduxState.reducer.lastName,
     username: reduxState.reducer.username,

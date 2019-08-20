@@ -1,20 +1,67 @@
-.table>td {
-  padding: .4rem;
+
+.users-wrap {
+  display: flex;
+  .modal-title {
+    margin-bottom: 0;
+    line-height: 1.5;
+    width: 464px;
+  }
+  .caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid \9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+  }
+  
+  .dropup .caret, .navbar-fixed-bottom .dropdown .caret {
+    border-top: 0;
+    border-bottom: 4px dashed;
+    border-bottom: 4px solid \9;
+    content: "";
+  }
+  .dropdown-menu {
+    bottom: 100%;
+    top: unset;
+  }
+  .dropdown-toggle::after {
+    display: none;
+  }
+  .react-bs-table-container {
+    margin-left: 24px;
+    height: 423px;
+    margin-bottom: 220px;
+  }
+  .table {
+    font-size: 17px;
+    background-color: #fff;
+    border-radius: 3px;
+    overflow: scroll auto;
+    margin: 0px;
+    width: 100%;
+  }
+  .table td, .table th {
+    padding: .4rem .55rem;
+  }
+  .btn-group-sm>.btn, .btn-sm {
+    padding: 5px 25px;
+    margin-right: 12px;
+    font-size: 17px;
+    line-height: 1.5;
+    border-radius: .2rem;
+  }
+  .react-bs-table-tool-bar {
+    margin-bottom: 8px;
+  }
 }
 
-.table {
-  background-color: #fff;
-  border-radius: 3px;
-  overflow: scroll auto;
-  margin: 0 0 0 25px;
-}
+
 
 .col-11 {
   padding: 0;
   padding-top: 20px; 
-}
-
-.panel {
-  height: 650px;
-  width: 1000px;
 }

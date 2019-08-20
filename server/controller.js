@@ -61,16 +61,36 @@ module.exports = {
     req.session.destroy();
     res.sendStatus(200)
   },
-  // editUser: (req, res) => {
-  //   const { id } = req.params
-  //   const db = req.app.get('db')
-  //   const description = await db.editDescription(id)
-  //   res.status(200).json(description)
-  // },
+  editUser: async function (req, res) {
+    const { id } = req.params
+    const { description } = req.body
+    const db = req.app.get('db')
+    const editDescription = await db.editDescription(description, id)
+    console.log(id, description)
+    res.status(200).json(editDescription)
+  },
+  getUsers: async function(req,res) {
+    const db = req.app.get('db')
+    const getUsers = await db.getAllUsers()
+    res.status(200).json(getUsers)
+  },
   getUsersCount: async function(req, res) {
     const db = req.app.get('db')
-    let count = await db.totalUsers()
+    const count = await db.totalUsers()
     res.json(Number(count[0].count))
+  },
+  addUser: async function(req, res) {
+    const db = req.app.get('db')
+    const { firstName, lastName, username, email } = req.body
+    const person = await db.checkForUser([username, email])
+    if (person[0]) {
+      res.status(406).json({
+        error: "USERNAME_TAKEN"
+      })
+    }
+    // pass in user info. send response back.
+    const user = await db.addUser([firstName, lastName, username, email])
+    res.status(200).json(user)
   },
   postMessage: async function(req, res) {
     const db = req.app.get('db')
@@ -83,6 +103,11 @@ module.exports = {
     const db = req.app.get('db')
     const messages = await db.getMessages()
     res.status(200).json(messages)
+  },
+  getSales: async function(req, res) {
+    const db = req.app.get('db')
+    const sales = await db.getSales()
+    res.status(200).json(sales)
   },
   sumSales: async function(req, res) {
     const db = req.app.get('db')

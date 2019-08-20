@@ -41,9 +41,9 @@ massive(CONNECTION_STRING).then(db => {
 
 // app.get('/api/sales', getSales)
 app.get('/api/sales', sumSales)
-app.get('/api/users', getUsersCount)
 app.get('/api/revenue', getRevenue)
-// app.get('/api/users', getUsers)
+app.get('/api/users', getUsers)
+app.get('/api/users-count', getUsersCount)
 app.get('/api/messages', getMessages)
 app.get('/auth/logout', logout)
 // app.get('/api/messages', getMessagesCount)
@@ -66,14 +66,14 @@ app.get('/api/user', function(req, res) {
 })
 
 // app.post('/api/sales', addSale)
-// app.post('/api/users', addUser)
+app.post('/api/add-user', addUser)
 
-// app.get('/api/sales', getSales)
+app.get('/api/get-sales', getSales)
 // app.get('/api/users', getUsersCount)
 
 // app.delete("/api/user/:id", deleteUser)
 
-// app.put("/api/users/:id", editUser)
+app.put("/api/users/:id", editUser)
 // app.put("/api/sales/:id", editSale)
 
 app.listen(SERVER_PORT, () => console.log(`Listening on Port ${SERVER_PORT}`));

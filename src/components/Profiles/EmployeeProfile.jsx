@@ -4,184 +4,34 @@ import '../../assets/scss/EmployeeProfile.scss'
 import Header from '../Navbar/Header'
 import ProfileCard from './ProfileCard';
 import CountUp from 'react-countup'
+import axios from 'axios';
 import { Button } from 'react-bootstrap';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
+import { connect } from 'react-redux';
+import { updateSession } from '../../Redux/reducer';
 
-export default class Login extends Component {
+
+class EmployeeProfile extends Component {
   constructor() {
     super()
     this.state = {
-
+      products: []
     }
+  }
+  
+  componentDidMount() {
+    axios.get('/api/user')
+    .then(res => {
+      this.props.updateSession(res.data)
+    })
+    .catch(err => console.log(err))
   }
 
   render() {
-    const { timeUpdated, repSales, repRevenue } = this.props
+    const { timeUpdated, /*repSales, repRevenue*/ } = this.props
     const cellEditProp = {
       mode: 'dbclick'
     };
-    const products = [
-      {
-        id: 1,
-        name: "VIN Mono 6",
-        price: 249
-      },
-      {
-        id: 2,
-        name: "GV Mavid",
-        price: 80
-      },
-      {
-        id: 3,
-        name: "ModelX",
-        price: 499
-      },
-      {
-        id: 4,
-        name: "Sensation L3",
-        price: 374
-      },
-      {
-        id: 5,
-        name: "Jerico N",
-        price: 239
-      },
-      {
-        id: 6,
-        name: "ModelX",
-        price: 499
-      },
-      {
-        id: 7,
-        name: "GV Mavid",
-        price: 80
-      },
-      {
-        id: 8,
-        name: "ModelX",
-        price: 499
-      },
-      {
-        id: 9,
-        name: "GV Mavid",
-        price: 80
-      },
-      {
-        id: 10,
-        name: "ModelX",
-        price: 499
-      },
-      {
-        id: 11,
-        name: "Sensation L3",
-        price: 374
-      },
-      {
-        id: 12,
-        name: "Jerico N",
-        price: 239
-      },
-      {
-        id: 13,
-        name: "ModelX",
-        price: 499
-      },
-      {
-        id: 14,
-        name: "GV Mavid",
-        price: 80
-      },
-      {
-        id: 15,
-        name: "ModelX",
-        price: 499
-      },
-      {
-        id: 16,
-        name: "VIN Mono 6",
-        price: 249
-      },
-      {
-        id: 17,
-        name: "GV Mavid",
-        price: 80
-      },
-      {
-        id: 18,
-        name: "ModelX",
-        price: 499
-      },
-      {
-        id: 19,
-        name: "Sensation L3",
-        price: 374
-      },
-      {
-        id: 20,
-        name: "Jerico N",
-        price: 239
-      },
-      {
-        id: 21,
-        name: "ModelX",
-        price: 499
-      },
-      {
-        id: 22,
-        name: "GV Mavid",
-        price: 80
-      },
-      {
-        id: 23,
-        name: "ModelX",
-        price: 499
-      },
-      {
-        id: 24,
-        name: "GV Mavid",
-        price: 80
-      },
-      {
-        id: 25,
-        name: "ModelX",
-        price: 499
-      },
-      {
-        id: 26,
-        name: "Sensation L3",
-        price: 374
-      },
-      {
-        id: 27,
-        name: "Jerico N",
-        price: 239
-      },
-      {
-        id: 28,
-        name: "ModelX",
-        price: 499
-      },
-      {
-        id: 29,
-        name: "GV Mavid",
-        price: 80
-      },
-      {
-        id: 30,
-        name: "ModelX",
-        price: 499
-      },
-      {
-        id: 31,
-        name: "Jerico N",
-        price: 239
-      },
-      {
-        id: 32,
-        name: "ModelX",
-        price: 499
-      },
-    ];
     return (
       <div className="employee-profile">
         <Header></Header>
@@ -213,7 +63,7 @@ export default class Login extends Component {
                 <div className="date">Updated: 8/18/19 - 12:01AM{timeUpdated}</div>
               </div>
             </div>
-            <BootstrapTable ref='table' data={products} cellEdit={ cellEditProp } pagination search>
+            <BootstrapTable insertRow={true} exportCSV={true} ref='table' data={this.state.products} cellEdit={cellEditProp} pagination search>
               <TableHeaderColumn width="100"  dataField='id' isKey={true} dataSort={true}>ID</TableHeaderColumn>
               <TableHeaderColumn dataField='name' dataSort={true}>Name</TableHeaderColumn>
               <TableHeaderColumn dataField='price' dataSort={true}>Price</TableHeaderColumn>
@@ -224,3 +74,15 @@ export default class Login extends Component {
     );
   }
 }
+
+function mapStateToProps(reduxState) {
+  return {
+    firstName: reduxState.reducer.firstName,
+    lastName: reduxState.reducer.lastName,
+    username: reduxState.reducer.username,
+    email: reduxState.reducer.email,
+    img: reduxState.reducer.img
+  }
+}
+
+export default connect(mapStateToProps, { updateSession })(EmployeeProfile);

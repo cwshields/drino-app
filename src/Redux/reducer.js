@@ -2,6 +2,7 @@ import axios from "axios";
 
 //initialState
 const initialState = {
+    id: 0,
     firstName: '',
     lastName: '',
     username: '',
@@ -23,6 +24,7 @@ const initialState = {
 }
 
 //actions
+const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION'
 const UPDATE_FIRSTNAME = 'UPDATE_FIRSTNAME'
 const UPDATE_LASTNAME = 'UPDATE_LASTNAME'
 const UPDATE_USERS_COUNT = 'UPDATE_USERS_COUNT'
@@ -33,6 +35,13 @@ const UPDATE_SESSION = 'UPDATE_SESSION'
 const RESET_STATE = 'RESET_STATE'
 
 //action creators
+export function updateDescription(id, description) {
+    return {
+      type: UPDATE_DESCRIPTION,
+      payload: axios.put(`/api/users/${id}`, { description })
+      .then(res => res.data)
+    }
+}
 export function currentRevenue() {
     return {
       type: UPDATE_REVENUE,
@@ -57,7 +66,7 @@ export function updatelastName(lastname) {
 export function countUsers() {
   return {
     type: UPDATE_USERS_COUNT,
-    payload: axios.get('/api/users')
+    payload: axios.get('/api/users-count')
       .then(res => res.data)
   }
 }
@@ -88,7 +97,14 @@ export function resetState() {
 }
 //reducer
 export default function reducer(state=initialState, action) {
-  switch(action.type) {
+  const { type, payload } = action
+  console.log(payload)
+  switch(type) {
+    case UPDATE_DESCRIPTION:
+      return {
+        ...state,
+        description: payload
+      }
     case UPDATE_FIRSTNAME:
       return {
         ...state,
@@ -122,6 +138,7 @@ export default function reducer(state=initialState, action) {
     case UPDATE_SESSION:
       return {
         ...state,
+        id: action.payload.id,
         firstName: action.payload.firstName,
         lastName: action.payload.lastName,
         username: action.payload.username,

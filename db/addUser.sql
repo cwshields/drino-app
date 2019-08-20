@@ -1,5 +1,5 @@
 INSERT INTO drino_users
-(first_name, last_name, username, password, email)
+(first_name, last_name, username, email)
 VALUES
-($1, $2, $3, $4, $5)
-RETURNING *
+($1, $2, $3, $4)
+RETURNING *;

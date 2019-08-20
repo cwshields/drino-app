@@ -2,18 +2,37 @@ import React, { Component } from 'react';
 import '../../assets/scss/profileCard.scss';
 import { Card, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { updateDescription } from '../../Redux/reducer';
 
 class ProfileCard extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      editing: false
+      editting: false,
+      description: props.description
     }
+  }
+
+  toggleEdit = () => {
+    if(this.state.editting === true) {
+      this.setState({ editting: false })
+    } else {
+      this.setState({ editting: true })
+    }
+  }
+
+  handleInputChange = (e) => {
+    const { name, value } = e.target
+    this.setState({ [name]: value })
+  }
+
+  saveChanges(id, description) {
+    this.props.updateDescription(id, description)
   }
 
   render() {
     const { firstName, lastName, email, img, description, jobTitle } = this.props
-    console.log(this.props)
+    console.log(this.state)
       return (
         <div className="profile-card">
           <div className="Card">
@@ -29,11 +48,14 @@ class ProfileCard extends Component {
                 <Card.Title>
                   {email}
                 </Card.Title>
-                  { this.state.editing === false 
+                  { this.state.editting === false 
                     ? <Card.Text>{description}</Card.Text>
-                    : <input className="" />
+                    : <div className="edit-wrap">
+                        <textarea type="text" className="" name="description" value={this.state.description} onChange={this.handleInputChange}/>
+                        <Button onClick={() => this.saveChanges(this.props.id, this.state.description)} className="save">Save</Button>
+                      </div>
                   }
-                <Button variant="light"><i className="fas fa-edit"></i></Button>
+                <Button variant="light" onClick={this.toggleEdit}><i className="fas fa-edit"></i></Button>
                 <Card.Text className="links">
                 <a target="_blank" rel="noopener noreferrer" href="https://facebook.com">
                   <i className="mr-10 fab fa-facebook-square"></i>
@@ -55,6 +77,7 @@ class ProfileCard extends Component {
 
 function mapStateToProps(reduxState) {
   return {
+    id: reduxState.reducer.id,
     firstName: reduxState.reducer.firstName,
     lastName: reduxState.reducer.lastName,
     email: reduxState.reducer.email,
@@ -64,4 +87,4 @@ function mapStateToProps(reduxState) {
   }
 }
 
-export default connect(mapStateToProps)(ProfileCard);
+export default connect(mapStateToProps, { updateDescription } )(ProfileCard);

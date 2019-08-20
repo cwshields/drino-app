@@ -27,7 +27,6 @@
     display: none;
   }
   .profile-wrap {
-    margin-bottom: 30px;
     display: flex;
     justify-content: center;
     margin-top: 30px;
@@ -111,6 +110,16 @@
     }
     .table td, .table th {
       padding: .5rem;
+    }
+    .btn-group-sm>.btn, .btn-sm {
+      padding: 5px 25px;
+      margin-right: 12px;
+      font-size: 17px;
+      line-height: 1.5;
+      border-radius: .2rem;
+    }
+    .react-bs-table-tool-bar {
+      margin-bottom: 8px;
     }
   }
 }

@@ -28,6 +28,7 @@ class Login extends Component {
       .post('/auth/login', { username, password })
       .then((res) => {
         this.props.updateSession(res.data)
+        console.log(res)
       })
       .catch(err => console.log(err))
   }
