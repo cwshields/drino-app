@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require ('express');
 const massive = require('massive');
 const session = require('express-session');
+const path = require('path'); // Usually moved to the start of file
 
 const { 
   register, 
@@ -26,12 +27,6 @@ const app = express();
 const { SESSION_SECRET, CONNECTION_STRING, SERVER_PORT } = process.env
 
 app.use( express.static( `${__dirname}/../build` ) );
-
-const path = require('path'); // Usually moved to the start of file
-
-app.get('*', (req, res)=>{
-    res.sendFile(path.join(__dirname, '../build/index.html'));
-});
 
 app.use(session({
   resave: false,
@@ -82,4 +77,7 @@ app.post('/api/add-user', addUser)
 app.put("/api/users/:id", editUser)
 // app.put("/api/sales/:id", editSale)
 
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 app.listen(SERVER_PORT, () => console.log(`Listening on Port ${SERVER_PORT}`));

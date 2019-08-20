@@ -36,7 +36,7 @@ class Home extends Component {
   render() {
     const { toggleShow } = this
     const { show } = this.state
-    const { userCount, timeUpdated, sales, revenue, bounceRate } = this.props
+  const { userCount, timeUpdated, sales, revenue, /*bounceRate*/ } = this.props
     console.log(this.props)
     return (
       <div className='dash-body'>
