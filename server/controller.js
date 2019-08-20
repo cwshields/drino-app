@@ -106,8 +106,15 @@ module.exports = {
   },
   getSales: async function(req, res) {
     const db = req.app.get('db')
-    const sales = await db.getSales()
+    const { id } = req.session.user
+    const sales = await db.getSales(id)
     res.status(200).json(sales)
+  },
+  sumRepSales: async function(req, res) {
+    const db = req.app.get('db')
+    const { id } = req.session.user
+    const sumRepSales = await db.sumRepSales(id)
+    res.status(200).json(sumRepSales)
   },
   sumSales: async function(req, res) {
     const db = req.app.get('db')

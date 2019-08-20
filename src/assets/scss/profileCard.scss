@@ -99,3 +99,16 @@
     }
   }
 }
+
+@media (max-width: 414px) {
+  .profile-card .Card {
+    width: 22rem;
+    margin: 16px;
+    .card-header {
+      padding: 32px 38px;
+    }
+    .card-body {
+      padding: 78px 38px 16px;
+    }
+  }
+}

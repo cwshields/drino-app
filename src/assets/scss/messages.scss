@@ -99,3 +99,28 @@
     }
   }
 }
+
+@media (max-width: 414px) {
+  .messages-wrap {
+    width: 380px;
+    min-height: 425px;
+    height: 660px;
+    .message-header {
+      .name-email {
+        .name {
+          font-size: 20px;
+          width: 220px;
+        }
+        .email {
+          display: none;
+          font-size: 18px;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .messages-component-wrap {
+    flex-direction: column;
+    width: 414px;
+  }
+}

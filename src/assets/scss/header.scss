@@ -1,5 +1,18 @@
 @import './variables.scss';
 
+
+@mixin square($property) {
+  width: $property;
+  height: $property;
+}
+
+.dropdown-menu > .dropdown-item .far.red {
+  color: #D83737;
+}
+.dropdown-menu > .dropdown-item .far.yellow {
+  color: #E5BE31;
+}
+
 .header-nav {
   font-family: 'robotoLte';
   display: flex;
@@ -20,6 +33,7 @@
 
 .nav-img {
   border-radius: 30px;
+  @include square(56px); 
 }
 .logo-wrap {
   display: flex;
@@ -63,8 +77,6 @@
       border: none;
     }
     .nav-img {
-      width: 56px;
-      height: 56px;
       border-radius: 40px;
       object-fit: cover;
     }
@@ -85,9 +97,7 @@
   .navbar{
     padding: 14px 14px;
   }
-  .navbar-light .navbar-nav .nav-link {
-    color: #c5c5c5;
-  }
+  .navbar-light .navbar-nav .nav-link, 
   .navbar-light .navbar-nav .show.nav-link {
     color: #c5c5c5;
   }
@@ -100,6 +110,7 @@
     border: none;
   }
   .navbar-nav .nav-link {
+    font-family: 'RobotoLTE';
     padding: 16px 26px;
     color: #c5c5c5;
     text-decoration: none;
@@ -160,13 +171,12 @@
         }
       }
       .nav-img {
-        width: 56px;
-        height: 56px;
         border-radius: 40px;
       }
     }
   }
   .dropdown-menu>.dropdown-item {
+    font-family: 'RobotoLTE';
     font-size: 18px;
     display: flex;
     align-items: center;

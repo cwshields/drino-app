@@ -8,8 +8,9 @@ const {
   login, 
   getSales,
   sumSales,
+  sumRepSales,
   addSale, 
-  getUsers, 
+  getUsers,
   addUser,
   editUser,
   getUsersCount, 
@@ -24,6 +25,13 @@ const {
 const app = express();
 const { SESSION_SECRET, CONNECTION_STRING, SERVER_PORT } = process.env
 
+app.use( express.static( `${__dirname}/../build` ) );
+
+const path = require('path'); // Usually moved to the start of file
+
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 app.use(session({
   resave: false,
@@ -45,6 +53,8 @@ app.get('/api/revenue', getRevenue)
 app.get('/api/users', getUsers)
 app.get('/api/users-count', getUsersCount)
 app.get('/api/messages', getMessages)
+app.get('/api/get-sales', getSales)
+app.get('/api/sum-rep-sales', sumRepSales)
 app.get('/auth/logout', logout)
 // app.get('/api/messages', getMessagesCount)
 app.delete('/api/messages/:id', deleteMessage)
@@ -67,12 +77,8 @@ app.get('/api/user', function(req, res) {
 
 // app.post('/api/sales', addSale)
 app.post('/api/add-user', addUser)
-
-app.get('/api/get-sales', getSales)
 // app.get('/api/users', getUsersCount)
-
 // app.delete("/api/user/:id", deleteUser)
-
 app.put("/api/users/:id", editUser)
 // app.put("/api/sales/:id", editSale)
 

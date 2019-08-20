@@ -8,27 +8,33 @@ import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 import { connect } from 'react-redux';
-import { updateSession } from '../../Redux/reducer';
+import { updateSession, sumRepSales } from '../../Redux/reducer';
 
 
 class EmployeeProfile extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       products: []
     }
   }
-  
-  componentDidMount() {
-    axios.get('/api/user')
-    .then(res => {
-      this.props.updateSession(res.data)
-    })
-    .catch(err => console.log(err))
+
+  componentWillMount() {
+    axios
+      .get('/api/user')
+      .then(res => {
+        this.props.updateSession(res.data)
+        this.props.sumRepSales()
+        axios
+          .get('/api/get-sales')
+          .then(res => this.setState({ products: res.data }))
+          .catch(err => console.log(err))
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
-    const { timeUpdated, /*repSales, repRevenue*/ } = this.props
+    const { timeUpdated, repSales, /*repRevenue*/ } = this.props
     const cellEditProp = {
       mode: 'dbclick'
     };
@@ -46,7 +52,7 @@ class EmployeeProfile extends Component {
             <div className="status-card-wrap">
               <div className="status-card blue">
                 <div className="number" id="root">
-                  <CountUp start={0} end={43} duration={1.6} separator="," />
+                  <CountUp start={0} end={this.state.products.length} duration={1.6} separator="," />
                 </div>
                 <div className="label">Sales</div>
                 <i className="fas fa-shopping-cart"></i>
@@ -55,7 +61,7 @@ class EmployeeProfile extends Component {
               </div>
               <div className="status-card green">
                 <div className="number">
-                  <CountUp start={0} end={2547} duration={1.6} separator="," prefix="$" />
+                  <CountUp start={0} end={repSales} duration={1.6} separator="," prefix="$" />
                 </div>
                 <div className="label">Revenue</div>
                 <i className="fas fa-dollar-sign"></i>
@@ -64,8 +70,8 @@ class EmployeeProfile extends Component {
               </div>
             </div>
             <BootstrapTable insertRow={true} exportCSV={true} ref='table' data={this.state.products} cellEdit={cellEditProp} pagination search>
-              <TableHeaderColumn width="100"  dataField='id' isKey={true} dataSort={true}>ID</TableHeaderColumn>
-              <TableHeaderColumn dataField='name' dataSort={true}>Name</TableHeaderColumn>
+              <TableHeaderColumn width="100" dataField='id' isKey={true} dataSort={true}>ID</TableHeaderColumn>
+              <TableHeaderColumn dataField='product' dataSort={true}>Name</TableHeaderColumn>
               <TableHeaderColumn dataField='price' dataSort={true}>Price</TableHeaderColumn>
             </BootstrapTable>
           </div>
@@ -81,8 +87,9 @@ function mapStateToProps(reduxState) {
     lastName: reduxState.reducer.lastName,
     username: reduxState.reducer.username,
     email: reduxState.reducer.email,
-    img: reduxState.reducer.img
+    img: reduxState.reducer.img,
+    repSales: reduxState.reducer.repSales
   }
 }
 
-export default connect(mapStateToProps, { updateSession })(EmployeeProfile);
+export default connect(mapStateToProps, { updateSession, sumRepSales })(EmployeeProfile);

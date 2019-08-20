@@ -12,21 +12,23 @@ class Home extends Component {
     super(props)
     this.state = {
       show: true,
-      userCount: 0,
-      sales: props.sales,
-      revenue: props.revenue,
-      bounceRate: props.bounceRate,
-      timeUpdated: props.timeUpdated,
+      // userCount: props.userCount,
+      // sales: props.sales,
+      // revenue: props.revenue,
+      // bounceRate: props.bounceRate,
+      // timeUpdated: props.timeUpdated,
     }
   }
 
   
   componentDidMount() {
-    this.props.countUsers()
+    this.getInfo()
+  }
+  getInfo = () => {
     this.props.currentRevenue()
     this.props.countSales()
+    this.props.countUsers()
   }
-
   toggleShow = () => {
     this.setState({ show: false })
   }
@@ -35,48 +37,55 @@ class Home extends Component {
     const { toggleShow } = this
     const { show } = this.state
     const { userCount, timeUpdated, sales, revenue, bounceRate } = this.props
+    console.log(this.props)
     return (
       <div className='dash-body'>
         <div className="dash-section">
           { show === true 
             ? <Welcome show={show} toggleShow={toggleShow} /> 
             : null }
-          <div className="status-card-wrap">
-            <div className="status-card red rm">
-              <div className="number"><CountUp start={0} end={userCount} duration={1.6} separator="," /></div>
-              <div className="label">Users</div>
-              <i className="fas fa-user-plus"></i>
-              <hr className="red" />
-              <div className="date">Updated: {timeUpdated}</div>
-            </div>
-            <div className="status-card blue rm">
-              <div className="number" id="root">
-                <CountUp start={0} end={sales} duration={1.6} separator="," />
-              </div>
-              <div className="label">Sales</div>
-              <i className="fas fa-shopping-cart"></i>
-              <hr className="blue" />
-              <div className="date">Updated: {timeUpdated}</div>
-            </div>
-            <div className="status-card green rm">
-              <div className="number">
-                <CountUp start={0} end={revenue} duration={1.6} separator="," prefix="$" />
-              </div>
-              <div className="label">Revenue</div>
-              <i className="fas fa-dollar-sign"></i>
-              <hr className="green" />
-              <div className="date">Updated: {timeUpdated}</div>
-            </div>
-            <div className="status-card yellow">
-              <div className="number">
-                <CountUp start={0} end={bounceRate} duration={1.6} separator="," decimal="." decimals={1} suffix="%" />
-              </div>
-              <div className="label">Bounce Rate</div>
-              <i className="fas fa-chart-line"></i>
-              <hr className="yellow" />
-              <div className="date">Updated: {timeUpdated}</div>
-            </div>
-          </div>
+            {
+              revenue === undefined ?
+              null : (
+                <div className="status-card-wrap">
+                  <div className="status-card red rm">
+                    <div className="number"><CountUp start={0} end={userCount} duration={1.6} separator="," /></div>
+                    <div className="label">Users</div>
+                    <i className="fas fa-user-plus"></i>
+                    <hr className="red" />
+                    <div className="date">Updated: {timeUpdated}</div>
+                  </div>
+                  <div className="status-card blue rm">
+                    <div className="number" id="root">
+                      <CountUp start={0} end={sales} duration={1.6} separator="," />
+                    </div>
+                    <div className="label">Sales</div>
+                    <i className="fas fa-shopping-cart"></i>
+                    <hr className="blue" />
+                    <div className="date">Updated: {timeUpdated}</div>
+                  </div>
+                  <div className="status-card green rm">
+                    <div className="number">
+                      <CountUp start={0} end={revenue} duration={1.6} separator="," prefix="$" />
+                    </div>
+                    <div className="label">Revenue</div>
+                    <i className="fas fa-dollar-sign"></i>
+                    <hr className="green" />
+                    <div className="date">Updated: {timeUpdated}</div>
+                  </div>
+                  <div className="status-card yellow">
+                    <div className="number">
+                      <CountUp start={0} end={32.7} duration={1.6} separator="," decimal="." decimals={1} suffix="%" />
+                    </div>
+                    <div className="label">Bounce Rate</div>
+                    <i className="fas fa-chart-line"></i>
+                    <hr className="yellow" />
+                    <div className="date">Updated: {timeUpdated}</div>
+                  </div>
+                </div>
+              )
+            }
+
           <div className="charts-component">
             <Charts />
           </div>
@@ -91,7 +100,6 @@ class Home extends Component {
               frameBorder="0" 
             />
           </div>
-          <div className="mobile-test-box"></div>
         </div>
       </div>
     );

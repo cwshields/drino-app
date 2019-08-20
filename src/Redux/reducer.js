@@ -16,6 +16,7 @@ const initialState = {
     userCount: 0,
     messageCount: 0,
     sales: 0,
+    repSales: 8523,
     revenue: 0,
     bounceRate: 58.3,
     timeUpdated: '8/1/19 - 12:01am',
@@ -24,6 +25,7 @@ const initialState = {
 }
 
 //actions
+const SUM_REP_SALES = 'SUM_REP_SALES'
 const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION'
 const UPDATE_FIRSTNAME = 'UPDATE_FIRSTNAME'
 const UPDATE_LASTNAME = 'UPDATE_LASTNAME'
@@ -35,45 +37,59 @@ const UPDATE_SESSION = 'UPDATE_SESSION'
 const RESET_STATE = 'RESET_STATE'
 
 //action creators
+export function sumRepSales() {
+  return {
+    type: SUM_REP_SALES,
+    payload: axios
+      .get('/api/sum-rep-sales')
+      .then(res => res.data)
+  }
+}
 export function updateDescription(id, description) {
     return {
       type: UPDATE_DESCRIPTION,
-      payload: axios.put(`/api/users/${id}`, { description })
-      .then(res => res.data)
+      payload: axios
+        .put(`/api/users/${id}`, { description })
+        .then(res => res.data)
     }
 }
 export function currentRevenue() {
     return {
       type: UPDATE_REVENUE,
-      payload: axios.get('/api/revenue')
+      payload: axios
+        .get('/api/revenue')
         .then(res => res.data)
     }
 }
 export function updateFirstName(firstname) {
   return {
     type: UPDATE_FIRSTNAME,
-    payload: axios.put('/auth/user', {})
-    .then(res => res.data)
+    payload: axios
+      .put('/auth/user', {})
+      .then(res => res.data)
   }
 }
 export function updatelastName(lastname) {
   return {
     type: UPDATE_LASTNAME,
-    payload: axios.put('/auth/user', {})
-    .then(res => res.data)
+    payload: axios
+      .put('/auth/user', {})
+      .then(res => res.data)
   }
 }
 export function countUsers() {
   return {
     type: UPDATE_USERS_COUNT,
-    payload: axios.get('/api/users-count')
+    payload: axios
+      .get('/api/users-count')
       .then(res => res.data)
   }
 }
 export function countMessages() {
   return {
     type: UPDATE_MESSAGES_COUNT,
-    payload: axios.get('/api/messages')
+    payload: axios
+      .get('/api/messages')
       .then(res => res.data)
   }
 }
@@ -100,6 +116,11 @@ export default function reducer(state=initialState, action) {
   const { type, payload } = action
   console.log(payload)
   switch(type) {
+    case SUM_REP_SALES:
+      return {
+        ...state,
+        repSales: payload
+      }
     case UPDATE_DESCRIPTION:
       return {
         ...state,
