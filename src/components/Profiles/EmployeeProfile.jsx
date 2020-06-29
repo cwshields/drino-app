@@ -19,15 +19,17 @@ class EmployeeProfile extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     axios
       .get('/api/user')
       .then(res => {
         this.props.updateSession(res.data)
-        this.props.sumRepSales()
         axios
           .get('/api/get-sales')
-          .then(res => this.setState({ products: res.data }))
+          .then(res => { 
+            // console.log(res.data)
+            this.setState({ products: res.data })
+          })
           .catch(err => console.log(err))
       })
       .catch(err => console.log(err))
@@ -73,6 +75,7 @@ class EmployeeProfile extends Component {
               <TableHeaderColumn width="100" dataField='id' isKey={true} dataSort={true}>ID</TableHeaderColumn>
               <TableHeaderColumn dataField='product' dataSort={true}>Name</TableHeaderColumn>
               <TableHeaderColumn dataField='price' dataSort={true}>Price</TableHeaderColumn>
+              <TableHeaderColumn dataField='amount' dataSort={true}>Amount</TableHeaderColumn>
             </BootstrapTable>
           </div>
         </div>

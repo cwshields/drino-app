@@ -39,7 +39,7 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     if (this.props.login === true && this.props.isAdmin === true) {
       return <Redirect to='/dashboard/home' />
     }

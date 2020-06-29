@@ -28,11 +28,13 @@ class ProfileCard extends Component {
 
   saveChanges(id, description) {
     this.props.updateDescription(id, description)
+    this.toggleEdit()
+    // console.log(this.props);
   }
 
   render() {
     const { firstName, lastName, email, img, description, jobTitle } = this.props
-    console.log(this.state)
+    // console.log(this.state)
       return (
         <div className="profile-card">
           <div className="Card">
@@ -87,4 +89,4 @@ function mapStateToProps(reduxState) {
   }
 }
 
-export default connect(mapStateToProps, { updateDescription } )(ProfileCard);
+export default connect(mapStateToProps, { updateDescription })(ProfileCard);
