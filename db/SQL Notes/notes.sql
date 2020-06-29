@@ -3,6 +3,7 @@
 
 -- CREATE TABLE drino_messages (
 --   id serial PRIMARY KEY,
+--   user_id INT NOT NULL,
 --   message VARCHAR (1000) NOT NULL
 -- );
 
@@ -74,6 +75,10 @@
 -- INNER JOIN drino_users ON drino_messages.user_id = drino_users.id;
 
 -- UPDATE drino_users SET email = 'tholliar17@drino.com' WHERE username = 'tholliar17';
+
+-- update drino_users
+-- set is_admin = true
+-- where id = 2 or id = 5 or id = 7 or id = 8;
 
 -- ALTER TABLE drino_sales 
 -- DROP COLUMN amount;
