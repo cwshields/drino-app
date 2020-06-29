@@ -114,7 +114,8 @@ export function resetState() {
 //reducer
 export default function reducer(state=initialState, action) {
   const { type, payload } = action
-  console.log(payload)
+  // console.log(payload)
+  // console.log(type)
   switch(type) {
     case SUM_REP_SALES:
       return {
@@ -155,6 +156,11 @@ export default function reducer(state=initialState, action) {
       return {
         ...state,
         sales: +action.payload[0].count
+      }
+    case `${UPDATE_DESCRIPTION}_FULFILLED`:
+      return {
+        ...state,
+        description: action.payload[0].description
       }
     case UPDATE_SESSION:
       return {
