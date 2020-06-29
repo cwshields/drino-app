@@ -12,9 +12,6 @@ export default function Drino() {
   return (
     <div className='drino'>
       <DrinoNavbar className=''></DrinoNavbar>
-      <header className=''>
-
-      </header>
       <main>
         <div className="drino-container">
           <div className="box">

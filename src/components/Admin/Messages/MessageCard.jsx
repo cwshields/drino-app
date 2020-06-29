@@ -15,7 +15,7 @@ const Messages = (props) => {
             <div className="name">{first_name} {last_name}</div>
             <div className="email">{email}</div>
           </div>
-          <div className="time">8:19pm 8/11/19</div>
+          <div className="time">4:13pm 6/21/20</div>
         </div>
       </Accordion.Toggle>
       <Accordion.Collapse eventKey={message}>
