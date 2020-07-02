@@ -20,7 +20,7 @@ export default function DrinoNavbar() {
           <Link to=''>
             <div className="nav-link">About</div>
           </Link>
-          <Link to=''>
+          <Link to='/contact'>
             <div className="nav-link">Contact</div>
           </Link>
           <Link to=''>
