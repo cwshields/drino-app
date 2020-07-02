@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../../assets/scss/App.scss'
-import '../../assets/scss/EmployeeProfile.scss'
+import '../../assets/scss/employeeProfile.scss'
 import Header from '../Navbar/Header'
 import ProfileCard from './ProfileCard';
 import CountUp from 'react-countup'

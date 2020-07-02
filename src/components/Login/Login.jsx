@@ -1,32 +1,24 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-import '../../assets/scss/login.scss'
-import { Link, Redirect } from 'react-router-dom'
-import { connect } from 'react-redux';
-import { updateSession } from '../../Redux/reducer';
+import React, { Component } from "react";
+import axios from "axios";
+import "../../assets/scss/login.scss";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { updateSession } from "../../Redux/reducer";
 
 class Login extends Component {
   constructor() {
     super()
     this.state = {
       username: '',
-      password: ''
+      password: '',
     }
   }
 
-  componentDidMount() {
-    axios.get('/api/user')
-    .then(res => {
-      this.props.updateSession(res.data)
-    })
-    .catch(err => console.log(err))
-  }
-
   login = () => {
-    const { username, password } = this.state
+    const { username, password } = this.state;
     axios
-      .post('/auth/login', { username, password })
-      .then((res) => {
+      .post("/auth/login", { username, password })
+      .then(res => {
         this.props.updateSession(res.data)
         console.log(res)
       })
@@ -41,10 +33,9 @@ class Login extends Component {
   render() {
     // console.log(this.props)
     if (this.props.login === true && this.props.isAdmin === true) {
-      return <Redirect to='/dashboard/home' />
-    }
-    else if (this.props.login === true && this.props.isEmployee === true) {
-      return <Redirect to="/profile" /> 
+      return <Redirect to="/dashboard/home" />;
+    } else if (this.props.login === true && this.props.isEmployee === true) {
+      return <Redirect to="/profile" />;
     }
     return (
       <div className="login-body">
@@ -60,18 +51,31 @@ class Login extends Component {
           <div className="login-body-wrap">
             <div className="modal-name">User Login</div>
             <div className="input-group">
-              <input placeholder="Username" type="text" name="username" onChange={this.handleChange} />
-              <input placeholder="Password" type="password" name="password" onChange={this.handleChange} />
+              <input
+                placeholder="Username"
+                type="text"
+                name="username"
+                onChange={this.handleChange}
+              />
+              <input
+                placeholder="Password"
+                type="password"
+                name="password"
+                onChange={this.handleChange}
+              />
             </div>
-            <button className="signin-btn" onClick={this.login}>Login</button>
-            <div className="reg-query">Don't have an account?&nbsp;
-              <Link className="blue-link" to='/profile'>
+            <button className="signin-btn" onClick={this.login}>
+              Login
+            </button>
+            <div className="reg-query">
+              Don't have an account?&nbsp;
+              <Link to="/" className="blue-link">
                 Register here
               </Link>
             </div>
             <div className="login-footer">
               <Link to="/" className="footer-link">
-                Forgot password?
+                Drino Home Page
               </Link>
             </div>
           </div>
@@ -90,8 +94,8 @@ function mapStateToProps(reduxState) {
     isAdmin: reduxState.reducer.isAdmin,
     isEmployee: reduxState.reducer.isEmployee,
     img: reduxState.reducer.img,
-    login: reduxState.reducer.login
-  }
+    login: reduxState.reducer.login,
+  };
 }
 
 export default connect(mapStateToProps, { updateSession })(Login);

@@ -19,12 +19,7 @@ class Home extends Component {
       // timeUpdated: props.timeUpdated,
     }
   }
-
-  
   componentDidMount() {
-    this.getInfo()
-  }
-  getInfo = () => {
     this.props.currentRevenue()
     this.props.countSales()
     this.props.countUsers()
@@ -32,12 +27,11 @@ class Home extends Component {
   toggleShow = () => {
     this.setState({ show: false })
   }
-
   render() {
     const { toggleShow } = this
     const { show } = this.state
   const { userCount, timeUpdated, sales, revenue, /*bounceRate*/ } = this.props
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div className='dash-body'>
         <div className="dash-section">
@@ -45,10 +39,11 @@ class Home extends Component {
             ? <Welcome show={show} toggleShow={toggleShow} /> 
             : null }
             {
-              revenue === undefined ?
+              revenue === undefined || sales === undefined || userCount === undefined ?
               null : (
                 <div className="status-card-wrap">
                   <div className="status-card red rm">
+                    {console.log(this.props.userCount)}
                     <div className="number"><CountUp start={0} end={userCount} duration={1.6} separator="," /></div>
                     <div className="label">Users</div>
                     <i className="fas fa-user-plus"></i>

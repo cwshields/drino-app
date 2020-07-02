@@ -5,7 +5,6 @@ import { Accordion, Card, Button } from 'react-bootstrap';
 const Messages = (props) => {
   const { message } = props
   const { first_name, last_name, email, message: userMessage } = props.message
-  console.log(message);
   
   return (
     <Card>

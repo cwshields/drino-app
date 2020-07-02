@@ -11,7 +11,7 @@ import { Button } from 'react-bootstrap';
 export default function Drino() {
   return (
     <div className='drino'>
-      <DrinoNavbar className=''></DrinoNavbar>
+      <DrinoNavbar></DrinoNavbar>
       <main>
         <div className="drino-container">
           <div className="box">
@@ -124,7 +124,7 @@ export default function Drino() {
             </div>
             <div className="support">
               <div>Do you have a question? Send us a word:</div>
-              <a href="mailto:#0" ><div className="green email">support@drino.live</div></a>
+              <a href="mailto:cwshields2@gmail.com" ><div className="green email">support@drino.live</div></a>
             </div>
             <div className="copyright">Copyright &copy; {(new Date().getFullYear())} All rights reserved | Drino Technologies Inc.</div>
           </footer>
