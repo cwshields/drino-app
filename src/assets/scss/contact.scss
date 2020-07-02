@@ -1,0 +1,112 @@
+@import './variables.scss';
+
+h1 {
+  font-size: 2.3rem;
+  color: #f1f1f1;
+}
+.contact-page {
+  position: relative;
+  background-color: #383c47;
+  background-image: url(../images/footer_lodyas-faded.png);
+  height: 100vh;
+  .contact-wrap {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 6vmin;
+    .jumbotron {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2vmin;
+      padding: 2rem;
+      background-color: #1d202791;
+      border-radius: 8px;
+      min-width: 65vmin;
+    }
+  }
+  input[type] {
+    color: #b4b4b4;
+    font-size: large;  
+  }
+  input[type]:hover, input[type]:focus {
+    background-color: #20252c;
+  }
+  input[type]:focus {
+    font-size: large;  
+    color: #ebebeb;
+  }
+  textarea {
+    color: #b4b4b4;
+  }
+  textarea:hover {
+    background-color: #20252c;
+  }
+  textarea:focus {
+    color: #ebebeb;
+  }
+  .form-input {
+    height: 48px;
+  }
+  .form-control::placeholder {
+    font-size: large;
+  }
+  .form {
+    width: 100%;
+    color: #f5f5f5;
+  }
+  .form-control {
+    padding: 0.7rem 0.8rem;
+    background-color: #1f242b;
+    border: 0;
+    border-left: 2px solid $green;
+  }
+  .form-control:focus {
+    border-color: #272f36;
+    background-color: #1f242b;
+    box-shadow: 0 0 0 0.2rem #3c974048;
+  }
+  .form-group {
+    margin-bottom: 1.8rem;
+  }
+  .form-row {
+    margin: 0 -16px 1.8rem;
+  }
+  .form-row > .col {
+    padding: 0 16px 0;
+  }
+  .form-text {
+    max-height: 38vh;
+  }
+  .submit-btn {
+    font-size: 1.1rem;
+    padding: 0.5rem 1.4rem;
+    background-color: $green;
+    border: 0;
+  }
+  .submit-btn:hover {
+    background-color: $dark-green;
+  }
+  .submit-btn:focus {
+    background-color: $dark-green;
+    box-shadow: 0 0 0 0.2rem #3c974048;
+    border: 0;
+  }
+  .submit-btn:active {
+    background-color: $dark-green !important;
+    border-color: #272f36;
+    box-shadow: 0 0 0 0.2rem #3c974048 !important;
+  }
+}
+.triangle {
+  content: '';
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 200px solid red;
+  border-left: 300px solid transparent;
+}

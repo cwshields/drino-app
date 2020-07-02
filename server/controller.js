@@ -94,9 +94,8 @@ module.exports = {
   },
   postMessage: async function(req, res) {
     const db = req.app.get('db')
-    const { message } = req.body
-    const { id } = req.session.user
-    await db.postMessage([message, id])
+    const { firstName, lastName, email, message } = req.body
+    await db.postMessage(firstName, lastName, email, message)
     res.sendStatus(200)
   },
   getMessages: async function(req, res) {

@@ -58,7 +58,7 @@ app.use(express.json());
 
 app.post('/auth/register', register)
 app.post('/auth/login', login)
-app.post('/api/messages', postMessage)
+app.post('/api/send-message', postMessage)
 
 app.get('/api/user', function(req, res) {
   if(req.session.user) {
