@@ -49,7 +49,7 @@ export default function DashboardNavbar() {
             </div>
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item href="#/404">
+            <Dropdown.Item href="/404">
               <div className="nav-link-wrap">
                 <div className="nav-icon">
                   <i className="far yellow fa-circle"></i>
@@ -57,7 +57,7 @@ export default function DashboardNavbar() {
                 404 Error
               </div>
             </Dropdown.Item>
-            <Dropdown.Item href="#/500">
+            <Dropdown.Item href="/500">
               <div className="nav-link-wrap">
                 <div className="nav-icon">
                   <i className="far red fa-circle"></i>
@@ -65,7 +65,7 @@ export default function DashboardNavbar() {
                 500 Error
               </div>
             </Dropdown.Item>
-            <Dropdown.Item to="#/dashboard/profile">
+            <Dropdown.Item to="/dashboard/profile">
               <div className="nav-link-wrap">
                 <div className="nav-icon">
                   <i className="fas fa-user-circle"></i>
@@ -73,7 +73,7 @@ export default function DashboardNavbar() {
                 Profile
               </div>
             </Dropdown.Item>
-            <Dropdown.Item href="#/dashboard/register">
+            <Dropdown.Item href="/dashboard/register">
               <div className="nav-link-wrap">
                 <div className="nav-icon">
                   <i className="fas fa-edit"></i>
