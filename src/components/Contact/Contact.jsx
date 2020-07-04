@@ -64,7 +64,7 @@ export default class Contact extends Component {
                   />
                 </Col>
               </Form.Row>
-              <Form.Group controlId="exampleForm.ControlInput1">
+              <Form.Group>
                 <Form.Control
                   required
                   onChange={this.handleChange}
@@ -75,7 +75,7 @@ export default class Contact extends Component {
                   placeholder="email@example.com"
                 />
               </Form.Group>
-              <Form.Group controlId="exampleForm.ControlTextarea1">
+              <Form.Group>
                 <Form.Control
                   required
                   onChange={this.handleChange}
@@ -93,19 +93,7 @@ export default class Contact extends Component {
             </Button>
           </Jumbotron>
         </div>
-        <div className="triangle"></div>
       </div>
     );
   }
 }
-
-// function mapStateToProps(reduxState) {
-//   return {
-//     firstName: reduxState.reducer.firstName,
-//     lastName: reduxState.reducer.lastName,
-//     email: reduxState.reducer.email,
-//     message: reduxState.reducer.message,
-//   };
-// }
-
-// export default connect(mapStateToProps, { sendMessage })(Contact);

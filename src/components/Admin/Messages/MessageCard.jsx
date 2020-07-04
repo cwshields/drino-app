@@ -2,7 +2,7 @@ import React from 'react';
 import '../../../assets/scss/messages.scss';
 import { Accordion, Card, Button } from 'react-bootstrap';
 
-const Messages = (props) => {
+const MessageCard = (props) => {
   const { message } = props
   const { first_name, last_name, email, message: userMessage } = props.message
   
@@ -29,4 +29,4 @@ const Messages = (props) => {
   )
 }
 
-export default Messages
+export default MessageCard

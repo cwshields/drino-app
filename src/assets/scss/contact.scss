@@ -100,13 +100,3 @@ h1 {
     box-shadow: 0 0 0 0.2rem #3c974048 !important;
   }
 }
-.triangle {
-  content: '';
-  position: absolute;
-  top: 80px;
-  right: 0;
-  width: 0;
-  height: 0;
-  border-top: 200px solid red;
-  border-left: 300px solid transparent;
-}
