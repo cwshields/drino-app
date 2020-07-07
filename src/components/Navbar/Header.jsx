@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import Axios from 'axios';
 import logo from '../../assets/images/Drino-Logo.png'
 import '../../assets/scss/header.scss'
 import { Link } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 import { connect } from 'react-redux';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { resetState } from '../../Redux/reducer';
+import { logout } from '../../Redux/reducer';
 
 class Header extends Component {
   constructor() {
@@ -19,13 +18,6 @@ class Header extends Component {
   collapseNavbar = () => {
     const currentState = this.state.collapsed;
     this.setState({ collapsed: !currentState })
-  }
-
-  logout = () => {
-    this.props.resetState()
-    Axios
-      .get('/auth/logout')
-      .catch(err => console.log(err))
   }
 
   render() {
@@ -76,7 +68,7 @@ class Header extends Component {
             </div>
           </Nav>
           <div className="header-right-wrap">
-            <LinkContainer onClick={this.logout} to="/login">
+            <LinkContainer onClick={this.props.logout} exact to="/">
               <Nav.Link>
                 <i className="fas fa-sign-out-alt"></i>
                 <div className="link-text">Logout</div>
@@ -96,4 +88,4 @@ function mapStateToProps(reduxState) {
   }
 }
 
-export default connect(mapStateToProps, { resetState })(Header);
+export default connect(mapStateToProps, { logout })(Header);

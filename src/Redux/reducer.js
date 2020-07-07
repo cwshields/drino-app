@@ -93,10 +93,14 @@ export function updateSession(userSession) {
     payload: userSession,
   };
 }
-export function resetState() {
+export function logout() {
   return {
     type: RESET_STATE,
-  };
+    payload: axios
+      .get("/auth/logout")
+      .then(setTimeout(() => { window.location.reload() }))
+      .catch((err) => console.log(err))
+  }
 }
 //reducer
 export default function reducer(state = initialState, action) {

@@ -20,7 +20,6 @@ class Login extends Component {
       .post("/auth/login", { username, password })
       .then(res => {
         this.props.updateSession(res.data)
-        console.log(res)
       })
       .catch(err => console.log(err))
   }
@@ -30,12 +29,15 @@ class Login extends Component {
     this.setState({ [name]: value })
   }
 
+  
   render() {
-    // console.log(this.props)
-    if (this.props.login === true && this.props.isAdmin === true) {
-      return <Redirect to="/dashboard/home" />;
-    } else if (this.props.login === true && this.props.isEmployee === true) {
-      return <Redirect to="/profile" />;
+    const { login, isAdmin, isEmployee } = this.props
+    if (login === true && isAdmin === true) {
+      return <Redirect to="/dashboard/home" />
+    } else if (login === true && isEmployee === true) {
+      return <Redirect to="/profile" />
+    } else if (login === true) {
+      return <Redirect to="/" />
     }
     return (
       <div className="login-body">
@@ -43,11 +45,16 @@ class Login extends Component {
           <i className="custom-vec fas fa-user-alt"></i>
         </div>
         <div className="modal">
-          {/* { this.state.isAdmin 
+        {/*   
+          { 
+            this.props.login && this.state.isAdmin 
             ? <Redirect to="/dashboard/home" /> 
-            : this.state.isEmployee 
-            ? <Redirect to="/profile" /> 
-            : null} */}
+            : this.props.login && this.state.isEmployee 
+            ? <Redirect to="/profile" />
+            : this.props.login 
+            ? <Redirect to="/"> 
+          }    
+        */}
           <div className="login-body-wrap">
             <div className="modal-name">User Login</div>
             <div className="input-group">
