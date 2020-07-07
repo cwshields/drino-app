@@ -1,11 +1,16 @@
 @import './variables.scss';
 
+.messages-count {
+  font-size: 1.4rem;
+  margin: 6px 0 12px 22px;
+}
 .messages-wrap {
   font-family: 'Rosario';
   overflow: auto;
   width: 1000px;
+  margin-left: 15px;
   min-height: 425px;
-  height: 660px;
+  height: 655px;
   background-color: white;
   border-radius: 4px;
   resize: vertical;

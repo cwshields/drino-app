@@ -2,32 +2,38 @@ import React, { Component } from 'react';
 import '../../../assets/scss/messages.scss';
 import { Accordion, Button } from 'react-bootstrap';
 import ProfileCard from '../../Profiles/ProfileCard';
-import { Editor } from 'react-draft-wysiwyg';
+// import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import MessageCard from './MessageCard';
-import Axios from 'axios';
+import axios from 'axios';
 
 export default class Messages extends Component {
   constructor() {
     super()
     this.state = {
-      messages: []
+      messages: [],
+      messageCount: 0,
     }
   }
 
   componentDidMount() {
     this.getMessages()
+    axios
+      .get('/api/get-messages-count')
+      .then(res => { 
+        this.setState({ messageCount: res.data[0].count }) 
+      })
   }
 
   getMessages = () => {
-    Axios
+    axios
       .get('/api/messages')
       .then(res => { this.setState({ messages: res.data }) })
       .catch(err => console.log(err))
   }
 
   deleteMessage = (id) => {
-    Axios
+    axios
       .delete(`/api/messages/${id}`)
       .then( () => {
         this.getMessages()
@@ -43,16 +49,19 @@ export default class Messages extends Component {
             <ProfileCard />
             <div className="editor-messages">
               <div className="text-editor">
-                <Editor
-                  // editorState={editorState}
-                  toolbarClassName="toolbar"
-                  wrapperClassName="wrapper"
-                  editorClassName="editor"
-                // onEditorStateChange={this.onEditorStateChange}
-                />
+                {/* 
+                  <Editor 
+                    editorState={editorState}
+                    toolbarClassName="toolbar"
+                    wrapperClassName="wrapper"
+                    editorClassName="editor"
+                    onEditorStateChange={this.onEditorStateChange}
+                  />
+                */}
                 <Button className="send-btn" variant="success">Send</Button>
                 <Button className="cancel-btn" variant="danger">Cancel</Button>
               </div>
+              <div className="messages-count">Messages: {this.state.messageCount}</div>
               <div className="messages-wrap">
                 <div className="accordion-wrap">
                   <Accordion defaultActiveKey="0">
