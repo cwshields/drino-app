@@ -154,12 +154,19 @@ body {
 .fw-iframe {
   height: 430px;
 }
-
+.display-none {
+  display: none;
+}
 .news-wrap {
   width: 650px;
   height: 400px;
 }
-
+.devlog {
+  position: absolute;
+  left: 26px;
+  bottom: 26px;
+  padding: 1px 5px;
+}
 @media (max-width: 414px) {
   .news-wrap {
     width: 100%;

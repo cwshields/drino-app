@@ -43,7 +43,6 @@ class Home extends Component {
               null : (
                 <div className="status-card-wrap">
                   <div className="status-card red rm">
-                    {console.log(this.props.userCount)}
                     <div className="number"><CountUp start={0} end={userCount} duration={1.6} separator="," /></div>
                     <div className="label">Users</div>
                     <i className="fas fa-user-plus"></i>

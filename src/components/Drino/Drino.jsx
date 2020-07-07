@@ -1,16 +1,18 @@
-import React from 'react'
-import DrinoNavbar from '../Navbar/DrinoNavbar'
-import '../../assets/scss/App.scss'
-import '../../assets/scss/drino.scss'
-import '../../assets/fonts/micons/micons.css';
-import logo from '../../assets/images/Drino-Logo.png'
-import mobile1 from '../../assets/images/mobile1.png'
-import mobile2 from '../../assets/images/mobile2.png'
-import { Button } from 'react-bootstrap';
+import React from "react";
+import DrinoNavbar from "../Navbar/DrinoNavbar";
+import "../../assets/scss/App.scss";
+import "../../assets/scss/drino.scss";
+import "../../assets/fonts/micons/micons.css";
+import logo from "../../assets/images/Drino-Logo.png";
+import mobile1 from "../../assets/images/mobile1.png";
+import mobile2 from "../../assets/images/mobile2.png";
+import { Button } from "react-bootstrap";
+import { connect } from "react-redux";
+import { logout } from "../../Redux/reducer";
 
-export default function Drino() {
+function Drino() {
   return (
-    <div className='drino'>
+    <div className="drino">
       <DrinoNavbar></DrinoNavbar>
       <main>
         <div className="drino-container">
@@ -20,19 +22,18 @@ export default function Drino() {
                 <img className="logo" src={logo} alt="Drino Logo" />
                 <div className="logo-name">Drino</div>
               </div>
-              <div className="subtext">
-                Everything you need. All in one.
-              </div>
+              <div className="subtext">Everything you need. All in one.</div>
               <div className="text">
-                “You have to see failure as the beginning and the middle, but never entertain it as the end.”
+                “You have to see failure as the beginning and the middle, but
+                never entertain it as the end.”
               </div>
-              <div className="name">
-                - Jessica Herrin
-              </div>
+              <div className="name">- Jessica Herrin</div>
             </div>
             <div className="sect2">
               <img className="sect2-img" src={mobile1} alt="mobile1" />
-              <div className="sect2-text">The greatest humanity has to offer, in the palm of your hand.</div>
+              <div className="sect2-text">
+                The greatest humanity has to offer, in the palm of your hand.
+              </div>
             </div>
             <div className="sect3">
               <div className="group">
@@ -40,21 +41,31 @@ export default function Drino() {
                   <i className="icon-upload"></i>
                 </div>
                 <div className="header">Cloud Storage</div>
-                <div className="text">Nam volu ptate recusan dae nemo ipsam assum enda vitae error, eos facere porro maior es nesciut ipsa labore laudant.</div>
+                <div className="text">
+                  Nam volu ptate recusan dae nemo ipsam assum enda vitae error,
+                  eos facere porro maior es nesciut ipsa labore laudant.
+                </div>
               </div>
               <div className="group">
                 <div className="item-feature__icon">
                   <i className="icon-shield"></i>
                 </div>
                 <div className="header">Always Secure</div>
-                <div className="text">Harum consectetur iste fugit nihil quae, fugiat vel iure possimus odit corrupti dolor sequi! Numquam ut asperiores sed. Placeat facere et commodi.</div>
+                <div className="text">
+                  Harum consectetur iste fugit nihil quae, fugiat vel iure
+                  possimus odit corrupti dolor sequi! Numquam ut asperiores sed.
+                  Placeat facere et commodi.
+                </div>
               </div>
               <div className="group">
                 <div className="item-feature__icon">
                   <i className="icon-chat"></i>
                 </div>
                 <div className="header">Live Chat</div>
-                <div className="text">Blandi tiis porro eve niet voluptates nobis magnam, omnis quas aperiam nes simus odit ciunt cupidi tate, expedi ta.</div>
+                <div className="text">
+                  Blandi tiis porro eve niet voluptates nobis magnam, omnis quas
+                  aperiam nes simus odit ciunt cupidi tate, expedi ta.
+                </div>
               </div>
             </div>
             <div className="sect4">
@@ -72,7 +83,9 @@ export default function Drino() {
                 </div>
                 <div className="wrap2">
                   <div className="plan-label">Pro Plan</div>
-                  <div className="price">$10<span className="per"> Per Month</span></div>
+                  <div className="price">
+                    $10<span className="per"> Per Month</span>
+                  </div>
                   <ul>
                     <li>500GB Storage</li>
                     <li>Unlimited Bandwidth</li>
@@ -83,7 +96,9 @@ export default function Drino() {
                 </div>
                 <div className="wrap1">
                   <div className="plan-label">Premium Plan</div>
-                  <div className="price">$20<span className="per"> Per Month</span></div>
+                  <div className="price">
+                    $20<span className="per"> Per Month</span>
+                  </div>
                   <ul>
                     <li>1TB Storage</li>
                     <li>Unlimited Bandwidth</li>
@@ -110,26 +125,54 @@ export default function Drino() {
             <div className="subscribe-wrap">
               <div className="text-wrap">
                 <div className="label">Let's Stay In Touch</div>
-                <div className="subtext">Subscribe for updates, special offers and more</div>
+                <div className="subtext">
+                  Subscribe for updates, special offers and more
+                </div>
               </div>
               <div className="form">
-                <input placeholder="email@brand.com" type="text" name="email" id="email"/>
+                <input
+                  placeholder="email@brand.com"
+                  type="text"
+                  name="email"
+                  id="email"
+                />
                 <Button className="sign-up-btn">Sign Up</Button>
               </div>
             </div>
             <div className="sm-btn-wrap">
-              <Button className="sm-btn"><i className="fab fa-facebook-f"></i></Button>
-              <Button className="sm-btn"><i className="fab fa-twitter"></i></Button>
-              <Button className="sm-btn"><i className="fab fa-linkedin-in"></i></Button>
+              <Button className="sm-btn">
+                <i className="fab fa-facebook-f"></i>
+              </Button>
+              <Button className="sm-btn">
+                <i className="fab fa-twitter"></i>
+              </Button>
+              <Button className="sm-btn">
+                <i className="fab fa-linkedin-in"></i>
+              </Button>
             </div>
             <div className="support">
               <div>Do you have a question? Send us a word:</div>
-              <a href="mailto:cwshields2@gmail.com" ><div className="green email">support@drino.live</div></a>
+              <a href="mailto:cwshields2@gmail.com">
+                <div className="green email">support@drino.live</div>
+              </a>
             </div>
-            <div className="copyright">Copyright &copy; {(new Date().getFullYear())} All rights reserved | Drino Technologies Inc.</div>
+            <div className="copyright">
+              Copyright &copy; {new Date().getFullYear()} All rights reserved |
+              Drino Technologies Inc.
+            </div>
           </footer>
         </div>
       </main>
     </div>
   );
 }
+
+function mapStateToProps(reduxState) {
+  return {
+    login: reduxState.reducer.login,
+    isAdmin: reduxState.reducer.isAdmin,
+    isEmployee: reduxState.reducer.isEmployee,
+  };
+}
+
+export default connect(mapStateToProps, { logout })(Drino);
