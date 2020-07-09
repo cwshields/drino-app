@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { logout } from "../../Redux/reducer";
 
 function DrinoNavbar(props) {
+  console.log(props)
   return (
     <div className="navbar">
       <div className="nav-container">
@@ -16,8 +17,8 @@ function DrinoNavbar(props) {
             <div className="logo-name">Drino</div>
           </div>
         </Link>
-        {props.login && props.isAdmin ? 
-          <div className="nav-link-wrap">
+        <div className="nav-wrap">
+          <div className="nav-right-wrap">
             <Link to="/">
               <div className="nav-link">Store</div>
             </Link>
@@ -27,49 +28,44 @@ function DrinoNavbar(props) {
             <Link to="/contact">
               <div className="nav-link">Contact</div>
             </Link>
-            <Link to="/dashboard/home">
-              <div className="nav-link">Dashboard</div>
-            </Link>
-            <Link to="/" onClick={props.logout}>
-              <div className="nav-link">Logout</div>
-            </Link>
           </div>
-        : props.login && props.isAdmin === false ?
-          <div className="nav-link-wrap">
-            <Link to="/">
-              <div className="nav-link">Store</div>
-            </Link>
-            <Link to="/">
-              <div className="nav-link">About</div>
-            </Link>
-            <Link to="/contact">
-              <div className="nav-link">Contact</div>
-            </Link>
-            <Link to="/profile">
-              <div className="nav-link">Profile</div>
-            </Link>
-            <Link to="/" onClick={props.logout}>
-              <div className="nav-link">Logout</div>
-            </Link>
-          </div>
-        : <div className="nav-link-wrap">
-            <Link to="/">
-              <div className="nav-link">Store</div>
-            </Link>
-            <Link to="/">
-              <div className="nav-link">About</div>
-            </Link>
-            <Link to="/contact">
-              <div className="nav-link">Contact</div>
-            </Link>
-            <Link to="/">
-              <div className="nav-link">Register</div>
-            </Link>
-            <Link to="/login">
-              <div className="nav-link">Login</div>
-            </Link>
-          </div>
-        }
+          {props.login && props.isAdmin ? 
+            <div className="nav-link-wrap">
+              <Link to="/dashboard/home">
+                <div className="nav-link">Dashboard</div>
+              </Link>
+              <Link to="/" onClick={props.logout}>
+                <div className="nav-link">Logout</div>
+              </Link>
+            </div>
+          : props.login && props.isEmployee === false ?
+            <div className="nav-link-wrap">
+              <Link to="/">
+                <div className="nav-link">User</div>
+              </Link>
+              <Link to="/" onClick={props.logout}>
+                <div className="nav-link">Logout</div>
+              </Link>
+            </div>
+          : props.login && props.isAdmin === false ?
+            <div className="nav-link-wrap">
+              <Link to="/profile">
+                <div className="nav-link">Profile</div>
+              </Link>
+              <Link to="/" onClick={props.logout}>
+                <div className="nav-link">Logout</div>
+              </Link>
+            </div>
+          : <div className="nav-link-wrap">
+              <Link to="/">
+                <div className="nav-link">Register</div>
+              </Link>
+              <Link to="/login">
+                <div className="nav-link">Login</div>
+              </Link>
+            </div>
+          }
+        </div>
       </div>
     </div>
   );

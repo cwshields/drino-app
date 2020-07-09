@@ -11,18 +11,12 @@ export default class Messages extends Component {
   constructor() {
     super()
     this.state = {
-      messages: [],
-      messageCount: 0,
+      messages: []
     }
   }
 
   componentDidMount() {
     this.getMessages()
-    axios
-      .get('/api/get-messages-count')
-      .then(res => { 
-        this.setState({ messageCount: res.data[0].count }) 
-      })
   }
 
   getMessages = () => {
@@ -46,7 +40,10 @@ export default class Messages extends Component {
       <div className="dash-body">
         <div className="dash-section">
           <div className="messages-component-wrap">
+          <div className="count-wrap">
             <ProfileCard />
+            <div className="count">Messages: {this.state.messages.length}</div>
+          </div>
             <div className="editor-messages">
               <div className="text-editor">
                 {/* 
@@ -61,7 +58,6 @@ export default class Messages extends Component {
                 <Button className="send-btn" variant="success">Send</Button>
                 <Button className="cancel-btn" variant="danger">Cancel</Button>
               </div>
-              <div className="messages-count">Messages: {this.state.messageCount}</div>
               <div className="messages-wrap">
                 <div className="accordion-wrap">
                   <Accordion defaultActiveKey="0">
