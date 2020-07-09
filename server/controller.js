@@ -103,11 +103,6 @@ module.exports = {
     const messages = await db.getMessages()
     res.status(200).json(messages)
   },
-  getMessagesCount: async function(req, res) {
-    const db = req.app.get('db')
-    const sales = await db.getMessagesCount()
-    res.status(200).json(sales)
-  },
   getSales: async function(req, res) {
     const db = req.app.get('db')
     const { id } = req.session.user
