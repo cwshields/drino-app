@@ -27,7 +27,10 @@ export default class Messages extends Component {
       <div className="dash-body">
         <div className="dash-section">
           <div className="users-wrap">
-            <ProfileCard />
+            <div className="count-wrap">
+              <ProfileCard />
+              <div className="count">Users: {this.state.users.length}</div>
+            </div>
             <BootstrapTable insertRow={true} exportCSV={true} ref='table' data={this.state.users} cellEdit={cellEditProp} pagination search>
               <TableHeaderColumn width="80" dataField='id' isKey={true} dataSort={true}>ID</TableHeaderColumn>
               <TableHeaderColumn dataField='first_name' dataSort={true}>First Name</TableHeaderColumn>
