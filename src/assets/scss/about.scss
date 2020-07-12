@@ -1,0 +1,45 @@
+@import './variables.scss';
+
+.about_page {
+  background-image: url(../images/footer_lodyas-faded.png);
+  height: 100%;
+  background-color: #383c47;
+  .about-img {
+    width: 100%;
+    height: auto;
+    clip-path: polygon(0 0, 0 60%, 100% 100%, 100% 0);
+  }
+  .about-wrap {
+    display: flex;
+    justify-content: center;
+    .about-content {
+      width: 45vw;
+      margin-bottom: 5rem;
+      h1 {
+        font-size: 2.5rem;
+      }
+      .text {
+        text-align: justify;
+        margin: 1.5rem 0;
+        font-size: 1.12rem;
+        color: #f5f5f5;
+      }
+    }
+  }
+}
+
+.img-shape-wrap {
+  position: relative;
+  .shape {
+    position: absolute;
+    top: 14vw;
+    width: 100%;
+    height: 30vw;
+    clip-path: polygon(0 0%, 0 14%, 100% 40%, 100% 38%);
+    background-color: $green;
+  }
+}
+
+.filler {
+  height: 30vh;
+}
