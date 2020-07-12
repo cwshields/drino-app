@@ -46,7 +46,7 @@
   justify-content: center;
   align-items: center;
   z-index: 2;
-  border: 8px solid #373A44;
+  border: 8px solid #373941;
 }
 
 .custom-vec {
@@ -104,7 +104,7 @@
 }
 
 .reg-query {
-  font-size: 16px;
+  font-size: 15px;
   color: #757575;
 }
 
@@ -129,12 +129,34 @@
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 }
-
 .footer-link {
+  user-select: none;
+  cursor: pointer;
   font-size: 16px;
   color: #8d8d8d;
   padding: 4px 6px;
   margin-bottom: 4px;
+}
+
+.instructions {
+  text-align: center;
+  padding-bottom: 4px;
+  color: #797979;
+}
+.popover {
+  max-width: none;
+  .popover-header {
+    text-align: center;
+  }
+  .popover-body {
+    padding: 0.6rem 0.8rem;
+  }
+}
+.help {
+  display: flex;
+}
+.mid {
+  padding: 0 22px;
 }
 
 .footer-link:hover {

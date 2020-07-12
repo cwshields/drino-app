@@ -4,14 +4,16 @@ import "../../assets/scss/login.scss";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { updateSession } from "../../Redux/reducer";
+import { Popover, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 class Login extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      username: '',
-      password: '',
-    }
+      username: "",
+      password: "",
+      show: false,
+    };
   }
 
   login = () => {
@@ -19,25 +21,66 @@ class Login extends Component {
     axios
       .post("/auth/login", { username, password })
       .then(res => {
-        this.props.updateSession(res.data)
+        this.props.updateSession(res.data);
       })
-      .catch(err => console.log(err))
-  }
+      .catch(err => console.log(err));
+  };
 
   handleChange = (e) => {
-    const { name, value } = e.target
-    this.setState({ [name]: value })
-  }
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
 
-  
   render() {
-    const { login, isAdmin, isEmployee } = this.props
+    const popover = (
+      <Popover id="popover-basic">
+        <Popover.Title as="h3">Login Credentials</Popover.Title>
+        <Popover.Content>
+          <div>
+            <div className="instructions">Click username to copy to clipboard</div>
+            <div className="help">
+              <div>
+                <strong>Admin</strong>
+                <div className="" onClick={() => {navigator.clipboard.writeText("cwshields")}}>
+                  User: cwshields
+                  <Tooltip id="button-tooltip">
+                    Copied!
+                  </Tooltip>
+                </div>
+                <div>Pass: 1234</div>
+              </div>
+              <div className="mid">
+                <strong>Employee</strong>
+                <div className="" onClick={() => {navigator.clipboard.writeText("mpirouet1")}}>
+                  User: mpirouet1
+                  <Tooltip id="button-tooltip">
+                    Copied!
+                  </Tooltip>
+                </div>
+                <div>Pass: 1234</div>
+              </div>
+              <div>
+                <strong>Customer</strong>
+                <div className="" onClick={() => {navigator.clipboard.writeText("mhewertsonl")}}>
+                  User: mhewertsonl
+                  <Tooltip id="button-tooltip">
+                    Copied!
+                  </Tooltip>
+                </div>
+                <div>Pass: 1234</div>
+              </div>
+            </div>
+          </div>
+        </Popover.Content>
+      </Popover>
+    );
+    const { login, isAdmin, isEmployee } = this.props;
     if (login === true && isAdmin === true) {
-      return <Redirect to="/dashboard/home" />
+      return <Redirect to="/dashboard/home" />;
     } else if (login === true && isEmployee === true) {
-      return <Redirect to="/profile" />
+      return <Redirect to="/profile" />;
     } else if (login === true) {
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
     }
     return (
       <div className="login-body">
@@ -45,7 +88,7 @@ class Login extends Component {
           <i className="custom-vec fas fa-user-alt"></i>
         </div>
         <div className="modal">
-        {/*   
+          {/*   
           { 
             this.props.login && this.state.isAdmin 
             ? <Redirect to="/dashboard/home" /> 
@@ -81,9 +124,13 @@ class Login extends Component {
               </Link>
             </div>
             <div className="login-footer">
-              <Link to="/" className="footer-link">
-                Drino Home Page
-              </Link>
+              <OverlayTrigger
+                trigger="click"
+                placement="bottom"
+                overlay={popover}
+              >
+                <span className="footer-link">Need help?</span>
+              </OverlayTrigger>
             </div>
           </div>
         </div>
