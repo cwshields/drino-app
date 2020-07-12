@@ -25,8 +25,8 @@ class Contact extends Component {
     if (this.state.isSubmittable === true) {
       axios
         .post("/api/send-message", { firstName, lastName, email, message })
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err))
+        .then(res => console.log(res), this.setState({ message: "", isSubmittable: false }))
+        .catch(err => console.log(err))
     }
   }
 
