@@ -65,7 +65,7 @@ export default function DashboardNavbar() {
                 500 Error
               </div>
             </Dropdown.Item>
-            <Dropdown.Item to="/dashboard/profile">
+            <Dropdown.Item href="/profile">
               <div className="nav-link-wrap">
                 <div className="nav-icon">
                   <i className="fas fa-user-circle"></i>
