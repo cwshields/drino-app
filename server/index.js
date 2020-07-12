@@ -42,7 +42,6 @@ massive(CONNECTION_STRING).then(db => {
   console.log('Database Connected');
 })
 
-// app.get('/api/sales', getSales)
 app.get('/api/sales', sumSales)
 app.get('/api/revenue', getRevenue)
 app.get('/api/users', getUsers)
@@ -51,7 +50,6 @@ app.get('/api/messages', getMessages)
 app.get('/api/get-sales', getSales)
 app.get('/api/sum-rep-sales', sumRepSales)
 app.get('/auth/logout', logout)
-// app.get('/api/messages', getMessagesCount)
 app.delete('/api/messages/:id', deleteMessage)
 
 app.use(express.json());
@@ -72,7 +70,6 @@ app.get('/api/user', function(req, res) {
 
 // app.post('/api/sales', addSale)
 app.post('/api/add-user', addUser)
-// app.get('/api/users', getUsersCount)
 // app.delete("/api/user/:id", deleteUser)
 app.put("/api/users/:id", editUser)
 // app.put("/api/sales/:id", editSale)

@@ -41,12 +41,6 @@
   src: url(../fonts/Poppins/Poppins-Medium.ttf)
 }
 
-// DON'T FORGET ABOUT THIS!!!
-// * {
-//   -webkit-box-sizing: border-box;
-//           box-sizing: border-box;
-// }
-
 html {
   min-height: 100%;
 }
@@ -100,11 +94,6 @@ button:focus, input:focus {
 // ::-webkit-scrollbar-corner {
 //   display: none;
 // }
-
-.box {
-  background-image: url(../images/footer_lodyas-faded.png);
-  height: 5311px;
-}
 
 .nav-link:focus {
   outline: none !important;
