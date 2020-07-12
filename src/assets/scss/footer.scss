@@ -1,0 +1,126 @@
+@import './variables.scss';
+
+footer {
+  font-family: 'Poppins';
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #29313C;
+  height: 56vh;
+  width: 100%;
+  .label {
+    font-family: 'Arvo';
+    font-size: 3rem;
+    color: $green;
+  }
+  .subtext {
+    color: #a8aab4;
+  }
+  .subscribe-wrap {
+    display: flex;
+    align-items: center;
+    margin-bottom: 70px;
+    .form {
+      display: flex;
+      height: 3.2rem;
+      margin: 8px 0 0 56px;
+      input {
+        padding: 11px;
+        border: none;
+        width: 280px;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        background-color: #343d49;
+        color: #f5f5f5;
+      }
+      .sign-up-btn {
+        display: block;
+        font-family: 'Arvo';
+        font-size: 18px;
+        font-weight: lighter;
+        padding: 9px 20px;
+        border-color: $green;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        background-color: $green;
+      }
+      .sign-up-btn:hover {
+        background-color: $dark-green;
+      }
+    }
+  }
+  .sm-btn-wrap{
+    display: flex;
+    justify-content: space-between;
+    width: 160px;
+    margin-bottom: 25px;
+    .sm-btn {
+      width: 48px;
+      height: 48px;
+      font-size: 26px;
+      border-radius: 30px;
+      border-color: $dark-bluesteel;
+      background-color: #29313C;
+    }
+    .sm-btn:hover {
+      background-color: $green;
+    }
+  }
+  .support {
+    color: #f5f5f5;
+    text-align: center;
+    font-size: 19px;
+    .email {
+      font-size: 23px;
+    }
+  }
+  .copyright {
+    margin-top: 70px;
+    color: #858791;
+  }
+}
+
+@media (max-width: 1000px) {
+  footer {
+    padding: 0 16px;
+    .subscribe-wrap {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      .form {
+        margin: 32px 0 0 0;
+      }
+      .subtext {
+        text-align: center;
+      }
+    }
+    .support {
+    }
+    .copyright {
+      text-align: center;
+    }
+  }
+} 
+
+@media (max-width: 536px) {
+  footer {
+    height: 100fr;
+    .subscribe-wrap {
+      .label {
+        text-align: center;
+        font-family: 'Arvo';
+        font-size: 2.5rem;
+        color: $green;
+      }
+      .subtext {
+        font-size: 1rem;
+        color: #a8aab4;
+      }
+      .form {
+        display: none;
+      }
+    }
+  }
+}

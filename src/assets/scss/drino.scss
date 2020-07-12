@@ -5,6 +5,10 @@
   background-size: cover;
   position: relative;
   width: 100%;
+  .box {
+    background-image: url(../images/footer_lodyas-faded.png);
+    height: 5311px;
+  }
   // Tried putting background in container but bottom is cut off.
 }
 
@@ -15,84 +19,6 @@
     color: $off-white;
     height: calc(100vh - 80px);
     font-family: 'Poppins';
-    footer {
-      position: absolute;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      background-color: #29313C;
-      height: 565px;
-      width: 100%;
-      .label {
-        font-family: 'Arvo';
-        font-size: 50px;
-        color: $green;
-      }
-      .subtext {
-        color: #a8aab4;
-      }
-      .subscribe-wrap {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        width: 920px;
-        margin-bottom: 70px;
-        .form {
-          display: flex;
-          margin-bottom: 20px;
-          input {
-            padding: 11px;
-            border: none;
-            width: 280px;
-            border-top-left-radius: 4px;
-            border-bottom-left-radius: 4px;
-            background-color: #343d49;
-            color: #f5f5f5;
-          }
-          .sign-up-btn {
-            display: block;
-            font-family: 'Arvo';
-            font-size: 18px;
-            font-weight: lighter;
-            padding: 9px 20px;
-            border-top-left-radius: 0px;
-            border-bottom-left-radius: 0px;
-            background-color: $green;
-          }
-          .sign-up-btn:hover {
-            background-color: $dark-green;
-          }
-        }
-      }
-      .sm-btn-wrap{
-        display: flex;
-        justify-content: space-between;
-        width: 160px;
-        margin-bottom: 25px;
-        .sm-btn {
-          width: 48px;
-          height: 48px;
-          font-size: 26px;
-          border-radius: 30px;
-          background-color: #29313C;
-        }
-        .sm-btn:hover {
-          background-color: $green;
-        }
-      }
-      .support {
-        text-align: center;
-        font-size: 19px;
-        .email {
-          font-size: 23px;
-        }
-      }
-      .copyright {
-        margin-top: 70px;
-        color: #858791;
-      }
-    }
   }
   input {
     padding: 8px;
