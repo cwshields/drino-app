@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 import { logout } from "../../Redux/reducer";
 
 function DrinoNavbar(props) {
-  console.log(props)
   return (
     <div className="navbar">
       <div className="nav-container">
@@ -22,7 +21,7 @@ function DrinoNavbar(props) {
             <Link to="/">
               <div className="nav-link">Store</div>
             </Link>
-            <Link to="/">
+            <Link to="/about">
               <div className="nav-link">About</div>
             </Link>
             <Link to="/contact">
@@ -41,7 +40,7 @@ function DrinoNavbar(props) {
           : props.login && props.isEmployee === false ?
             <div className="nav-link-wrap">
               <Link to="/">
-                <div className="nav-link">User</div>
+                <div className="nav-link">Profile</div>
               </Link>
               <Link to="/" onClick={props.logout}>
                 <div className="nav-link">Logout</div>
