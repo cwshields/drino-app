@@ -17,7 +17,7 @@ const About = () => {
       </div>
       <div className="about-wrap">
         <div className="about-content">
-          <h1>About</h1>
+          <h1>What we do</h1>
           <div className="text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
             inventore perspiciatis ducimus itaque debitis aperiam illo est in
