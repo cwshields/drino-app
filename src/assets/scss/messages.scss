@@ -1,5 +1,50 @@
 @import './variables.scss';
-
+.accordion {
+  .card {
+    flex-direction: row;
+    align-items: center;
+    background-color: #f7f7f7;
+    .card-header {
+      cursor: pointer;
+      background-color: rgba(0,0,0,0);
+      border-bottom: 1px solid rgba(0,0,0,0);
+      padding-left: 0;
+      margin-left: 53px;
+    }
+    .card-wrap {
+      width: 100%;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      cursor: pointer;
+      border-radius: 3px;
+      top: 16px;
+      left: 16px;
+      width: 22.5px;
+      height: 22.5px;
+      margin: 0;
+      .form-check {
+        margin: 0;
+        padding: 0;
+        .form-check-input {
+          cursor: pointer;
+          width: 13.5px;
+          height: 13.5px;
+          margin: 0;
+        }
+      }
+    }
+    label:hover {
+      background-color: rgba(0, 98, 226, 0.125);
+    }
+  }
+}
+.select-all {
+  margin: 20px 0 0 340px;
+}
 .messages-count {
   font-size: 1.4rem;
   margin: 6px 0 12px 22px;
@@ -40,11 +85,12 @@
     }
   }
   .card-body {
-    padding: 24px;
+    background-color: #fff;
+    padding: 26px;
     font-size: 18px;
   }
   .btn-wrap {
-    margin-top: 20px;
+    margin-top: 26px;
     display: flex;
     justify-content: space-between;
   }

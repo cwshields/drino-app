@@ -41,7 +41,6 @@
     border-radius: 3px;
     overflow: scroll auto;
     margin: 0px;
-    width: 100%;
   }
   .table td, .table th {
     padding: .4rem .55rem;
@@ -54,11 +53,6 @@
     border-radius: .2rem;
   }
   .react-bs-table-tool-bar {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
-}
-
-.col-11 {
-  padding: 0;
-  padding-top: 20px; 
 }
