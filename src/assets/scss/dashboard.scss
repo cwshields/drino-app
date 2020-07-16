@@ -35,8 +35,15 @@
   .h4 {
     font-size: 35px;
   }
-  .welcome-text {
-    font-size: 16px;
+  .wlcm-text-wrap {
+    font-size: 1.2rem;
+    margin: 0 8px;
+    .wlcm-text {
+      width: 75%;
+    }
+    .wlcm-footer {
+      font-size: 1.1rem;
+    }
   }
 }
 
@@ -172,8 +179,8 @@
     .h4 {
       font-size: 0.85em;
     }
-    .welcome-text {
-      font-size: 0.48em;
+    .wlcm-text-wrap {
+      font-size: 0.48rem;
     }
   }
   .maps {

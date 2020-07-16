@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import '../../../assets/scss/App.scss'
 // import { Link } from "react-router-dom";
-import Charts from '../Charts/Charts';
-import Welcome from '../../BootstrapComps/WelcomeAlert';
-import { connect } from 'react-redux';
-import CountUp from 'react-countup';
-import { countUsers, currentRevenue, countSales } from '../../../Redux/reducer';
+import Charts from '../Charts/Charts'
+import Welcome from '../../BootstrapComps/WelcomeAlert'
+import { connect } from 'react-redux'
+import CountUp from 'react-countup'
+import { countUsers, currentRevenue, countSales } from '../../../Redux/reducer'
 
 class Home extends Component {
   constructor(props) {
@@ -111,4 +111,4 @@ function mapStateToProps(reduxState) {
   }
 }
 
-export default connect(mapStateToProps, { countUsers, currentRevenue, countSales })(Home);
+export default connect(mapStateToProps, { countUsers, currentRevenue, countSales })(Home)
