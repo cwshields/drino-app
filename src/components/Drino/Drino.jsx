@@ -17,7 +17,8 @@ function Drino() {
       <DrinoNavbar></DrinoNavbar>
       <main>
         <div className="drino-container">
-          <div className="box">
+          <div className="stripe1"></div>
+          <div className="drino-wrap">
             <div className="sect1">
               <div className="logo-wrap">
                 <img className="logo" src={logo} alt="Drino Logo" />
