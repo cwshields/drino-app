@@ -19,17 +19,17 @@ const Footer = () => {
             name="email"
             id="email"
           />
-          <Button className="sign-up-btn">Sign Up</Button>
+          <Button className="sign-up-btn" variant="success">Sign Up</Button>
         </div>
       </div>
       <div className="sm-btn-wrap">
-        <Button className="sm-btn">
+        <Button className="sm-btn" variant="success">
           <i className="fab fa-facebook-f"></i>
         </Button>
-        <Button className="sm-btn">
+        <Button className="sm-btn" variant="success">
           <i className="fab fa-twitter"></i>
         </Button>
-        <Button className="sm-btn">
+        <Button className="sm-btn" variant="success">
           <i className="fab fa-linkedin-in"></i>
         </Button>
       </div>
