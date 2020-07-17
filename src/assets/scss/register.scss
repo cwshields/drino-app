@@ -1,0 +1,10 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+.reg-wrap {
+  display: flex;
+  justify-content: center;
+  .reg-form {
+    width: 70vmin;
+  }
+}

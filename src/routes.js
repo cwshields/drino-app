@@ -7,12 +7,14 @@ import Dashboard from './components/Admin/Dashboard/Dashboard'
 import EmployeeProfile from './components/Profiles/EmployeeProfile'
 import Error404 from './components/Admin/Pages/Error404'
 import About from './components/About/About';
+import Register from './components/Register/Register';
 
 export default (
   <Switch>
     <Route exact path='/' component={Drino} />
     <Route path='/login' component={Login} />
     <Route path='/profile' component={EmployeeProfile} />
+    <Route path='/register' component={Register} />
     <Route path='/dashboard' component={Dashboard} />
     <Route path='/contact' component={Contact} />
     <Route path='/about' component={About} />
