@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { Alert } from 'react-bootstrap';
 
 function Welcome(props) {
-  const { toggleShow, firstName, lastName, notifications, statusUpdates } = props
+  const { toggleShow, firstName, notifications, statusUpdates } = props
   return (
     <Alert variant="info" onClick={toggleShow} dismissible>
       <Alert.Heading>Welcome, {firstName} </Alert.Heading>
       <div className="wlcm-text-wrap">
       <p className="wlcm-text">
         This is the administrator dashboard for the Drino app. Here you can see cards with data pulled from the backend, 
-        visualized statistics through the ChartJS package for react, and an RSS business news feed.
+        visualized statistics through the ChartJS package, and an RSS business news feed.
       </p>
       <hr/>
         <p className="wlcm-footer">
