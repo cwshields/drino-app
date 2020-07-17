@@ -1,10 +1,34 @@
 @import './variables.scss';
 @import './mixins.scss';
 
-.reg-wrap {
-  display: flex;
-  justify-content: center;
-  .reg-form {
-    width: 70vmin;
+.reg-container {
+  background-color: #323846;
+  background-image: url(../images/footer_lodyas-faded.png);
+  .reg-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 80px);
+    .reg-form {
+      width: 75vmin;
+      .jumbotron {
+        background-color: rgba(30, 35, 46, 0.555);
+        padding: 4rem 3rem;
+      }
+    }
   }
+}
+.form-row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.form-row>.col {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.form-group {
+  margin-bottom: 36px;
+}
+.form-control {
+  margin: 0;
 }
