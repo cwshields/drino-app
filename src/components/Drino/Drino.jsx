@@ -6,10 +6,12 @@ import "../../assets/fonts/micons/micons.css";
 import logo from "../../assets/images/Drino-Logo.png";
 import mobile1 from "../../assets/images/mobile1.png";
 import mobile2 from "../../assets/images/mobile2.png";
+import mobile3 from "../../assets/images/mobile3.png";
 import { Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { logout } from "../../Redux/reducer";
 import Footer from "../Navbar/Footer";
+import photo from '../../assets/images/drino-photo-gradient.png';
 
 function Drino() {
   return (
@@ -18,23 +20,31 @@ function Drino() {
       <main>
         <div className="drino-container">
           <div className="stripe1"></div>
+          <img className="drino-photo" src={photo} alt="Drino"/>
           <div className="drino-wrap">
             <div className="sect1">
-              <div className="logo-wrap">
-                <img className="logo" src={logo} alt="Drino Logo" />
-                <div className="logo-name">Drino</div>
+              <div className="sect1-wrap">
+                <div className="logo-wrap">
+                  <img className="logo" src={logo} alt="Drino Logo" />
+                  <div className="logo-name">Drino</div>
+                </div>
+                <div className="subtext">Everything you need. All in one.</div>
+                <div className="text">
+                  “You have to see failure as the beginning and the middle, but
+                  never entertain it as the end.”
+                </div>
+                <div className="name">- Jessica Herrin</div>
               </div>
-              <div className="subtext">Everything you need. All in one.</div>
-              <div className="text">
-                “You have to see failure as the beginning and the middle, but
-                never entertain it as the end.”
-              </div>
-              <div className="name">- Jessica Herrin</div>
             </div>
             <div className="sect2">
-              <img className="sect2-img" src={mobile1} alt="mobile1" />
-              <div className="sect2-text">
-                The greatest humanity has to offer, in the palm of your hand.
+              <div className="sect2-wrap">
+                <div className="mobile-wrap">
+                  <img className="sect2-img" src={mobile1} alt="Mobile One" />
+                  <img className="sect2-img" src={mobile2} alt="Mobile Two" />
+                </div>
+                <div className="sect2-text">
+                  The greatest humanity has to offer, in the palm of your hand.
+                </div>
               </div>
             </div>
             <div className="sect3">
@@ -81,7 +91,7 @@ function Drino() {
                     <li>5 Databases</li>
                     <li>30 Email Accounts</li>
                   </ul>
-                  <Button>Get Started</Button>
+                  <Button variant="success">Get Started</Button>
                 </div>
                 <div className="wrap2">
                   <div className="plan-label">Pro Plan</div>
@@ -94,7 +104,7 @@ function Drino() {
                     <li>50 Databases</li>
                     <li>50 Email Accounts</li>
                   </ul>
-                  <Button>Get Started</Button>
+                  <Button variant="success">Get Started</Button>
                 </div>
                 <div className="wrap1">
                   <div className="plan-label">Premium Plan</div>
@@ -107,21 +117,23 @@ function Drino() {
                     <li>100 Databases</li>
                     <li>100 Email Accounts</li>
                   </ul>
-                  <Button>Get Started</Button>
+                  <Button variant="success">Get Started</Button>
                 </div>
               </div>
             </div>
+            <div className="stripe2"></div>
             <div className="sect5">
               <div className="group">
-                <img src={mobile2} alt="" />
+                <img src={mobile3} alt="ModelX Phone" />
                 <div className="text">
                   <div className="brand">Innovision</div>
                   <div className="model">ModelX L5</div>
                   <div className="specs">5G 512GB - $899.99</div>
                 </div>
               </div>
-              <Button>Learn More</Button>
+              <Button variant="success">Learn More</Button>
             </div>
+          <div className="stripe3"></div>
           </div>
           <Footer></Footer>
         </div>
