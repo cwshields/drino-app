@@ -1,9 +1,10 @@
 @import './variables.scss';
+@import './mixins.scss';
 
-.about_page {
-  background-image: url(../images/footer_lodyas-faded.png);
-  height: 100%;
+.about-page {
+  position: relative;
   background-color: #323846;
+  background-image: url(../images/footer_lodyas-faded.png);
   .about-img {
     width: 100%;
     height: auto;
@@ -13,8 +14,9 @@
     display: flex;
     justify-content: center;
     .about-content {
-      width: 45vw;
+      width: 82vmin;
       margin-bottom: 6rem;
+      color: #f5f5f5;
       h1 {
         font-size: 2.5rem;
       }
@@ -22,7 +24,6 @@
         text-align: justify;
         margin: 1.5rem 0;
         font-size: 1.12rem;
-        color: #f5f5f5;
       }
     }
   }

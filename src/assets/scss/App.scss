@@ -1,51 +1,53 @@
 /* -- Drino - Personal Project (DevMountain) [ 8/6/19 7:18pm ] -- */
 
-@import './variables.scss';
+@import "./variables.scss";
 
 @font-face {
-  font-family: 'Arvo';
-  src: url(../fonts/Arvo/Arvo-Regular.ttf)
+  font-family: "Arvo";
+  src: url(../fonts/Arvo/Arvo-Regular.ttf);
 }
 
 @font-face {
-  font-family: 'Rosario';
-  src: url(../fonts/Rosario/Rosario-Regular.ttf)
+  font-family: "Rosario";
+  src: url(../fonts/Rosario/Rosario-Regular.ttf);
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url(../fonts/Roboto/Roboto-Regular.ttf)
+  font-family: "Roboto";
+  src: url(../fonts/Roboto/Roboto-Regular.ttf);
 }
 
 @font-face {
-  font-family: 'RobotoLte';
-  src: url(../fonts/Roboto/Roboto-Light.ttf)
+  font-family: "RobotoLte";
+  src: url(../fonts/Roboto/Roboto-Light.ttf);
 }
 
 @font-face {
-  font-family: 'Questrial';
-  src: url(../fonts/Questrial/Questrial-Regular.ttf)
+  font-family: "Questrial";
+  src: url(../fonts/Questrial/Questrial-Regular.ttf);
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url(../fonts/Poppins/Poppins-Light.ttf)
+  font-family: "Poppins";
+  src: url(../fonts/Poppins/Poppins-Light.ttf);
 }
 
 @font-face {
-  font-family: 'PoppinsLTE';
-  src: url(../fonts/Poppins/Poppins-ExtraLight.ttf)
+  font-family: "PoppinsLTE";
+  src: url(../fonts/Poppins/Poppins-ExtraLight.ttf);
 }
 @font-face {
-  font-family: 'PoppinsBOLD';
-  src: url(../fonts/Poppins/Poppins-Medium.ttf)
+  font-family: "PoppinsBOLD";
+  src: url(../fonts/Poppins/Poppins-Medium.ttf);
 }
 
 html {
   min-height: 100%;
 }
 
-a, a:hover, a::after {
+a,
+a:hover,
+a::after {
   text-decoration: none;
 }
 
@@ -54,8 +56,9 @@ body {
   margin: 0;
 }
 
-button:focus, input:focus {
-  outline:0;
+button:focus,
+input:focus {
+  outline: 0;
 }
 
 .btn:focus {
@@ -73,8 +76,8 @@ button:focus, input:focus {
 //   background-clip: padding-box;
 //   border-radius: 20px;
 //   background-color: rgba(0, 0, 0, 0.3);
-//   box-shadow: 
-//     inset -1px -1px 0px rgba(0, 0, 0, 0.05), 
+//   box-shadow:
+//     inset -1px -1px 0px rgba(0, 0, 0, 0.05),
 //     inset 1px 1px 0px rgba(0, 0, 0, 0.05);
 // }
 
@@ -106,39 +109,29 @@ body {
 }
 
 .blue {
-  color: #3794D8;
+  color: #3794d8;
 }
 .dark-blue {
-  color: #3A66D4;
+  color: #3a66d4;
 }
 .green {
-  color: #6AD837;
+  color: #6ad837;
 }
 .dark-green {
-  color: #4CAA50;
+  color: #4caa50;
 }
 .yellow {
-  color: #E5BE31;
+  color: #e5be31;
 }
 .dark-yellow {
-  color: #CD9E26;
+  color: #cd9e26;
 }
 .red {
-  color: #D83737;
+  color: #d83737;
 }
 .dark-red {
-  color: #B52424;
+  color: #b52424;
 }
-
-// @keyframes App-logo-spin {
-//   from {
-//     transform: rotate(0deg);
-//   }
-//   to {
-//     transform: rotate(360deg);
-//   }
-// } 
-// 
 
 .fw-iframe {
   height: 430px;
@@ -152,10 +145,159 @@ body {
 }
 .devlog {
   position: absolute;
-  left: 26px;
+  right: 26px;
   bottom: 26px;
   padding: 1px 5px;
 }
+
+.jumbotron {
+  margin: 3vmin 0 6vmin;
+}
+.drino-form {
+  h1 {
+    font-size: 2.3rem;
+    color: #f1f1f1;
+  }
+  input[type] {
+    color: #b4b4b4;
+    font-size: large;
+  }
+  input[type]:hover,
+  input[type]:focus {
+    background-color: #20252c;
+  }
+  input[type]:focus {
+    font-size: large;
+    color: #ebebeb;
+  }
+  textarea {
+    color: #b4b4b4;
+  }
+  textarea:hover {
+    background-color: #20252c;
+  }
+  textarea:focus {
+    color: #ebebeb;
+  }
+  .form-input {
+    height: 48px;
+  }
+  .form-control::placeholder {
+    font-size: 1.12rem;
+  }
+  .form {
+    width: 100%;
+    color: #f5f5f5;
+  }
+  .form-control {
+    padding: 0.7rem 0.8rem;
+    background-color: #1f242b;
+    color: #6e7379;
+    border: 0;
+  }
+  .form-control:focus {
+    border-color: #272f36;
+    background-color: #1f242b;
+    box-shadow: 0 0 0 0.2rem #3c974048;
+  }
+  .form-group {
+    margin-bottom: 1.8rem;
+    position: relative;
+    .minimum,
+    .message-length {
+      position: absolute;
+      color: #f1f1f1;
+      opacity: 0.3;
+      bottom: -32px;
+    }
+    .minimum {
+      left: 10px;
+    }
+    .message-length {
+      right: 10px;
+    }
+    .red-text {
+      color: red;
+      opacity: 1;
+    }
+  }
+  .form-row {
+    margin: 0 -16px;
+  }
+  .form-row > .col {
+    padding: 0 16px 0;
+  }
+  .form-text {
+    font-size: 1.12rem;
+    min-height: 15vh;
+    max-height: 42vh;
+  }
+  .btn {
+    box-shadow: 2px 2px 12px 5px #20252c;
+  }
+  .submit-btn {
+    font-size: 1.12rem;
+    padding: 0.5rem 1.4rem;
+    background-color: $green;
+    border: 0;
+  }
+  .submit-btn:hover {
+    background-color: $dark-green;
+  }
+  .submit-btn:focus {
+    background-color: $dark-green;
+    box-shadow: 0 0 0 0.2rem #40444048;
+    border: 0;
+  }
+  .submit-btn:active {
+    background-color: $dark-green !important;
+    box-shadow: 0 0 0 0.2rem #52585248 !important;
+    border-color: #272f36;
+  }
+  .disabled,
+  .disabled:hover,
+  .disabled:focus,
+  .disabled:active {
+    background-color: gray !important;
+    box-shadow: none !important;
+    cursor: not-allowed;
+  }
+  .form-check {
+    padding: 6px 0;
+    margin-bottom: 16px;
+    label {
+      margin-left: 32px;
+    }
+  }
+  .form-check-input {
+    margin: 5px 8px;
+    padding: 18px;
+    width: 14px;
+    height: 14px;
+  }
+  .form-required {
+    border-left: 3px solid $green;
+    border-radius: 5px;
+  }
+  .form-required-invalid {
+    border-left: 3px solid $green;
+  }
+  .check-wrap {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.required {
+  color: #f1f1f1;
+  border-radius: 5px;
+  border-left: 3px solid $green;
+  padding-left: 10px;
+  position: absolute;
+  left: 2rem;
+  bottom: -46px;
+}
+
 @media (max-width: 414px) {
   .news-wrap {
     width: 100%;
