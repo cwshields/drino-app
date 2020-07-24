@@ -33,7 +33,7 @@ class ProfileCard extends Component {
   }
 
   render() {
-    const { firstName, lastName, email, img, description, jobTitle } = this.props
+    const { id, firstName, lastName, email, img, description, jobTitle } = this.props
     // console.log(this.state)
       return (
         <div className="profile-card">
@@ -53,8 +53,8 @@ class ProfileCard extends Component {
                   { this.state.editting === false 
                     ? <Card.Text>{description}</Card.Text>
                     : <div className="edit-wrap">
-                        <textarea type="text" className="" name="description" value={this.state.description} onChange={this.handleInputChange}/>
-                        <Button onClick={() => this.saveChanges(this.props.id, this.state.description)} className="save">Save</Button>
+                        <textarea type="text" className="" name="description" value={description} onChange={this.handleInputChange}/>
+                        <Button onClick={() => this.saveChanges(id, description)} className="save">Save</Button>
                       </div>
                   }
                 <Button variant="light" onClick={this.toggleEdit}><i className="fas fa-edit"></i></Button>
