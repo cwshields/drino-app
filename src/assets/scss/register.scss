@@ -2,33 +2,81 @@
 @import './mixins.scss';
 
 .reg-container {
+  position: relative;
   background-color: #323846;
   background-image: url(../images/footer_lodyas-faded.png);
   .reg-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: calc(100vh - 80px);
+    @include flex(column, center, center);
     .reg-form {
-      width: 75vmin;
+      @include flex(column, center, center);
+      padding: 6vmin 0 12vh;
+      color: #f1f1f1;
+      width: 65vmin;
       .jumbotron {
-        background-color: rgba(30, 35, 46, 0.555);
-        padding: 4rem 3rem;
+        background-color: #1e242c8a;
+        position: relative;
+        width: 100%;
+        border-radius: 8px;
+        padding: 2.5rem 2rem;
+        .option {
+          margin: 26px 0 40px;
+        }
+        .submit-button {
+          text-align: center;
+          width: 100%;
+        }
+        .btn-success {
+          font-size: 1.1rem;
+          padding: 8px 16px;
+        }
       }
     }
   }
+  .img-url-wrap {
+    display: flex;
+    align-items: center;
+    .img-url {
+      margin: 0 15px 1.8rem;
+      width: calc(100% - 140px);
+    }
+    .img-filler {
+      box-sizing: border-box;
+      width: 85px;
+      height: 85px;
+      background: url('https://www.metatube.com/assets/metatube/video/img/Upload.svg') no-repeat center;
+      background-color: #262f3d;
+      background-size: 40px 40px;
+      border-radius: 50px;
+      border: 4.5px dashed #d1d1d1;
+    }
+    .img-div {
+      margin:  0 .35rem 1.8rem 1.1rem;
+      width: 85px;
+      height: 85px;
+    }
+    img {
+      width: auto;
+      height: 85px;
+      border-radius: 50px;
+      object-fit: contain;
+    }
+    .invalid {
+      position: absolute;
+      top: 364px;
+      left: 52px;
+      margin-bottom: 26px;
+      color: red;
+      text-align: center;
+    }
+  }
 }
-.form-row {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.form-row>.col {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-.form-group {
-  margin-bottom: 36px;
-}
-.form-control {
-  margin: 0;
+
+@media (max-width: 536px) {
+  .reg-container {
+    .reg-wrap {
+      .reg-form {
+        width: 110vmin;
+      }
+    }
+  } 
 }

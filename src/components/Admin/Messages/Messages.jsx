@@ -66,6 +66,7 @@ export default class Messages extends Component {
   }
 
   render() {
+    const { messages } = this.state
     return (
       <div className="dash-body">
         <div className="dash-section">
@@ -73,7 +74,7 @@ export default class Messages extends Component {
             <div className="count-wrap">
               <ProfileCard />
               <div className="count">
-                Messages: {this.state.messages.length}
+                Messages: {messages.length}
               </div>
             </div>
             <div className="editor-messages">
@@ -97,9 +98,9 @@ export default class Messages extends Component {
               <div className="messages-wrap">
                 <div className="accordion-wrap">
                   <Accordion defaultActiveKey="0">
-                    {this.state.messages.length === 0 
+                    {messages.length === 0 
                     ? <h3 className="no-messages">No messages to display...</h3>
-                    : this.state.messages.map((message, id) => (
+                    : messages.map((message, id) => (
                         <MessageCard
                           key={id}
                           message={message}
