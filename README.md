@@ -6,5 +6,5 @@ This was a full-stack project I built to functional for both sides of a buisines
 
 Type these commands into a git bash prompt:
 
-To start the server for the application input ```nodemon server``` into a git bash prompt
-For starting the react server input ```npm start``` 
+* ```nodemon server``` for the NodeJS server.
+* ```npm start``` for the React server.
