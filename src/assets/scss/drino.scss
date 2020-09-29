@@ -1,4 +1,6 @@
 @import './variables.scss';
+@import './mixins.scss';
+
 
 .drino-container {
   background-size: cover;
@@ -42,6 +44,28 @@
 }
 
 .drino {
+  /* width */
+  ::-webkit-scrollbar {
+    width: 11px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #29313C; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #69748370;
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #62667cb4; 
+  }
+  background-color: #323846;
+  background-image: url(../images/footer_lodyas-faded.png);
   main {
     overflow: overlay;
     justify-content: center;

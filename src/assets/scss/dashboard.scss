@@ -2,6 +2,25 @@
 @import './mixins.scss';
 
 .dashboard {
+  /* width */
+  ::-webkit-scrollbar {
+    width: 11px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #c7c7c7; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #92929270;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #797979b4; 
+  }
   position: relative;
   background-color: #F1F1F1;
 }
