@@ -8,6 +8,7 @@ const {
   register, 
   login, 
   getSales,
+  getItems,
   sumSales,
   sumRepSales,
   addSale, 
@@ -43,6 +44,7 @@ massive(CONNECTION_STRING).then(db => {
 })
 
 app.get('/api/sales', sumSales)
+app.get('/api/items', getItems)
 app.get('/api/revenue', getRevenue)
 app.get('/api/users', getUsers)
 app.get('/api/users-count', getUsersCount)

@@ -1,0 +1,19 @@
+SELECT 
+  drino_products.id,
+  drino_products.brand,
+  drino_products.model,
+  drino_products.category,
+  drino_products.price,
+  drino_products.op_sys,
+  drino_products.deal,
+  drino_products.down_payment,
+  drino_images.img1,
+  drino_images.img2,
+  drino_images.img3,
+  drino_images.img4
+FROM 
+  drino_images
+JOIN
+  drino_products
+ON
+  drino_images.id = drino_products.id
