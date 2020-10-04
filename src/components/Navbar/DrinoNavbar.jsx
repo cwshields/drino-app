@@ -18,7 +18,7 @@ function DrinoNavbar(props) {
         </Link>
         <div className="nav-wrap">
           <div className="nav-right-wrap">
-            <Link to="/">
+            <Link to="/store/phones">
               <div className="nav-link">Store</div>
             </Link>
             <Link to="/about">
