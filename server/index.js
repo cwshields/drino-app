@@ -5,7 +5,6 @@ const session = require('express-session');
 const path = require('path'); // Usually moved to the start of file
 
 const { 
-  register, 
   login, 
   getSales,
   getItems,
@@ -13,10 +12,9 @@ const {
   sumRepSales,
   addSale, 
   getUsers,
-  addUser,
+  registerUser,
   editUser,
-  getUsersCount, 
-  getMessagesCount, 
+  getUsersCount,
   postMessage, 
   getMessages,
   deleteMessage,
@@ -52,13 +50,16 @@ app.get('/api/messages', getMessages)
 app.get('/api/get-sales', getSales)
 app.get('/api/sum-rep-sales', sumRepSales)
 app.get('/auth/logout', logout)
+
 app.delete('/api/messages/:id', deleteMessage)
 
 app.use(express.json());
 
-app.post('/auth/register', register)
 app.post('/auth/login', login)
+app.post('/api/register', registerUser)
 app.post('/api/send-message', postMessage)
+
+app.put("/api/users/:id", editUser)
 
 app.get('/api/user', function(req, res) {
   if(req.session.user) {
@@ -71,9 +72,7 @@ app.get('/api/user', function(req, res) {
 })
 
 // app.post('/api/sales', addSale)
-app.post('/api/add-user', addUser)
 // app.delete("/api/user/:id", deleteUser)
-app.put("/api/users/:id", editUser)
 // app.put("/api/sales/:id", editSale)
 
 app.get('*', (req, res)=>{
