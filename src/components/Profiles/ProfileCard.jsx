@@ -9,16 +9,17 @@ class ProfileCard extends Component {
     super(props)
     this.state = {
       editting: false,
-      description: props.description
+      description: this.props.description,
+      descEdit: null,
     }
   }
 
+  componentDidMount = () => {
+    this.setState({ descEdit: this.state.description })
+  }
+
   toggleEdit = () => {
-    if(this.state.editting === true) {
-      this.setState({ editting: false })
-    } else {
-      this.setState({ editting: true })
-    }
+    this.setState({ editting: !this.state.editting })
   }
 
   handleInputChange = (e) => {
@@ -26,15 +27,14 @@ class ProfileCard extends Component {
     this.setState({ [name]: value })
   }
 
-  saveChanges(id, description) {
-    this.props.updateDescription(id, description)
+  saveChanges(id, descEdit) {
+    this.props.updateDescription(id, descEdit)
     this.toggleEdit()
-    // console.log(this.props);
   }
 
   render() {
     const { id, firstName, lastName, email, img, description, jobTitle } = this.props
-    // console.log(this.state)
+    const { descEdit } = this.state
       return (
         <div className="profile-card">
           <div className="Card">
@@ -50,12 +50,12 @@ class ProfileCard extends Component {
                 <Card.Title>
                   {email}
                 </Card.Title>
-                  { this.state.editting === false 
-                    ? <Card.Text>{description}</Card.Text>
-                    : <div className="edit-wrap">
-                        <textarea type="text" className="" name="description" value={description} onChange={this.handleInputChange}/>
-                        <Button onClick={() => this.saveChanges(id, description)} className="save">Save</Button>
+                  { this.state.editting
+                    ? <div className="edit-wrap">
+                        <textarea type="text" name="descEdit" value={descEdit} onChange={this.handleInputChange}/>
+                        <Button onClick={() => this.saveChanges(id, descEdit)} className="save">Save</Button>
                       </div>
+                    : <Card.Text>{description}</Card.Text>
                   }
                 <Button variant="light" onClick={this.toggleEdit}><i className="fas fa-edit"></i></Button>
                 <Card.Text className="links">
