@@ -32,29 +32,29 @@ module.exports = {
       })
     }
   },
-  register: async function (req, res) {
+  registerUser: async function (req, res) {
     const db = req.app.get('db')
     const {
-      firstName,
-      lastName,
-      username,
-      password,
-      email
+      firstName, lastName, username, password, email, 
+      profileImg, description, employee, admin, jobTitle
     } = req.body
     let user = await db.checkForUser([username, email])
     if (user[0]) {
       res.status(406).json({
-        error: "USERNAME_TAKEN"
+        error: "USERNAME_OR_EMAIL_TAKEN"
       })
     } else {
-      const hash = await bcrypt.hash(password, 10)
-      let newUser = await db.addUser([firstName, lastName, username, hash, email])
-      req.session.user = {
-        id: newUser[0].id,
-        name: firstName + ' ' + lastName,
-        username,
-      }
-      res.status(200).json(req.session.user);
+      const hash = await bcrypt
+        .hash(password, 10)
+      let newUser = await db
+        .registerUser([firstName, lastName, username, hash, email, 
+          profileImg, description, employee, admin, jobTitle])
+      // req.session.user = {
+      //   id: newUser[0].id,
+      //   name: firstName + ' ' + lastName,
+      //   username,
+      // }
+      res.status(200).json(newUser);
     }
   },
   logout: (req, res) => {
@@ -81,7 +81,8 @@ module.exports = {
   },
   addUser: async function(req, res) {
     const db = req.app.get('db')
-    const { firstName, lastName, username, email } = req.body
+    const { firstName, lastName, username, hash, email, 
+      profileImg, description, employee, admin, jobTitle } = req.body
     const person = await db.checkForUser([username, email])
     if (person[0]) {
       res.status(406).json({
@@ -89,7 +90,8 @@ module.exports = {
       })
     }
     // pass in user info. send response back.
-    const user = await db.addUser([firstName, lastName, username, email])
+    const user = await db.addUser([firstName, lastName, username, hash, email, 
+      profileImg, description, employee, admin, jobTitle])
     res.status(200).json(user)
   },
   postMessage: async function(req, res) {
