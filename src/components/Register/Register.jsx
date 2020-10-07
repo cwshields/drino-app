@@ -31,7 +31,7 @@ export default class Register extends Component {
 
   get validPass() {
     const { password, password2 } = this.state.userInfo
-    if ( password === password2) {
+    if ( password === password2 ) {
       return true
     }
     return false
@@ -50,6 +50,13 @@ export default class Register extends Component {
       else if ( bool === _.size(this.state.userInfo) ) {
         return true
       }
+    }
+    return false
+  }
+
+  get descLength() {
+    if (this.state.description.length <= 160) {
+      return true
     }
     return false
   }
@@ -80,19 +87,11 @@ export default class Register extends Component {
     this.setState({ passError: !this.validPass })
     console.log(this.validPass + "%c - password", 'color: #bada55');
   }
-
-  // checkValid = () => {
-  //   this.submit()
-  // }
-
-  // componentDidUpdate = () => {
-  //   this.checkValid()
-  // }
   
   submit = () => {
     const { firstName, lastName, email, username, password } = this.state.userInfo
     const { profileImg, description, employee, admin, jobTitle } = this.state
-    if ( this.validPass && this.greaterThan ) {
+    if ( this.validPass && this.greaterThan && this.descLength ) {
       axios
         .post("/api/register/", 
         { firstName, lastName, email, username, password, 
@@ -108,7 +107,7 @@ export default class Register extends Component {
   }
   
   render() {
-    const { profileImg, employee, description } = this.state
+    const { profileImg, employee, description, passError } = this.state
     if (this.state.redirect) {
       return <Redirect to="/login" />
     }
@@ -172,7 +171,7 @@ export default class Register extends Component {
                           onBlur={this.checkPass}
                           data-info="userInfo"
                           className={
-                            this.state.passError
+                            passError
                             ? "form-input form-error"
                             : "form-input form-required"
                           }
@@ -188,7 +187,7 @@ export default class Register extends Component {
                           onBlur={this.checkPass}
                           data-info="userInfo"
                           className={ 
-                            this.state.passError
+                            passError
                             ? "form-input form-error" 
                             : "form-input form-required"
                           }
@@ -199,7 +198,7 @@ export default class Register extends Component {
                         />
                       </Form.Group>
                     </Form.Row>
-                    <div className={ this.state.passError ? "form-row" : "display-none"}>
+                    <div className={ passError ? "form-row" : "display-none"}>
                       <div className="pass-warn">* Passwords are not identical</div>
                     </div>
                     <Form.Row className="img-url-wrap">
@@ -231,7 +230,7 @@ export default class Register extends Component {
                       />
                       <div
                         className={
-                          description.length <= 160 ? "message-length" : "message-length red-text"
+                          this.descLength ? "message-length" : "message-length red-text"
                         }
                       >
                         {description.length}/160
