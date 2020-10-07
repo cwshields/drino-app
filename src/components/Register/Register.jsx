@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Form, Col, Button, Jumbotron } from "react-bootstrap";
 import "../../assets/scss/register.scss";
 import axios from "axios";
+import _ from 'underscore';
+import { Redirect } from "react-router-dom";
 import DrinoNavbar from "../Navbar/DrinoNavbar";
 import Footer from "../Navbar/Footer";
 
@@ -9,61 +11,93 @@ export default class Register extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      username: '',
-      password1: '',
-      password2: '',
-      identicalPass: null,
+      userInfo: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        username: '',
+        password: '',
+        password2: '',
+      },
+      passError: undefined,
       profileImg: '',
       description: '',
       employee: false,
       admin: false,
       jobTitle: '',
-      isSubmittable: false,
+      redirect: false,
     }
+  }
+
+  get validPass() {
+    const { password, password2 } = this.state.userInfo
+    if ( password === password2) {
+      return true
+    }
+    return false
+  }
+
+  get greaterThan() {
+    const { userInfo } = this.state
+    let bool = 0
+    for ( const prop in userInfo ) {
+      if ( userInfo[prop].length > 3 ) {
+        bool++
+      }
+      if ( userInfo[prop].length > 0 && userInfo[prop].length < 4 ) {
+        bool--
+      }
+      else if ( bool === _.size(this.state.userInfo) ) {
+        return true
+      }
+    }
+    return false
   }
 
   handleBool = (e) => {
     const { type, checked, value, name } = e.target;
     const val = type === 'checkbox' ? checked : value;
     this.setState({ [name]: val });
-  }
-
-  isGreaterThan3 = (e) => {
-    if (e.target.value > 3) {
-      
+    if (this.state.admin) {
+      this.setState({ admin: false })
     }
   }
 
-  handleChange = (e) => {
-    const { name, value } = e.target
-    this.setState({ [name]: value })
-    this.isGreaterThan3(e)
+  handleOption = (e) => {
+    this.setState({ jobTitle: e.target.value });
   }
 
-  handleOption = (e) => {
-    this.setState({jobTitle: e.target.value});
+  handleChange = (e) => {
+    const { name, value, attributes } = e.target
+    if ( attributes.getNamedItem('data-info') ) {
+      this.setState({ userInfo: { ...this.state.userInfo, [name]: value } })
+    } else {
+      this.setState({ [name]: value })
+    }
   }
 
   checkPass = () => {
-    const { password1, password2 } = this.state
-    setTimeout(() => {
-      if (password1 === password2) {
-        this.setState({ identicalPass: true })
-      } else {
-        this.setState({ identicalPass: false })
-      }
-    });
+    this.setState({ passError: !this.validPass })
+    console.log(this.validPass + "%c - password", 'color: #bada55');
   }
+
+  // checkValid = () => {
+  //   this.submit()
+  // }
+
+  // componentDidUpdate = () => {
+  //   this.checkValid()
+  // }
   
   submit = () => {
-    const { firstName, lastName, email, username, password1, profileImg, description, employee, admin, jobTitle, isSubmittable } = this.state
-    if (isSubmittable === true) {
+    const { firstName, lastName, email, username, password } = this.state.userInfo
+    const { profileImg, description, employee, admin, jobTitle } = this.state
+    if ( this.validPass && this.greaterThan ) {
       axios
-        .post("/api/register", { firstName, lastName, email, username, password1, profileImg, description, employee, admin, jobTitle })
-        .then(res => console.log(res), this.setState({ isSubmittable: false }))
+        .post("/api/register/", 
+        { firstName, lastName, email, username, password, 
+          profileImg, description, employee, admin, jobTitle })
+        .then(res => console.log(res), this.setState({ redirect: true }))
         .catch(err => console.log(err))
     }
   }
@@ -74,7 +108,10 @@ export default class Register extends Component {
   }
   
   render() {
-    const { profileImg, employee, isSubmittable, description } = this.state
+    const { profileImg, employee, description } = this.state
+    if (this.state.redirect) {
+      return <Redirect to="/login" />
+    }
     return (
       <div className="drino">
         <DrinoNavbar></DrinoNavbar>
@@ -89,10 +126,11 @@ export default class Register extends Component {
                       <Form.Group as={Col}>
                         <Form.Control
                           onChange={this.handleChange}
+                          onBlur={this.checkValid}
+                          data-info="userInfo"
                           className="form-input form-required"
                           type="text"
                           name="firstName"
-                          min="2"
                           placeholder="First name"
                         />
                       </Form.Group>
@@ -100,9 +138,9 @@ export default class Register extends Component {
                         <Form.Control
                           onChange={this.handleChange}
                           className="form-input form-required"
+                          data-info="userInfo"
                           type="text"
                           name="lastName"
-                          min="2"
                           placeholder="Last name"
                         />
                       </Form.Group>
@@ -111,9 +149,9 @@ export default class Register extends Component {
                       <Form.Control
                         onChange={this.handleChange}
                         className="form-input form-required"
+                        data-info="userInfo"
                         type="email"
                         name="email"
-                        min="4"
                         placeholder="Email"
                       />
                     </Form.Group>
@@ -121,9 +159,9 @@ export default class Register extends Component {
                       <Form.Control
                         onChange={this.handleChange}
                         className="form-input form-required"
+                        data-info="userInfo"
                         type="text"
                         name="username"
-                        min="4"
                         placeholder="Username"
                       />
                     </Form.Group>
@@ -131,10 +169,15 @@ export default class Register extends Component {
                       <Form.Group as={Col}>
                         <Form.Control
                           onChange={this.handleChange}
-                          className="form-input form-required"
+                          onBlur={this.checkPass}
+                          data-info="userInfo"
+                          className={
+                            this.state.passError
+                            ? "form-input form-error"
+                            : "form-input form-required"
+                          }
                           type="password"
-                          name="password1"
-                          min="4"
+                          name="password"
                           autoComplete="new-password"
                           placeholder="Password"
                           />
@@ -142,15 +185,23 @@ export default class Register extends Component {
                       <Form.Group as={Col}>
                         <Form.Control
                           onChange={this.handleChange}
-                          className="form-input form-required"
+                          onBlur={this.checkPass}
+                          data-info="userInfo"
+                          className={ 
+                            this.state.passError
+                            ? "form-input form-error" 
+                            : "form-input form-required"
+                          }
                           type="password"
                           name="password2"
-                          min="4"
                           autoComplete="new-password"
                           placeholder="Re-type password"
                         />
                       </Form.Group>
                     </Form.Row>
+                    <div className={ this.state.passError ? "form-row" : "display-none"}>
+                      <div className="pass-warn">* Passwords are not identical</div>
+                    </div>
                     <Form.Row className="img-url-wrap">
                       <div className="invalid">
                         Invalid <br/>
@@ -180,10 +231,10 @@ export default class Register extends Component {
                       />
                       <div
                         className={
-                          description.length <= 150 ? "message-length" : "message-length red-text"
+                          description.length <= 160 ? "message-length" : "message-length red-text"
                         }
                       >
-                        {description.length}/150
+                        {description.length}/160
                       </div>
                     </Form.Group>
                     <Form.Check
@@ -207,12 +258,13 @@ export default class Register extends Component {
                           <Form.Group className="option form-required">
                             <Form.Control onChange={this.handleOption} as="select" className="form-input">
                               <option defaultValue>Choose job title...</option>
-                              <option value="1">Sales Representative</option>
-                              <option value="2">Front-end Web Developer</option>
-                              <option value="3">Back-end Web Developer</option>
-                              <option value="4">Consultant</option>
-                              <option value="5">Business Analyst</option>
-                              <option value="6">Financial Advisor</option>
+                              <option value="Sales Representative">Sales Representative</option>
+                              <option value="Front-end Web Developer">Front-end Web Developer</option>
+                              <option value="Back-end Web Developer">Back-end Web Developer</option>
+                              <option value="Consultant">Consultant</option>
+                              <option value="Business Analyst">Business Analyst</option>
+                              <option value="Financial Advisor">Financial Advisor</option>
+                              <option value="Human Resources Specialist">Human Resources Specialist</option>
                             </Form.Control>
                           </Form.Group>
                         </Form.Group>
