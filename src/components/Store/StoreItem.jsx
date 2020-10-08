@@ -7,15 +7,9 @@ class StoreItem extends Component {
     this.state = {};
   }
 
-  // Clean up later
   calcPayment = (price, downPayment) => {
-    if (downPayment === 0) {
-      let perMo = (price - downPayment) / 24;
-      return perMo.toFixed(2);
-    } else {
-      let perMo = (price - downPayment + 1) / 24;
-      return perMo.toFixed(2);
-    }
+    let perMo = (price - downPayment + (downPayment && 1)) / 24
+    return perMo.toFixed(2)
   };
 
   render() {
