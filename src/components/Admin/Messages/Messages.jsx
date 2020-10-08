@@ -13,7 +13,7 @@ export default class Messages extends Component {
     this.state = {
       messages: [],
       messagesSelected: [],
-    };
+    }
     this.messageCard = React.createRef()
   }
 
@@ -38,22 +38,15 @@ export default class Messages extends Component {
     } else {
       messagesSelected.splice(index, 1)
     }
-    console.log(this.state.messagesSelected)
   }
   
   selectAll = () => {
     const { messages, messagesSelected } = this.state
-    for (let i = 0; i < messages.length; i++) {
-      const includes = messagesSelected.includes(messages[i].id)
-      const checkBox = document.getElementById(messages[i].id)
-      if (!includes) {
-        messagesSelected.push(messages[i].id)
-        checkBox.checked = true
-      } else {
-        this.setState({ messagesSelected: [] })
-        checkBox.checked = false
-      }
-    }
+    const allSelected = messagesSelected.length === messages.length
+    this.setState({ messagesSelected: allSelected ? [] : [...messages] })
+    messages.forEach(message => {
+      document.getElementById(message.id).checked = !allSelected
+    })
   }
 
   deleteMessage = (id) => {
