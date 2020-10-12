@@ -34,6 +34,9 @@ const StoreList = (props) => {
                   key={item.id}
                   item={item}
                   addItem={props.addItem}
+                  removeItem={props.removeItem}
+                  itemExists={props.itemExists}
+                  {...props}
                 />
               )
             })
