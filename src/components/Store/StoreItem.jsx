@@ -13,7 +13,9 @@ class StoreItem extends Component {
   };
 
   render() {
-    const { img1, brand, model, price, down_payment } = this.props.item;
+    const { id, img1, brand, model, price, down_payment } = this.props.item;
+    // const { item } = this.props
+    const exists = this.props.itemExists(id)
     return (
       <div className="shop-item">
         <div className="">
@@ -39,10 +41,16 @@ class StoreItem extends Component {
             </div>
           </div>
           <div className="full-price">Full Price: ${price}.95</div>
-          <Button className="" onClick={this.props.addItem} variant="success">
-            <i className="fas fa-plus-circle"></i>
-            Add Item
-          </Button>
+          { exists
+            ? <Button onClick={() => this.props.removeItem(id)} variant="danger">
+                <i className="fas fa-minus-circle"></i>
+                Remove Item
+              </Button>
+            : <Button onClick={() => this.props.addItem(this.props.item, 1)} variant="success">
+                <i className="fas fa-plus-circle"></i>
+                Add Item
+              </Button>
+          }
         </div>
       </div>
     );
