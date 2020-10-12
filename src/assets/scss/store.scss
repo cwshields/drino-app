@@ -52,7 +52,7 @@
     .side-nav-wrap {
       @include flex(column, left, left);
       font-family: 'PoppinsBOLD';
-      height: max-content; // 100% behaves the same way as max-content, not sure why
+      height: max-content; // 100% behaves the same way as max-content
       max-height: 80vh;
       margin-bottom: 50px;
       padding-right: 16px;
@@ -352,6 +352,12 @@
 
 
 .cart-wrapper {
+  
+  .logbtn {
+    position: fixed;
+    top: 100px;
+    left: 60px;
+  }
   .cart-btn {
     border-radius: 50%;
     position: fixed;
@@ -384,15 +390,38 @@
     }
   }
   .cart {
-    @include flex(column, center, center);
+    @include flex(column, left, left);
     border-radius: 8px;
     background-color: #262d38;
     position: fixed;
     right: 32px;
     top: 110px;
     width: 350px;
-    height: 670px;
+    height: 680px;
     z-index: 0;
+    padding: 24px 27px;
+    .cart-list-wrap {
+      @include flex(column, left, left);
+      height: 545px;
+      overflow: auto;
+      .cart-title {
+        margin-bottom: 14px;
+        font-weight: bold;
+      }
+      .cart-item{
+        display: flex;
+        margin-bottom: 20px;
+        .cart-item-img-wrap {
+          text-align: center;
+          width: 110px;
+          height: 110px;
+        }
+        .cart-item-img {
+          width: auto;
+          height: 110px;
+        }
+      }
+    }
     .btn-group {
       @include flex(row, left, left);
       position: absolute;
