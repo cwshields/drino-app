@@ -17,7 +17,7 @@ class Store extends Component {
     this.state = {
       storeItems: [],
       filteredItems: [],
-      cart: 0, // to be changed to array of objects(shop items)
+      cart: [],
       cartOpen: false,
       category: '',
       // drop-down menues
@@ -46,10 +46,14 @@ class Store extends Component {
     }
     if (!prevProps || location !== prevProps.location) {
       const result = storeItems.filter(item => item.category === category[location.pathname])
-      this.setState({ category: category[location.pathname], filteredItems: result });
+      this.setState({ category: category[location.pathname], filteredItems: result })
     }
   }
-  
+
+  componentDidMount = () => {
+    this.getItems()
+  }
+
   componentDidUpdate = (prevProps) => {
     this.updateCategory(prevProps)
   }
@@ -58,22 +62,16 @@ class Store extends Component {
     axios
     .get("/api/items")
     .then((res) => {
-      this.setState({ storeItems: res.data });
+      this.setState({ storeItems: res.data })
       this.updateCategory()
     })
-    .catch((err) => console.log(err));
-  };
+    .catch((err) => console.log(err))
+  }
   
-  componentDidMount = () => {
-    this.getItems()
-  };
-
   handleChange = (e) => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  };
-
-  // const { activeFilters } = this.state
+    const { name, value } = e.target
+    this.setState({ [name]: value })
+  }
 
   removeFilter = (str) => {
     if (this.state.activeFilters.includes(str)) {
@@ -106,39 +104,50 @@ class Store extends Component {
   }
 
   toggleEl = (e) => {
-    let el = e.target;
+    let el = e.target
     while (!el.name) {
-      el = el.parentElement;
+      el = el.parentElement
     }
-    const { name } = el;
-    this.setState({ [name]: !this.state[name] });
-  };
+    const { name } = el
+    this.setState({ [name]: !this.state[name] })
+  }
+  
+  itemExists = (id) => {
+    return this.state.cart.some(function(item) {
+      return item.id === id
+    })
+  }
 
-  addItem = () => {
-    this.setState({ cart: this.state.cart + 1 });
-  };
-
-  removeItem = () => {
-    if (this.state.cart > 0) {
-      this.setState({ cart: this.state.cart - 1 });
-    }
-  };
+  addItem = (item, num) => {
+    const { cart } = this.state
+    let itemObj = Object.assign({}, item)
+    itemObj['qty'] = num
+    cart.push(itemObj)
+    this.forceUpdate()
+  }
+  
+  removeItem = (id) => {
+    const { cart } = this.state
+    let obj = cart.find(obj => obj.id === id)
+    let itemIndex = cart.indexOf(obj)
+    cart.splice(itemIndex, 1)
+    this.forceUpdate()
+  }
 
   resetCart = () => {
-    this.setState({ cart: 0 });
-  };
+    this.setState({ cart: [] })
+  }
 
   submitSearch() {
     
   }
 
   handleChange = (e) => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  };
+    const { name, value } = e.target
+    this.setState({ [name]: value })
+  }
 
   render() {
-    console.log(this.state.filteredItems);
     return (
       <div className="drino">
         <DrinoNavbar></DrinoNavbar>
@@ -174,6 +183,8 @@ class Store extends Component {
                 <StoreList
                   removeFilter={this.removeFilter}
                   addItem={this.addItem}
+                  removeItem={this.removeItem}
+                  itemExists={this.itemExists}
                   {...this.state}
                 />
               </div>
@@ -184,6 +195,7 @@ class Store extends Component {
             toggleEl={this.toggleEl}
             removeItem={this.removeItem}
             resetCart={this.resetCart}
+            itemExists={this.itemExists}
             {...this.state}
           />
         </main>
