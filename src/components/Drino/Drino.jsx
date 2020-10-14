@@ -39,8 +39,8 @@ function Drino() {
             <div className="sect2">
               <div className="sect2-wrap">
                 <div className="mobile-wrap">
-                  <img className="sect2-img" src={mobile1} alt="Mobile One" />
-                  <img className="sect2-img" src={mobile2} alt="Mobile Two" />
+                  <img className="sect2-img1" src={mobile1} alt="Mobile One" />
+                  <img className="sect2-img2" src={mobile2} alt="Mobile Two" />
                 </div>
                 <div className="sect2-text">
                   The greatest humanity has to offer, in the palm of your hand.
