@@ -213,59 +213,87 @@
   margin: 0 0 5rem 3rem;
   @include flex(column, left, left);
   .shop-item-wrap {
+    display: inline;
     width: 910px;
-    margin: 0 -25px;
-    .shop-item {
+    margin: 0 -30px;
+    .shop-item-container {
       @include flex(column, normal, center);
       width: 222px;
       float: left;
       margin: 25px 30px;
-      img {
-        width: auto;
-        height: 225px;
+      .shop-item {
+        @include flex(column, normal, center);
+        .img-wrap {
+          @include flex(row, center, center);
+          text-align: center;
+          overflow: hidden;
+          width: 222px;
+          height: 230px;
+          img {
+            width: auto;
+            height: 225px;
+          }
+        }
+        .shop-item-info {
+          @include flex(column, left, left);
+          margin-top: 20px;
+          width: 220px;
+          .brand {
+            font-size: .95rem;
+          }
+          .model {
+            margin: 6px 0;
+            font-size: 1.5rem;
+            font-weight: bolder;
+            font-family: 'PoppinsBOLD';
+          }
+          .price-info-wrap {
+            display: flex;
+            justify-content: space-between;
+            .price-info {
+              .monthly {
+                font-family: 'PoppinsBOLD';
+              }
+              .down{
+                font-family: 'PoppinsBOLD';
+              }
+              .info {
+                font-size: .85rem;
+              }
+            }
+            .vert-hr {
+              border-left: 1px solid #d7e1e971;
+              height: 43px;
+              margin: 0 15px;
+            }
+          }
+          .full-price {
+            margin: 14px 0;
+          }
+        }
       }
-      .shop-item-info {
-        @include flex(column, left, left);
-        margin-top: 20px;
-        width: 220px;
-        .brand {
-          font-size: .95rem;
-        }
-        .model {
-          margin: 6px 0;
-          font-size: 1.5rem;
-          font-weight: bolder;
-          font-family: 'PoppinsBOLD';
-        }
-        .price-info-wrap {
-          display: flex;
-          justify-content: space-between;
-          .price-info {
-            .monthly {
-              font-family: 'PoppinsBOLD';
-            }
-            .down{
-              font-family: 'PoppinsBOLD';
-            }
-            .info {
-              font-size: .85rem;
-            }
-          }
-          .vert-hr {
-            border-left: 1px solid #d7e1e971;
-            height: 43px;
-            margin: 0 15px;
+      a {
+        color: #f5f5f5;
+        .shop-item{
+          img {
+            transition: 150ms;
           }
         }
-        .full-price {
-          margin: 14px 0;
-        }
-        .btn {
-          .fas {
-            font-size: 14px;
-            margin-right: 6px;
+      }
+      a:hover {
+        .shop-item{
+          img {
+            width: auto;
+            height: 230px;
           }
         }
+      }
+    }
+    .btn {
+      width: 100%;
+      .fas {
+        font-size: 14px;
+        margin-right: 6px;
       }
     }
     .no-items {
@@ -352,7 +380,6 @@
 
 
 .cart-wrapper {
-  
   .logbtn {
     position: fixed;
     top: 100px;

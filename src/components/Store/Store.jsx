@@ -13,7 +13,7 @@ import Cart from "./Cart";
 
 class Store extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
       storeItems: [],
       filteredItems: [],
@@ -28,7 +28,7 @@ class Store extends Component {
       // filters
       activeFilters: [],
       search: '',
-    };
+    }
   }
 
   // updates page title category using dictionary and react router location props
@@ -74,31 +74,34 @@ class Store extends Component {
   }
 
   removeFilter = (str) => {
-    if (this.state.activeFilters.includes(str)) {
-      const i = this.state.activeFilters.indexOf(str)
-      this.state.activeFilters.splice(i, 1)
+    const { activeFilters } = this.state
+    if (activeFilters.includes(str)) {
+      const i = activeFilters.indexOf(str)
+      activeFilters.splice(i, 1)
     }
     this.componentDidUpdate()
   }
-
+  
   addFilter = (str) => {
-    if (!this.state.activeFilters.includes(str)) {
-      this.state.activeFilters.push(str)
+    const { activeFilters } = this.state
+    if (!activeFilters.includes(str)) {
+      activeFilters.push(str)
     }
     this.componentDidUpdate()
   }
-
+  
   resetFilters = () => {
     this.setState({ activeFilters: [] });
   }
-
+  
   toggleFilter = (str) => {
-    if (this.state.activeFilters.includes(str)) {
+    const { activeFilters, storeItems } = this.state
+    if (activeFilters.includes(str)) {
       this.removeFilter(str)
     } else {
       this.addFilter(str)
-      if (this.state.storeItems.filter(e => e === str).length > 0) {
-        this.state.activeFilters.push()
+      if (storeItems.filter(e => e === str).length > 0) {
+        activeFilters.push()
       }
     }
   }
@@ -150,7 +153,7 @@ class Store extends Component {
   render() {
     return (
       <div className="drino">
-        <DrinoNavbar></DrinoNavbar>
+        <DrinoNavbar />
         <main>
           <div className="store-body">
             <div className="store-container">
@@ -189,7 +192,7 @@ class Store extends Component {
                 />
               </div>
             </div>
-            <Footer></Footer>
+            <Footer />
           </div>
           <Cart
             toggleEl={this.toggleEl}

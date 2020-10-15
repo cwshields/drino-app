@@ -14,9 +14,9 @@ const Cart = (props) => {
     }
   }
 
-  const logQty = () => {
-    console.log(cart[0].qty)
-  }
+  // const logQty = () => {
+  //   console.log(cart[0].qty)
+  // }
 
   return (
     <div className="cart-wrapper">

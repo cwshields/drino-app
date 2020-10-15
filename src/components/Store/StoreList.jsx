@@ -31,7 +31,6 @@ const StoreList = (props) => {
           : props.filteredItems.map((item) => {
               return (
                 <StoreItem
-                  key={item.id}
                   item={item}
                   addItem={props.addItem}
                   removeItem={props.removeItem}
