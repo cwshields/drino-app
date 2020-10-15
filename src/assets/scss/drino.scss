@@ -134,7 +134,7 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  height: 90vw;
+  height: 85vw;
   z-index: 2;
   .sect2-wrap {
     text-align: center;
@@ -191,7 +191,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vw;
+  height: 70vw;
   .group {
     display: flex;
     justify-content: center;
@@ -263,7 +263,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 130vw;
+  height: 80vw;
   .group {
     display: flex;
     justify-content: space-between;
@@ -372,6 +372,9 @@
       }
     }
   }
+  .sect5 {
+    height: 110vh;
+  }
 }
 
 @media (max-width: 920px) {
@@ -475,6 +478,9 @@
       float: right;
       margin: 0;
     }
+  }
+  .sect2 {
+    height: 120vmin;
   }
   .sect3 {
     height: 260vh;
