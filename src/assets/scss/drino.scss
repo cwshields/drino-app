@@ -23,7 +23,7 @@
     background-color: $green;
   }
   .stripe2 {
-    top: 330vh;
+    top: 65%;
     height: 50vw;
     clip-path: polygon(0% 58%, 0% 41%, 100% 100%, 100% 100%);
     background-color: $green;
@@ -68,6 +68,7 @@
   background-image: url(../images/footer_lodyas-faded.png);
   main {
     overflow: overlay;
+    overflow-x: hidden;
     justify-content: center;
     color: $off-white;
     height: calc(100vh - 80px);
@@ -94,7 +95,7 @@
     width: fit-content;
     .logo {
       width: 8vw;
-      height: 8vw;
+      height: auto;
       border-radius: 500px;
       box-shadow: 8px 6px 14px rgba(0, 0, 0, 0.2);
     }
@@ -111,8 +112,8 @@
   .subtext {
     font-size: 2vw;
     font-weight: 400;
-    width: 31vw;
-    margin: 4vw 2vw 0; 
+    width: fit-content; 
+    margin: 2.5vw 2vw 0; 
   }
   .text {
     font-size: 1.7vw;
@@ -123,7 +124,7 @@
   .name {
     font-size: 1.7vw;
     font-weight: 300;
-    width: 13vw;
+    width: fit-content; 
     margin: 1vw 30vw 0;
   }
 }
@@ -133,7 +134,7 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  height: 100vw;
+  height: 90vw;
   z-index: 2;
   .sect2-wrap {
     text-align: center;
@@ -162,7 +163,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 65vw;
   .group {
     z-index: 2;
     margin: 0 50px;
@@ -190,7 +191,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100vw;
   .group {
     display: flex;
     justify-content: center;
@@ -262,8 +263,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 130vh;
-  margin-top: 80px;
+  height: 130vw;
   .group {
     display: flex;
     justify-content: space-between;
@@ -304,6 +304,46 @@
 }
 
 @media (max-width: 1350px) {
+  .drino-container {
+    .stripe1 {
+      z-index: 1;
+      clip-path: polygon(58% 0%, 57.8% 0%, 100% 32%, 100% 29%);
+    }
+    .drino-wrap {
+      .stripe2 {
+        display: none;
+      }
+    }
+    .drino-photo {
+      clip-path: polygon(21% 0%, 58% 100%, 100% 100%, 100% 0%);
+      right: -10.8vw;
+    }
+  }
+  .sect1 {
+    .sect1-wrap {
+      margin-right: 20vmin;
+    }
+    .logo-wrap {
+      .logo {
+        width: 9vw;
+      }
+      .logo-name {
+        font-size: 4.8vw;
+      }
+    }
+    .subtext {
+      font-size: 3.1vw;
+    }
+    .text {
+      font-size: 2.5vw;
+      width: 52vw;
+    }
+    .name {
+      font-size: 2.3vw;
+      margin: 0;
+      float: right;
+    }
+  }
   .sect2-wrap {
     width: 80vmin;
     .sect2-img1, .sect2-img2 {
@@ -316,8 +356,9 @@
   }
   .sect3 {
     margin: 10rem 0;
-    height: 100%;
+    height: 200vh;
     flex-direction: column;
+    margin-bottom: -5rem;
     .group {
       margin-bottom: 10rem;
     }
@@ -333,7 +374,48 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 920px) {
+  // copied
+  .drino-container {
+    .stripe1 {
+      z-index: 1;
+      clip-path: polygon(65% 0%, 64.8% 0%, 100% 26%, 100% 23%);
+    }
+    .drino-wrap {
+      .stripe2 {
+        top: 300vh;
+      }
+    }
+    .drino-photo {
+      clip-path: polygon(26.3% 0%, 67% 100%, 100% 100%, 100% 0%);
+      right: -14.2vw;
+    }
+  }
+  .sect1 {
+    .sect1-wrap {
+      margin-right: 12vmin;
+    }
+    .logo-wrap {
+      .logo {
+        width: 11vw;
+      }
+      .logo-name {
+        font-size: 5.4vw;
+      }
+    }
+    .subtext {
+      font-size: 3.7vw;
+    }
+    .text {
+      font-size: 3vw;
+      width: 61vw;
+    }
+    .name {
+      font-size: 2.8vw;
+      
+    }
+  }
+  // end copy
   .sect2 {
     margin: 10rem 0;
   }
@@ -366,21 +448,20 @@
   .sect1 {
     margin: 5vmin 0 0 5vmin;
     .sect1-wrap {
+      margin-right: 0;
       width: 80vw;
     }
     .logo-wrap {
       .logo {
         width: 20vw;
-        height: auto;
       }
       .logo-name {
         font-size: 10vw;
       }
     }
     .subtext {
-      font-size: 5.3vw;
+      font-size: 4.6vw;
       margin: 6vw 0;
-      width: fit-content;
     }
     .text {
       box-sizing: border-box;
@@ -395,16 +476,52 @@
       margin: 0;
     }
   }
+  .sect3 {
+    height: 260vh;
+  }
   .sect5 {
-    height: 130vh;
+    height: 150vh;
     .group {
       flex-direction: column;
       img {
-        height: 82vmin;
+        height: 83vmin;
       }
       .text {
         margin: 5vw 0;
+        .brand {
+          font-size: 1.5rem;
+        }
+        .model {
+          font-size: 2.5rem;
+        }
+        .specs {
+          font-size: 1.5rem;
+        }
       }
     }
+  }
+}
+
+@media (max-height: 700px) {
+  .sect3 { 
+    height: 550vw;
+    .group {
+      .text {
+        width: 90vw;
+      }
+    }
+  }
+  .sect4 {
+    margin-top: 10vmin;
+    height: 500vw;
+  }
+}
+
+@media (max-width: 290px) {
+  .sect3 {
+    height: 650vw;
+  }
+  .sect4 {
+    height: 650vw;
   }
 }
