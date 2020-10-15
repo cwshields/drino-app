@@ -20,7 +20,7 @@ const Cart = (props) => {
 
   return (
     <div className="cart-wrapper">
-      <Button className="logbtn" onClick={logQty}>logQty</Button>
+      {/* <Button className="logbtn" onClick={props.cart > 0 ? logQty : null}>logQty</Button> */}
       <button
         onClick={toggleEl}
         name="cartOpen"
