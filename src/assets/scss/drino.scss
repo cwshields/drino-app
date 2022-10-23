@@ -1,7 +1,6 @@
 @import './variables.scss';
 @import './mixins.scss';
 
-
 .drino-container {
   background-size: cover;
   position: relative;
@@ -162,8 +161,8 @@
 .sect3 {
   display: flex;
   justify-content: center;
-  align-items: center;
   height: 50vw;
+  margin: 20vw 0;
   .group {
     z-index: 2;
     margin: 0 50px;

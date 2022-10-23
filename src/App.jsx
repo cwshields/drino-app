@@ -5,8 +5,10 @@ import routes from './routes'
 
 export default function App() {
   return (
-    <BrowserRouter>
-      {routes}
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        {routes}
+      </BrowserRouter>
+    </>
   );
 }
