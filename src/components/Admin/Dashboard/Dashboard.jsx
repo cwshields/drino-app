@@ -29,13 +29,23 @@ class Dashboard extends Component {
     .catch(err => console.log(err))
   }
 
+  requireAuth(nextState, replace, next) {
+    if (!this.props.login) {
+      replace({
+        pathname: "/login",
+        state: {nextPathname: nextState.location.pathname}
+      });
+    }
+    next();
+  }
+
   render() {
     return (
       <div className="dashboard">
         <Header></Header>
         <Navbar></Navbar>
         <Switch>
-          <Route path='/dashboard/home' component={Home} />
+          <Route path='/dashboard/home' component={Home} onEnter={this.requireAuth} />
           <Route path='/dashboard/users' component={Users} />
           <Route path='/dashboard/messages' component={Messages} />
           <Route path='/dashboard/maps' component={Maps} />
