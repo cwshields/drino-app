@@ -13,6 +13,7 @@
 
 # misc
 .notes
+.notesSQL
 .DS_Store
 .env
 .env.local
