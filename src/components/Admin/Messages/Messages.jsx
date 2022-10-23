@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../../../assets/scss/messages.scss";
 import { Accordion, Button } from "react-bootstrap";
 import ProfileCard from "../../Profiles/ProfileCard";
+import DeleteModal from '../../BootstrapComps/DeleteModal';
 // import { Editor } from 'react-draft-wysiwyg';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import MessageCard from "./MessageCard";
@@ -13,6 +14,7 @@ export default class Messages extends Component {
     this.state = {
       messages: [],
       messagesSelected: [],
+      deleteModal: false,
     }
     this.messageCard = React.createRef()
   }
@@ -58,6 +60,11 @@ export default class Messages extends Component {
       .catch((err) => console.log(err))
   }
 
+  deleteModalToggle = () => {
+    this.setState({ deleteModal: !this.state.deleteModal })
+    console.log("deleteModalToggle ran");
+  }
+
   render() {
     const { messages } = this.state
     return (
@@ -91,7 +98,7 @@ export default class Messages extends Component {
               <div className="messages-wrap">
                 <div className="accordion-wrap">
                   <Accordion defaultActiveKey="0">
-                    {messages.length === 0 
+                    { messages.length === 0 
                     ? <h3 className="no-messages">No messages to display...</h3>
                     : messages.map((message, id) => (
                         <MessageCard
@@ -108,7 +115,12 @@ export default class Messages extends Component {
             </div>
           </div>
           <Button variant="success" className="select-all" onClick={this.selectAll}>Select All</Button>
-        </div>
+        </div>    
+        <DeleteModal
+          show={this.state.deleteModal}
+          deleteModalToggle={this.deleteModalToggle}
+          onHide={this.deleteModalToggle}
+        />
       </div>
     );
   }
