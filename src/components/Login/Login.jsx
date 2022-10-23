@@ -13,6 +13,7 @@ class Login extends Component {
       username: "",
       password: "",
       show: false,
+      copied: false,
     };
   }
 
@@ -31,6 +32,14 @@ class Login extends Component {
     this.setState({ [name]: value });
   };
 
+  copyText = (text) => {
+    navigator.clipboard.writeText(text)
+    this.setState({ copied: true })
+    setTimeout(() => {
+      this.setState({ copied: false })
+    }, 3000);
+  }
+
   render() {
     const popover = (
       <Popover id="popover-basic">
@@ -41,17 +50,20 @@ class Login extends Component {
             <div className="help">
               <div>
                 <strong>Admin</strong>
-                <div className="" onClick={() => {navigator.clipboard.writeText("cwshields")}}>
+                <div className="username" onClick={() => this.copyText("cwshields")}>
                   User: cwshields
-                  <Tooltip id="button-tooltip">
-                    Copied!
-                  </Tooltip>
+                  { this.state.copied 
+                    ? <Tooltip className="tooltip" id="button-tooltip">
+                        Copied!
+                      </Tooltip>
+                    : null
+                  }
                 </div>
                 <div>Pass: 1234</div>
               </div>
               <div className="mid">
                 <strong>Employee</strong>
-                <div className="" onClick={() => {navigator.clipboard.writeText("mpirouet1")}}>
+                <div className="username" onClick={() => this.copyText("mpirouet1")}>
                   User: mpirouet1
                   <Tooltip id="button-tooltip">
                     Copied!
@@ -61,7 +73,7 @@ class Login extends Component {
               </div>
               <div>
                 <strong>Customer</strong>
-                <div className="" onClick={() => {navigator.clipboard.writeText("mhewertsonl")}}>
+                <div className="username" onClick={() => this.copyText("mhewertsonl")}>
                   User: mhewertsonl
                   <Tooltip id="button-tooltip">
                     Copied!
@@ -75,11 +87,11 @@ class Login extends Component {
       </Popover>
     );
     const { login, isAdmin, isEmployee } = this.props;
-    if (login === true && isAdmin === true) {
+    if (login && isAdmin) {
       return <Redirect to="/dashboard/home" />;
-    } else if (login === true && isEmployee === true) {
+    } else if (login && isEmployee) {
       return <Redirect to="/profile" />;
-    } else if (login === true) {
+    } else if (login) {
       return <Redirect to="/" />;
     }
     return (
@@ -90,9 +102,9 @@ class Login extends Component {
         <div className="modal">
           {/*   
           { 
-            this.props.login && this.state.isAdmin 
+            this.props.login && this.props.isAdmin 
             ? <Redirect to="/dashboard/home" /> 
-            : this.props.login && this.state.isEmployee 
+            : this.props.login && this.props.isEmployee 
             ? <Redirect to="/profile" />
             : this.props.login 
             ? <Redirect to="/"> 
