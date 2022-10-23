@@ -110,6 +110,12 @@ module.exports = {
     const items = await db.getItems()
     res.status(200).json(items)
   },
+  getItem: async function (req, res) {
+    const db = req.app.get('db')
+    const { id } = req.params
+    const getItem = await db.getItemInfo(id)
+    res.status(200).json(getItem)
+  },
   getSales: async function(req, res) {
     const db = req.app.get('db')
     const { id } = req.session.user

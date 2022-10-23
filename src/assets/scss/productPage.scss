@@ -1,0 +1,180 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+.flex-row-left-left {
+  @include flex(row, left, flex-end);
+  .info {
+    margin: 0 0 1.9rem .5rem;
+  }
+}
+
+.item-container {
+  @include flex(column, center, center);
+  margin-top: 6rem;
+  .item-wrap {
+    width: 750px;
+    .item-group {
+      @include flex(row, center, left);
+      .img-group {
+        @include flex(column, left, left);
+        margin-right: 3rem;
+        img {
+          margin: .8rem 0;
+          width: auto;
+          height: 70px;
+        }
+      }
+      img {
+        margin-right: 2rem;
+        width: auto;
+        height: 320px;
+      }
+      .brand {
+        font-family: "PoppinsLTE";
+      }
+      .model {
+        font-size: 2.5rem;
+        font-weight: bolder;
+      }
+      .item-info {
+        width: 400px;
+        .btn {
+          width: 100%;
+          padding: .5rem 0;
+          margin: 1rem 0;
+          .fas {
+            margin-right: .25rem;
+          }
+        }
+        a.pay-full {
+          cursor: pointer;
+          background: none;
+          color: $green;
+        }
+        .reviews-wrap {
+          @include flex(row, left, center);
+          margin: .25rem 0;
+          .fas, .far {
+            color: $green;
+          }
+          div {
+            color: $green;
+            margin: 0 .5rem;
+          }
+        }
+        h5 {
+          font-family: 'PoppinsBOLD';
+          font-size: 1.25rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          margin: 1.25rem 0;
+        }
+        .memory-wrap {
+          @include flex(row, left, center);
+          margin: 0 -10px;
+          div:nth-child(1) {
+            border: 3px solid $green;
+          }
+          div {
+            user-select: none;
+            cursor: pointer;
+            padding: 6px 8px;
+            margin: 0rem 10px;
+            border: 1px solid #11182560;
+          }
+        }
+        .price-info-wrap {
+          display: flex;
+          .price-info {
+            .monthly {
+              font-family: 'PoppinsBOLD';
+              font-size: 1.3rem;
+            }
+            .down{
+              font-family: 'PoppinsBOLD';
+              font-size: 1.3rem;
+            }
+            .info {
+              font-size: 1rem;
+            }
+          }
+          .vert-hr {
+            border-left: 1px solid #d7e1e971;
+            height: 58px;
+            margin: 0 15px;
+          }
+        }
+        .full-price {
+          margin-bottom: 1.5rem;
+        }
+        .lrg {
+          font-size: 2rem;
+        }
+      }
+    }
+    .details {
+      margin: 3rem 0;
+      h4 {
+        font-weight: bolder;
+      }
+      .features-list {
+        @include flex(row, space-between, left);
+        margin: 2rem 0;
+        .feature {
+          @include flex(column, center, center);
+          font-size: 1.2rem;
+          padding: 1.25rem;
+          border-radius: 2px;
+          background: #11182533;
+          .fas {
+            font-size: 2.5rem;
+            margin-bottom: .5rem;
+          }
+        }
+        ul {
+          margin-right: 4rem;
+        }
+      }
+      .fine-print {
+        margin: 3rem .25rem 4rem;
+        p {
+          font-size: .7rem;
+        }
+      }
+    }
+  }
+  hr {
+    border-bottom: 1px solid #dfdfdf46;
+    width: 100%;
+  }
+  .loading {
+    font-size: 2rem;
+    height: 100vh;
+  }
+  p {
+    font-size: .92rem;
+    text-align: justify;
+  }
+  h3 {
+    margin: 2rem 0;
+    font-weight: bolder;
+  }
+  table {
+    width: 750px;
+    tr {
+      th, td {
+        padding: 10px 15px;
+      }
+      th.odd-row, td.odd-row {
+        border-radius: 2px;
+        background: #11182533;
+      }
+      th {
+        width: 250px;
+      }
+      td {
+        width: 500px;
+      }
+    }
+  }
+}

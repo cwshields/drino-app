@@ -28,13 +28,15 @@ const StoreList = (props) => {
         <div className="shop-item-wrap">
           { props.filteredItems.length === 0
           ? <h2 className="no-items">No items to display...</h2>
-          : props.filteredItems.map((item) => {
+          : props.filteredItems.map((item, index) => {
               return (
                 <StoreItem
+                  key={index}
                   item={item}
                   addItem={props.addItem}
                   removeItem={props.removeItem}
                   itemExists={props.itemExists}
+                  toggleItemPage={props.toggleItemPage}
                   {...props}
                 />
               )

@@ -10,16 +10,18 @@ import StoreList from "../Store/StoreList";
 import mobile3 from "../../assets/images/mobile3.png";
 import SideNav from "./SideNav";
 import Cart from "./Cart";
+import ItemPage from "./ItemPage";
 
 class Store extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       storeItems: [],
       filteredItems: [],
       cart: [],
       cartOpen: false,
-      category: '',
+      category: "",
+      itemPage: false,
       // drop-down menues
       accesDrpDwn: false,
       dealsDrpDwn: false,
@@ -27,128 +29,135 @@ class Store extends Component {
       opSysDrpDwn: false,
       // filters
       activeFilters: [],
-      search: '',
-    }
+      search: "",
+    };
   }
 
   // updates page title category using dictionary and react router location props
   updateCategory = (prevProps) => {
-    const { storeItems } = this.state
-    const { location } = this.props
+    const { storeItems } = this.state;
+    const { location } = this.props;
     const category = {
-      '/store/phones': 'Phones',
-      '/store/tablets-devices': 'Tablets & Devices',
-      '/store/cases-covers': 'Cases & Covers',
-      '/store/chargers-adapters': 'Chargers & Adapters',
-      '/store/headphones': 'Headphones',
-      '/store/mounts-docks-stands': 'Mounts, Docks & Stands',
-      '/store/screen_protectors': 'Screen Protectors',
-    }
+      "/store/phones": "Phones",
+      "/store/tablets-devices": "Tablets & Devices",
+      "/store/cases-covers": "Cases & Covers",
+      "/store/chargers-adapters": "Chargers & Adapters",
+      "/store/headphones": "Headphones",
+      "/store/mounts-docks-stands": "Mounts, Docks & Stands",
+      "/store/screen_protectors": "Screen Protectors",
+    };
     if (!prevProps || location !== prevProps.location) {
-      const result = storeItems.filter(item => item.category === category[location.pathname])
-      this.setState({ category: category[location.pathname], filteredItems: result })
+      const result = storeItems.filter(
+        (item) => item.category === category[location.pathname]
+      );
+      this.setState({
+        category: category[location.pathname],
+        filteredItems: result,
+      });
     }
-  }
+  };
 
   componentDidMount = () => {
-    this.getItems()
-  }
+    this.getItems();
+  };
 
   componentDidUpdate = (prevProps) => {
-    this.updateCategory(prevProps)
-  }
-  
+    this.updateCategory(prevProps);
+  };
+
   getItems = () => {
     axios
-    .get("/api/items")
-    .then((res) => {
-      this.setState({ storeItems: res.data })
-      this.updateCategory()
-    })
-    .catch((err) => console.log(err))
-  }
-  
+      .get("/api/items")
+      .then((res) => {
+        this.setState({ storeItems: res.data });
+        this.updateCategory();
+      })
+      .catch((err) => console.log(err));
+  };
+
   handleChange = (e) => {
-    const { name, value } = e.target
-    this.setState({ [name]: value })
-  }
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
 
   removeFilter = (str) => {
-    const { activeFilters } = this.state
+    const { activeFilters } = this.state;
     if (activeFilters.includes(str)) {
-      const i = activeFilters.indexOf(str)
-      activeFilters.splice(i, 1)
+      const i = activeFilters.indexOf(str);
+      activeFilters.splice(i, 1);
     }
-    this.componentDidUpdate()
-  }
-  
+    this.componentDidUpdate();
+  };
+
   addFilter = (str) => {
-    const { activeFilters } = this.state
+    const { activeFilters } = this.state;
     if (!activeFilters.includes(str)) {
-      activeFilters.push(str)
+      activeFilters.push(str);
     }
-    this.componentDidUpdate()
-  }
-  
+    this.componentDidUpdate();
+  };
+
   resetFilters = () => {
     this.setState({ activeFilters: [] });
-  }
-  
+  };
+
   toggleFilter = (str) => {
-    const { activeFilters, storeItems } = this.state
+    const { activeFilters, storeItems } = this.state;
     if (activeFilters.includes(str)) {
-      this.removeFilter(str)
+      this.removeFilter(str);
     } else {
-      this.addFilter(str)
-      if (storeItems.filter(e => e === str).length > 0) {
-        activeFilters.push()
+      this.addFilter(str);
+      if (storeItems.filter((e) => e === str).length > 0) {
+        activeFilters.push();
       }
     }
-  }
+  };
 
   toggleEl = (e) => {
-    let el = e.target
+    let el = e.target;
     while (!el.name) {
-      el = el.parentElement
+      el = el.parentElement;
     }
-    const { name } = el
-    this.setState({ [name]: !this.state[name] })
-  }
-  
+    const { name } = el;
+    this.setState({ [name]: !this.state[name] });
+  };
+
   itemExists = (id) => {
-    return this.state.cart.some(function(item) {
-      return item.id === id
-    })
-  }
+    return this.state.cart.some(function (item) {
+      return item.id === id;
+    });
+  };
 
   addItem = (item, num) => {
-    const { cart } = this.state
-    let itemObj = Object.assign({}, item)
-    itemObj['qty'] = num
-    cart.push(itemObj)
-    this.forceUpdate()
-  }
-  
+    const { cart } = this.state;
+    let itemObj = Object.assign({}, item);
+    itemObj["qty"] = num;
+    cart.push(itemObj);
+    this.forceUpdate();
+  };
+
   removeItem = (id) => {
-    const { cart } = this.state
-    let obj = cart.find(obj => obj.id === id)
-    let itemIndex = cart.indexOf(obj)
-    cart.splice(itemIndex, 1)
-    this.forceUpdate()
-  }
+    const { cart } = this.state;
+    let obj = cart.find((obj) => obj.id === id);
+    let itemIndex = cart.indexOf(obj);
+    cart.splice(itemIndex, 1);
+    this.forceUpdate();
+  };
 
   resetCart = () => {
-    this.setState({ cart: [] })
-  }
+    this.setState({ cart: [] });
+  };
 
-  submitSearch() {
-    
-  }
+  submitSearch() {}
 
   handleChange = (e) => {
-    const { name, value } = e.target
-    this.setState({ [name]: value })
-  }
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
+
+  toggleItemPage = () => {
+    this.setState({ itemPage: true });
+  };
 
   render() {
     return (
@@ -186,6 +195,7 @@ class Store extends Component {
                 <StoreList
                   removeFilter={this.removeFilter}
                   addItem={this.addItem}
+                  toggleItemPage={this.toggleItemPage}
                   removeItem={this.removeItem}
                   itemExists={this.itemExists}
                   {...this.state}

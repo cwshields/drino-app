@@ -9,6 +9,7 @@ import Error404 from './components/Admin/Pages/Error404'
 import About from './components/About/About';
 import Register from './components/Register/Register';
 import Store from './components/Store/Store';
+import ItemPage from './components/Store/ItemPage';
 
 export default (
   <Switch>
@@ -20,6 +21,7 @@ export default (
     <Route path='/contact' component={Contact} />
     <Route path='/about' component={About} />
     <Route path='/store/:category' component={Store} />
+    <Route path='/item/:category/:id' component={(props) => <ItemPage {...props}/>} />
     <Route path='/dashboard/404' render={Error404} />
     <Route path='/' render={Error404} />
   </Switch>
